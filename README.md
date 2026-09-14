@@ -25,7 +25,8 @@ Open `assets/config.js`. Every editable value is there:
 
 | What | Where in `CONFIG` |
 |---|---|
-| Registration form / portal URL | `REGISTRATION_LINK` (top of the block) |
+| Registration link per event | `events[].registrationLink` (empty shows "Registration opens soon") |
+| Where the general Register buttons go | `REGISTRATION_LINK` (top of the file): `#register` for the per-event list, or one portal URL |
 | Dates, countdown target, tentative flag, deadline | `dates` |
 | Venue, map, travel distances | `venue` |
 | Event formats, fees, team sizes, prizes | `events[]` |

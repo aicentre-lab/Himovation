@@ -12,7 +12,10 @@ const md = s => raw(esc(s)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>'));
 const fmtINR = n => '₹' + Number(n).toLocaleString('en-IN');
-const resolveHref = h => h === 'REGISTRATION_LINK' ? CONFIG.REGISTRATION_LINK : h;
+const isUrl = h => /^https?:/i.test(h || '');
+const generalRegisterHref = () => isUrl(CONFIG.REGISTRATION_LINK) ? CONFIG.REGISTRATION_LINK : (typeof homeHref === 'function' ? homeHref('register') : '#register');
+const eventRegLink = ev => ev.registrationLink || (isUrl(CONFIG.REGISTRATION_LINK) ? CONFIG.REGISTRATION_LINK : '');
+const resolveHref = h => h === 'REGISTRATION_LINK' ? generalRegisterHref() : h;
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isFinePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const render = (sel, content) => { const el = $(sel); if (el) el.innerHTML = part(content); return el; };
@@ -106,8 +109,8 @@ function renderHeader() {
 
 function applyRegisterLinks() {
   $$('[data-register]').forEach(a => {
-    a.href = CONFIG.REGISTRATION_LINK;
-    if (/^https?:/i.test(CONFIG.REGISTRATION_LINK)) { a.target = '_blank'; a.rel = 'noopener'; }
+    a.href = generalRegisterHref();
+    if (isUrl(a.getAttribute('href'))) { a.target = '_blank'; a.rel = 'noopener'; }
   });
 }
 
@@ -332,8 +335,15 @@ function renderRegisterBand() {
       ${countdownMarkup(true)}
     </div>
     ${deadline && !isNaN(deadline) ? html`<p class="mt-5 reveal" style="--i:4"><span class="chip chip-ember">${icon('clock')}Registration closes ${deadline.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span></p>` : ''}
-    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:5">
-      ${ctaMarkup(CONFIG.hero.ctas[0])}
+    <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 text-left sm:grid-cols-2 reveal" style="--i:5" aria-label="Register per event">
+      ${CONFIG.events.map(ev => { const t = trackOf(ev.track), link = eventRegLink(ev); return html`
+      <li class="glass flex items-center justify-between gap-4 p-4 sm:p-5" style="--track:${t.color}">
+        <div class="min-w-0 flex-1"><span class="badge"><i></i>${t.label}</span><p class="mt-1 font-display font-semibold leading-snug">${ev.name}</p><p class="mt-0.5 text-xs text-muted">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)}</p></div>
+        ${link ? html`<a class="btn btn-primary btn-sm flex-none" href="${link}" target="_blank" rel="noopener" data-magnetic><span class="btn-inner">Register ${icon('external')}</span><span class="sr-only"> for ${t.label} (opens in new tab)</span></a>`
+               : html`<span class="chip flex-none" title="Registration for this event has not opened yet">${icon('clock')}Opens soon</span>`}
+      </li>`; })}
+    </ul>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:6">
       ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
     </div>`);
 }
@@ -383,7 +393,8 @@ function downloadsMarkup(ev) {
 function renderEventPage() {
   const id = document.body.dataset.event, ev = CONFIG.events.find(e => e.id === id);
   if (!ev) { render('[data-render="event-page"]', html`<section class="mx-auto max-w-wrap px-5 pt-40 pb-20 sm:px-8"><h1 class="h2">Event not found</h1><p class="prose-muted mt-4"><a class="link" href="index.html#events">Back to all events</a></p></section>`); return; }
-  const t = trackOf(ev.track), pg = ev.page || {}, v = CONFIG.venue, reg = CONFIG.REGISTRATION_LINK, ext = /^https?:/i.test(reg);
+  const t = trackOf(ev.track), pg = ev.page || {}, v = CONFIG.venue, reg = eventRegLink(ev), ext = isUrl(reg);
+  const regBtn = (label, extra = '') => reg ? html`<a class="btn btn-primary btn-wrap ${extra}" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">${label} ${icon('arrow')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>` : html`<span class="btn btn-ghost btn-wrap ${extra}" aria-disabled="true"><span class="btn-inner">${icon('clock')} Registration opens soon</span></span>`;
   document.title = `${ev.name} · HIMOVATION 2026`;
   const days = CONFIG.schedule.days.map(d => ({ ...d, rows: d.rows.filter(r => r.tracks.includes(ev.track) || r.tracks.includes('common')) }));
   const others = CONFIG.events.filter(e => e.id !== ev.id);
@@ -407,7 +418,7 @@ function renderEventPage() {
               <li class="chip chip-ember">${icon('trophy')}${fmtINR(ev.prizePool)} prize pool</li>
             </ul>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
-              <a class="btn btn-primary btn-wrap" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">Register for ${t.label} ${icon('arrow')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>
+              ${regBtn(`Register for ${t.label}`)}
               ${(pg.downloads || []).slice(0, 1).map(f => html`<a class="btn btn-ghost btn-wrap" href="${f.href}" download data-magnetic><span class="btn-inner">${icon('ticket')} ${f.cta || f.label}</span></a>`)}
             </div>
           </div>
@@ -493,7 +504,7 @@ function renderEventPage() {
         <h2 id="event-register-title" class="h2 mx-auto mt-3 max-w-3xl reveal" style="--i:1">Ready for ${t.label}?</h2>
         <p class="prose-muted mx-auto mt-4 max-w-2xl reveal" style="--i:2">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)} · ${ev.capacity}. Seats are allotted first come, first served and confirmed after verification.</p>
         <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:3">
-          <a class="btn btn-primary" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">Register now ${icon('arrow')}</span></a>
+          ${regBtn('Register now')}
           <a class="btn btn-ghost" href="index.html#contact"><span class="btn-inner">Ask a question ${icon('chevron')}</span></a>
         </div>
       </div>
@@ -834,6 +845,7 @@ function validateConfig() {
   CONFIG.schedule.days.forEach(d => d.rows.forEach(r => r.tracks.forEach(t => { if (!tracks.includes(t)) warn.push(`schedule row "${r.title}": unknown track "${t}"`); })));
   if (CONFIG.faq.length < 8 || CONFIG.faq.length > 10) warn.push(`FAQ has ${CONFIG.faq.length} items (expected 8–10)`);
   if (/REPLACE/i.test(CONFIG.REGISTRATION_LINK)) warn.push('REGISTRATION_LINK still contains the placeholder');
+  CONFIG.events.forEach(e => { if (!eventRegLink(e)) warn.push(`event ${e.id} has no registrationLink yet (shows "Registration opens soon")`); });
   CONFIG.social.forEach(s => { if (/REPLACE/i.test(s.href)) warn.push(`social link for ${s.name} still contains the placeholder`); });
   if (/XXXX/.test(CONFIG.contact.phone)) warn.push('contact.phone is still a placeholder');
   const st = Date.parse(CONFIG.dates.start), en = Date.parse(CONFIG.dates.end);

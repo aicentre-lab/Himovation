@@ -5,7 +5,9 @@
    strings; **bold** and [link text](https://url) are supported in text.
    Open the page with #debug in the URL to print configuration warnings.
    ========================================================================== */
-const REGISTRATION_LINK = "https://forms.gle/REPLACE_WITH_REGISTRATION_FORM";
+// General "Register" buttons (header, hero, menu) go here. Keep "#register" to send visitors to the
+// registration section, which lists one link per event, or put a single portal URL here instead.
+const REGISTRATION_LINK = "#register";
 
 const CONFIG = {
   debug: false,
@@ -74,7 +76,7 @@ const CONFIG = {
     schedule: { eyebrow: "Schedule", heading: "Two days, running in parallel.", intro: "The hackathon runs continuously from Day 1 morning to Day 2 noon. Robo-War, E-Sports and the Exhibition run alongside it. Filter by track to see your day." },
     why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
     faq:      { eyebrow: "FAQ", heading: "Questions, answered.", intro: "Everything drawn from the official participant guidelines. Anything not confirmed yet is marked to be announced." },
-    register: { eyebrow: "Registrations open", heading: "Seats are limited and allotted first come, first served.", intro: "Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Bring your institutional ID on the day." },
+    register: { eyebrow: "Registrations open", heading: "Seats are limited and allotted first come, first served.", intro: "Register for each event separately. Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Bring your institutional ID on the day." },
     contact:  { eyebrow: "Contact", heading: "Talk to the organising team.", intro: "Faculty and student coordinators for each event will be listed here as they are confirmed." },
   },
 
@@ -137,6 +139,7 @@ const CONFIG = {
   events: [
     {
       id: "hackathon", track: "hackathon", bentoSlot: "a", icon: "code", href: "hackathon.html",
+      registrationLink: "https://forms.gle/h8mVQEGj6aCh6q468",   // Solve-a-Thon Round 1 registration form
       name: "Solve-a-Thon: AI for SDGs",
       subtitle: "National Hackathon · 24 hours",
       blurb: "A continuous 24-hour coding sprint to build AI-powered solutions mapped to the UN Sustainable Development Goals. Online shortlisting first, then the offline finale on campus.",
@@ -204,6 +207,7 @@ const CONFIG = {
     },
     {
       id: "robowar", track: "robowar", bentoSlot: "b", icon: "robot", href: "robo-war.html",
+      registrationLink: "",   // empty = "Registration opens soon"
       name: "Robo-War",
       subtitle: "Combat Robotics",
       blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds across two weight classes.",
@@ -260,6 +264,7 @@ const CONFIG = {
     },
     {
       id: "esports", track: "esports", bentoSlot: "c", icon: "gamepad", href: "e-sports.html",
+      registrationLink: "",
       name: "E-Sports",
       subtitle: "Competitive Gaming · LAN",
       blurb: "Squad-based tournament on a campus LAN across one or two titles, with group stages, knockouts and a grand finale on the big screen.",
@@ -325,6 +330,7 @@ const CONFIG = {
     },
     {
       id: "exhibition", track: "exhibition", bentoSlot: "d", icon: "flask", href: "exhibition.html",
+      registrationLink: "",
       name: "School Level Project Exhibition",
       subtitle: "Classes 8–12 · Free entry",
       blurb: "A stall-based exhibition for school students to present science, technology and innovation projects to SRHU faculty judges and the public.",
