@@ -211,6 +211,8 @@ p { margin: 0; }
 
 /* ---------- Podium ---------- */
 .podium { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; align-items: end; }
+.podium-medal { display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; color: var(--medal); background: color-mix(in srgb, var(--medal) 16%, transparent); border: 1px solid color-mix(in srgb, var(--medal) 45%, transparent); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--medal) 70%, transparent); }
+.podium-medal svg { width: 1.15rem; height: 1.15rem; }
 .podium-bar { border-radius: .7rem .7rem .35rem .35rem; background: linear-gradient(to top, color-mix(in srgb, var(--track) 8%, rgb(var(--c-raised))), color-mix(in srgb, var(--track) 38%, rgb(var(--c-raised)))); border: 1px solid color-mix(in srgb, var(--track) 30%, transparent); border-bottom: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: .5rem; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: .8rem; color: rgb(var(--c-ink)); }
 
 /* ---------- Schedule / timeline ---------- */

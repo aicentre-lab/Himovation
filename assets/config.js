@@ -77,7 +77,7 @@ const CONFIG = {
     why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
     faq:      { eyebrow: "FAQ", heading: "Questions, answered.", intro: "Everything drawn from the official participant guidelines. Anything not confirmed yet is marked to be announced." },
     register: { eyebrow: "Registrations open", heading: "Seats are limited and allotted first come, first served.", intro: "Register for each event separately. Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Bring your institutional ID on the day." },
-    contact:  { eyebrow: "Contact", heading: "Talk to the organising team.", intro: "Faculty and student coordinators for each event will be listed here as they are confirmed." },
+    contact:  { eyebrow: "Contact", heading: "Talk to the organising team.", intro: "The organising coordinators handle queries for all four events. Call, email, or use the form." },
   },
 
   about: {
@@ -139,7 +139,7 @@ const CONFIG = {
   events: [
     {
       id: "hackathon", track: "hackathon", bentoSlot: "a", icon: "code", href: "hackathon.html",
-      registrationLink: "https://forms.gle/h8mVQEGj6aCh6q468",   // Solve-a-Thon Round 1 registration form
+      registrationLink: "https://forms.gle/wxkV3dWvzs2Rrit77",   // Solve-a-Thon registration form
       name: "Solve-a-Thon: AI for SDGs",
       subtitle: "National Hackathon · 24 hours",
       blurb: "A continuous 24-hour coding sprint to build AI-powered solutions mapped to the UN Sustainable Development Goals. Online shortlisting first, then the offline finale on campus.",
@@ -159,11 +159,7 @@ const CONFIG = {
         downloads: [
           { label: "Solve-a-Thon PPT template", cta: "Download PPT template", href: "assets/downloads/HIMOVATION-2026-Solve-a-Thon-Template.pptx", note: "The official five-slide deck for your Round 1 problem statement. Fill it in, export as PDF or PPT, and upload it with your short video description.", size: "217 KB" },
         ],
-        coordinators: [   // from the participant guidelines dated 14.09.2026
-          { name: "Dr. Rohit Kanauzia", phone: "8126207090" },
-          { name: "Dr. Gunjan Chhabra", phone: "8433102140" },
-          { name: "Dr. Ashutosh Bhatt", phone: "7895533079" },
-        ],
+        coordinators: [],   // empty = the festival coordinators from contact.coordinators (same for every event)
       },
       sections: [
         { heading: "Themes", type: "chips", items: ["AI for Healthcare", "AI for Education", "AI for Climate Action", "AI for Agriculture", "AI for Smart Cities", "AI for Governance", "AI for Clean Water", "Open Theme"] },
@@ -207,7 +203,7 @@ const CONFIG = {
     },
     {
       id: "robowar", track: "robowar", bentoSlot: "b", icon: "robot", href: "robo-war.html",
-      registrationLink: "",   // empty = "Registration opens soon"
+      registrationLink: "https://forms.gle/j5pqgJmcQaCrdhr26",   // empty = "Registration opens soon"
       name: "Robo-War",
       subtitle: "Combat Robotics",
       blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds across two weight classes.",
@@ -225,7 +221,7 @@ const CONFIG = {
         dates: "27–28 November 2026",
         when: "Qualifiers, quarterfinals and semifinals on Day 1; Grand Finale on Day 2 morning.",
         downloads: [],
-        coordinators: [],
+        coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
         { heading: "Weight classes", type: "chips", items: ["Up to 8 kg", "Up to 15 kg", "Classes indicative, final specs to be announced"] },
@@ -264,7 +260,7 @@ const CONFIG = {
     },
     {
       id: "esports", track: "esports", bentoSlot: "c", icon: "gamepad", href: "e-sports.html",
-      registrationLink: "",
+      registrationLink: "https://forms.gle/861ZLStTc7Esg2i87",
       name: "E-Sports",
       subtitle: "Competitive Gaming · LAN",
       blurb: "Squad-based tournament on a campus LAN across one or two titles, with group stages, knockouts and a grand finale on the big screen.",
@@ -282,7 +278,7 @@ const CONFIG = {
         dates: "27–28 November 2026",
         when: "Group stages and Knockout Round 1 on Day 1; Grand Finale on Day 2 morning.",
         downloads: [],
-        coordinators: [],
+        coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
         { heading: "Proposed titles", type: "chips", items: ["BGMI", "Valorant", "FIFA", "Final titles to be announced"] },
@@ -330,7 +326,7 @@ const CONFIG = {
     },
     {
       id: "exhibition", track: "exhibition", bentoSlot: "d", icon: "flask", href: "exhibition.html",
-      registrationLink: "",
+      registrationLink: "https://forms.gle/ioP3N4DsJrotz5Qn9",
       name: "School Level Project Exhibition",
       subtitle: "Classes 8–12 · Free entry",
       blurb: "A stall-based exhibition for school students to present science, technology and innovation projects to SRHU faculty judges and the public.",
@@ -348,7 +344,7 @@ const CONFIG = {
         dates: "27–28 November 2026",
         when: "Stall setup and Judging Round 1 with public viewing on Day 1; Judging Round 2 (final) on Day 2 morning.",
         downloads: [],
-        coordinators: [],
+        coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
         { heading: "Project categories", type: "chips", items: ["Science & Technology", "Artificial Intelligence", "Robotics", "Environment & Sustainability", "Clean Energy", "Agriculture", "Healthcare Innovation", "Smart Solutions", "Social Innovation", "Other scientific ideas"] },
@@ -399,7 +395,7 @@ const CONFIG = {
   ],
 
   schedule: {
-    legendNote: "Filter by track",
+    legendNote: "Show",
     days: [
       { id: "day1", label: "Day 1", date: "Friday, 27 November", rows: [
         { time: "09:00 – 10:00 AM", title: "Inauguration Ceremony & Registration", tracks: ["common"], note: "All events · Auditorium", milestone: true },
@@ -471,11 +467,10 @@ const CONFIG = {
   contact: {
     email: "himovation@srhu.edu.in",
     phone: "+91 81262 07090",   // Dr. Rohit Kanauzia, Solve-a-Thon coordinator
-    coordinators: [   // from the participant guidelines dated 14.09.2026; other event coordinators to be announced
-      { role: "Solve-a-Thon coordinator", name: "Dr. Rohit Kanauzia", phone: "+91 81262 07090", email: "" },
-      { role: "Solve-a-Thon coordinator", name: "Dr. Gunjan Chhabra", phone: "+91 84331 02140", email: "" },
-      { role: "Solve-a-Thon coordinator", name: "Dr. Ashutosh Bhatt", phone: "+91 78955 33079", email: "" },
-      { role: "Robo-War · E-Sports · Exhibition", name: "Coordinators to be announced", phone: "", email: "" },
+    coordinators: [   // organising coordinators for all four events (participant guidelines, 14.09.2026)
+      { role: "Organising Coordinator", name: "Dr. Rohit Kanauzia", phone: "+91 81262 07090", email: "" },
+      { role: "Organising Coordinator", name: "Dr. Gunjan Chhabra", phone: "+91 84331 02140", email: "" },
+      { role: "Organising Coordinator", name: "Dr. Ashutosh Bhatt", phone: "+91 78955 33079", email: "" },
     ],
     form: { subjects: ["Registration query", "Hackathon", "Robo-War", "E-Sports", "School Exhibition", "Other"], endpoint: "" },
   },

@@ -22,6 +22,8 @@ const render = (sel, content) => { const el = $(sel); if (el) el.innerHTML = par
 const teamSizeText = t => t.min === t.max ? `${t.min} ${t.unit}` : `${t.min}–${t.max} ${t.unit}`;
 const feeText = f => f.amount === 0 ? 'Free' : `${fmtINR(f.amount)} / ${f.per}`;
 const trackOf = key => CONFIG.tracks[key] || CONFIG.tracks.common;
+const MEDALS = ['#F5A524', '#9CA3AF', '#C2743E'];   // gold, silver, bronze
+const medal = rank => html`<span class="podium-medal" style="--medal:${MEDALS[rank] || MEDALS[2]}" aria-hidden="true">${icon('trophy')}</span>`;
 const PAGE = document.body.dataset.page || 'home';
 const IS_HOME = PAGE === 'home';
 const homeHref = id => (IS_HOME ? '' : 'index.html') + '#' + id;
@@ -264,14 +266,14 @@ function renderPrizes() {
     </div>`);
   render('[data-render="prizes"]', html`<div class="grid gap-5 md:grid-cols-2">${CONFIG.events.map((ev, i) => {
     const t = trackOf(ev.track), [p1, p2, p3] = ev.prizes;
-    const bar = (p, h, cls) => html`<div class="flex flex-col items-center gap-2"><p class="num text-sm font-bold sm:text-base ${cls}">${fmtINR(p.amount)}</p><div class="podium-bar w-full" style="height:${h}">${p.place}</div></div>`;
+    const bar = (p, h, cls, rank) => html`<div class="flex flex-col items-center gap-2">${medal(rank)}<p class="num text-sm font-bold sm:text-base ${cls}">${fmtINR(p.amount)}</p><div class="podium-bar w-full" style="height:${h}">${p.place}</div></div>`;
     return html`
     <article class="glass p-6 reveal sm:p-7" style="--track:${t.color}; --i:${i}" aria-labelledby="pz-${ev.id}">
       <div class="flex items-start justify-between gap-4">
         <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${ev.name}</h3></div>
         <p class="num whitespace-nowrap text-right text-sm text-muted">Pool<br><span class="text-lg font-bold text-ink">${fmtINR(ev.prizePool)}</span></p>
       </div>
-      <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink')}${bar(p1, '7.5rem', 'text-emberink')}${bar(p3, '4.25rem', 'text-ink')}</div>
+      <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink', 1)}${bar(p1, '7.5rem', 'text-emberink', 0)}${bar(p3, '4.25rem', 'text-ink', 2)}</div>
       <div class="mt-4 flex flex-wrap items-center gap-2 border-t hairline pt-4 text-xs text-muted">
         <span>Certificates of Achievement for all winners</span>
         ${ev.specialAwards.map(a => html`<span class="chip chip-ember">${icon('award')}${a}</span>`)}
@@ -398,7 +400,7 @@ function renderEventPage() {
   document.title = `${ev.name} · HIMOVATION 2026`;
   const days = CONFIG.schedule.days.map(d => ({ ...d, rows: d.rows.filter(r => r.tracks.includes(ev.track) || r.tracks.includes('common')) }));
   const others = CONFIG.events.filter(e => e.id !== ev.id);
-  const coords = pg.coordinators || [];
+  const coords = (pg.coordinators && pg.coordinators.length) ? pg.coordinators : CONFIG.contact.coordinators.filter(c => c.name && c.phone);
   render('[data-render="event-page"]', html`
     <section class="relative overflow-hidden bg-ground pb-14 pt-28 md:pb-20 md:pt-36" aria-labelledby="event-title">
       <div class="hero-grid" aria-hidden="true"></div>
@@ -453,13 +455,13 @@ function renderEventPage() {
           <aside class="grid content-start gap-5 lg:sticky lg:top-24">
             <div class="glass p-6 reveal" style="--track:${t.color}">
               <div class="flex items-center justify-between gap-3"><p class="eyebrow">Prizes</p><p class="num text-sm text-muted">Pool <span class="font-semibold text-ink">${fmtINR(ev.prizePool)}</span></p></div>
-              <div class="mt-4 grid gap-2">${ev.prizes.map((p, i) => html`<div class="flex items-center justify-between rounded-xl border hairline bg-raised/40 px-4 py-3"><span class="text-xs uppercase tracking-wider text-muted">${p.place} prize</span><span class="num text-lg font-bold ${i === 0 ? 'text-emberink' : 'text-ink'}">${fmtINR(p.amount)}</span></div>`)}</div>
+              <div class="mt-4 grid gap-2">${ev.prizes.map((p, i) => html`<div class="flex items-center justify-between rounded-xl border hairline bg-raised/40 px-3 py-2.5"><span class="flex items-center gap-3">${medal(i)}<span class="text-xs uppercase tracking-wider text-muted">${p.place} prize</span></span><span class="num text-lg font-bold ${i === 0 ? 'text-emberink' : 'text-ink'}">${fmtINR(p.amount)}</span></div>`)}</div>
               ${ev.specialAwards.length ? html`<ul class="mt-3 flex flex-wrap gap-2">${ev.specialAwards.map(a => html`<li class="chip chip-ember">${icon('award')}${a}</li>`)}</ul>` : ''}
               <p class="mt-4 text-xs text-muted">Certificates of Achievement with every cash prize; participation certificates for all who complete the event. Prize distribution at the valedictory, Day 2.</p>
             </div>
             <div class="glass p-6 reveal" style="--i:1">
               <p class="eyebrow">Coordinators</p>
-              ${coords.length ? html`<ul class="mt-4 grid gap-3">${coords.map(c => html`<li><p class="font-semibold">${c.name}</p>${c.phone ? html`<a class="link text-sm" href="tel:+91${c.phone.replace(/\D/g, '')}">+91 ${c.phone}</a>` : ''}</li>`)}</ul>` : html`<p class="prose-muted mt-3 text-sm">Event coordinators will be announced here. Until then, write to the festival desk.</p>`}
+              ${coords.length ? html`<ul class="mt-4 grid gap-3">${coords.map(c => { const digits = c.phone.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, ''); return html`<li>${c.role ? html`<p class="text-[11px] uppercase tracking-wider text-muted">${c.role}</p>` : ''}<p class="font-semibold">${c.name}</p><a class="link text-sm" href="tel:+91${digits}">+91 ${digits.replace(/(\d{5})(\d{5})/, '$1 $2')}</a></li>`; })}</ul>` : html`<p class="prose-muted mt-3 text-sm">Event coordinators will be announced here. Until then, write to the festival desk.</p>`}
               <p class="mt-4 border-t hairline pt-4 text-sm"><a class="link" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></p>
             </div>
             <div class="glass p-6 reveal" style="--i:2">
@@ -698,7 +700,13 @@ function initTabs() {
   legend.forEach(b => b.addEventListener('click', () => {
     legend.forEach(x => x.setAttribute('aria-pressed', x === b));
     const k = b.dataset.filter;
-    $$('.tl-row').forEach(r => { const ts = r.dataset.tracks.split(' '); r.classList.toggle('is-dim', !!k && !ts.includes(k) && !ts.includes('common')); });
+    $$('[role="tabpanel"]').forEach(panel => {
+      const rows = $$('.tl-row', panel);
+      rows.forEach(r => { const ts = r.dataset.tracks.split(' '); r.hidden = !!k && !ts.includes(k) && !ts.includes('common'); });
+      rows.filter(r => !r.hidden).forEach((r, i) => { r.classList.toggle('is-left', i % 2 === 0); r.classList.toggle('is-right', i % 2 === 1); r.classList.add('is-visible'); });
+      let empty = $('.tl-empty', panel); if (!empty) { empty = document.createElement('p'); empty.className = 'tl-empty prose-muted mt-4 text-sm'; empty.textContent = 'No sessions for this track on this day.'; panel.appendChild(empty); }
+      empty.hidden = rows.some(r => !r.hidden);
+    });
   }));
 }
 
