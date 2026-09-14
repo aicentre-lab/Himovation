@@ -2,7 +2,17 @@
 
 Single-page site for **HIMOVATION 2026**, the national technical festival of the Department of Computer Science & Engineering, School of Science & Technology (SST), Swami Rama Himalayan University (SRHU), Dehradun. 27–28 November 2026.
 
-Everything lives in one file: [`index.html`](index.html). No build step. Tailwind and Google Fonts load from CDNs; the SRHU logo loads from `assets/`.
+Plain static files, no build step. Tailwind and Google Fonts load from CDNs.
+
+| File | What it is |
+|---|---|
+| `index.html` | Home page (hero, about, events grid, prizes, schedule, FAQ, contact) |
+| `hackathon.html`, `robo-war.html`, `e-sports.html`, `exhibition.html` | One page per flagship event: rules, timeline, prizes, downloads, coordinators. Rendered from `CONFIG.events` |
+| `assets/config.js` | **All editable content** (`CONFIG`), including each event's page data |
+| `assets/site.js` | Rendering and behaviour shared by every page |
+| `assets/site.css`, `assets/tailwind-config.js` | Styles and design tokens |
+| `assets/downloads/` | Files offered for download (Solve-a-Thon problem statement template) |
+| `assets/` | Logos, favicon, share image |
 
 ## Run it
 
@@ -11,14 +21,17 @@ Everything lives in one file: [`index.html`](index.html). No build step. Tailwin
 
 ## Edit content
 
-Open `index.html` and find the block between `CONFIG-START` and `CONFIG-END` near the top of the `<script>`. Every editable value is there:
+Open `assets/config.js`. Every editable value is there:
 
 | What | Where in `CONFIG` |
 |---|---|
 | Registration form / portal URL | `REGISTRATION_LINK` (top of the block) |
 | Dates, countdown target, tentative flag, deadline | `dates` |
 | Venue, map, travel distances | `venue` |
-| Event formats, fees, team sizes, prizes, rules, evaluation criteria | `events[]` (modal text comes from `sections[]`) |
+| Event formats, fees, team sizes, prizes | `events[]` |
+| Event page content: rules, process steps, criteria (chips / steps / list / downloads) | `events[].sections[]` |
+| Event page extras: dates line, downloads, coordinators | `events[].page` |
+| Event page file name | `events[].href` (rename the HTML file to match) |
 | Two-day schedule and parallel tracks | `schedule.days[].rows[]` (`tracks` uses keys from `tracks`) |
 | FAQ, Why participate, About copy | `faq[]`, `why[]`, `about` |
 | About SRHU and SST cards | `about.hosts.cards[]` (verify years and programme wording with the university) |
@@ -27,7 +40,9 @@ Open `index.html` and find the block between `CONFIG-START` and `CONFIG-END` nea
 
 Text supports `**bold**` and `[link text](https://…)`. Raw HTML is escaped on purpose.
 
-The `<title>`, meta description and Open Graph tags in `<head>` are static (link previews do not run JavaScript), so update those by hand when dates or copy change.
+The `<title>`, meta description and Open Graph tags in each page's `<head>` are static (link previews do not run JavaScript), so update those by hand when dates or copy change.
+
+To add a download to an event page, drop the file in `assets/downloads/` and list it under that event's `page.downloads`.
 
 ## Theme
 
