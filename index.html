@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#070B14">
+  <title>HIMOVATION 2026 · SRHU Dehradun</title>
+  <meta name="description" content="HIMOVATION 2026, the national technical festival of the Department of CSE, School of Science & Technology, Swami Rama Himalayan University, Dehradun. 27–28 November 2026. National Hackathon on AI for SDGs, Robo-War, E-Sports and a School Project Exhibition. ₹1,95,000+ in prizes.">
+  <link rel="canonical" href="https://srhu.edu.in/himovation/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HIMOVATION 2026 · SRHU">
+  <meta property="og:title" content="HIMOVATION 2026 — Where Code Meets Combat, Play Meets Purpose">
+  <meta property="og:description" content="27–28 November 2026 at SRHU, Jolly Grant, Dehradun. 24-hour AI for SDGs hackathon, combat robotics, LAN e-sports and a school project exhibition. ₹1,95,000+ prize pool.">
+  <meta property="og:url" content="https://srhu.edu.in/himovation/">
+  <meta property="og:image" content="assets/srhu-logo-plate.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HIMOVATION 2026 · SRHU Dehradun">
+  <meta name="twitter:description" content="National Hackathon · Robo-War · E-Sports · School Project Exhibition. 27–28 Nov 2026.">
+  <link rel="icon" type="image/png" href="assets/favicon-96.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:    'rgb(var(--c-base) / <alpha-value>)',
+            surface: 'rgb(var(--c-surface) / <alpha-value>)',
+            raised:  'rgb(var(--c-raised) / <alpha-value>)',
+            brand:   'rgb(var(--c-brand) / <alpha-value>)',
+            ink:     'rgb(var(--c-ink) / <alpha-value>)',
+            muted:   'rgb(var(--c-muted) / <alpha-value>)',
+            line:    'rgb(var(--c-line) / <alpha-value>)',
+            accent:  'rgb(var(--c-accent) / <alpha-value>)',
+            ember:   'rgb(var(--c-ember) / <alpha-value>)',
+          },
+          fontFamily: {
+            display: ['Sora', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { wrap: '76rem' },
+          boxShadow: {
+            glow: '0 0 0 1px rgb(var(--c-accent) / .35), 0 16px 48px -16px rgb(var(--c-accent) / .45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ---------- Design tokens (single, deliberate dark theme) ---------- */
+    :root {
+      --c-base: 7 11 20;        /* #070B14 midnight */
+      --c-surface: 11 21 38;    /* #0B1526 Prussian-tinted band */
+      --c-raised: 18 33 66;     /* #122142 chips, inputs */
+      --c-brand: 13 54 104;     /* #0D3668 SRHU Prussian Blue */
+      --c-ink: 230 237 247;     /* #E6EDF7 */
+      --c-muted: 154 169 191;   /* #9AA9BF */
+      --c-line: 255 255 255;    /* hairlines at low alpha */
+      --c-accent: 56 189 248;   /* #38BDF8 glacier cyan */
+      --c-ember: 245 165 36;    /* #F5A524 warm CTA */
+      --header-h: 4.25rem;
+      color-scheme: dark;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1rem); -webkit-text-size-adjust: 100%; }
+    body {
+      background: #070B14; color: #E6EDF7;
+      font-family: Inter, system-ui, sans-serif; font-size: 1rem; line-height: 1.5;
+      margin: 0; min-height: 100vh; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* No-Tailwind fallback so the page stays readable if the CDN is blocked */
+    [hidden] { display: none !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    img { max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    h1, h2, h3, h4 { font-family: Sora, system-ui, sans-serif; text-wrap: balance; margin: 0; }
+    p { margin: 0; }
+
+    :focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; border-radius: 4px; }
+    ::selection { background: rgb(var(--c-accent) / .35); }
+
+    /* ---------- Typography helpers ---------- */
+    .eyebrow { font-family: Sora, system-ui, sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgb(var(--c-accent)); }
+    .h2 { font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.06; letter-spacing: -.02em; }
+    .h3 { font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: 1.25rem; line-height: 1.25; letter-spacing: -.01em; }
+    .num { font-family: Sora, system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .prose-muted { color: rgb(var(--c-muted)); line-height: 1.7; }
+    .prose-muted a, .link { color: rgb(var(--c-accent)); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(var(--c-accent) / .4); }
+    .prose-muted a:hover, .link:hover { text-decoration-color: rgb(var(--c-accent)); }
+    .prose-muted strong { color: rgb(var(--c-ink)); font-weight: 600; }
+
+    /* ---------- Components ---------- */
+    .btn {
+      position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      min-height: 2.9rem; padding: .8rem 1.5rem; border-radius: .8rem;
+      font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: .95rem; letter-spacing: .01em;
+      text-decoration: none; white-space: nowrap; overflow: hidden;
+      transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, background-color .25s, border-color .25s, color .25s;
+    }
+    .btn-inner { display: inline-flex; align-items: center; gap: .5rem; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+    .btn svg { width: 1.1em; height: 1.1em; flex: none; }
+    .btn-primary { background: rgb(var(--c-ember)); color: #12100a; box-shadow: 0 10px 30px -12px rgb(var(--c-ember) / .7); }
+    .btn-primary::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.45), transparent 70%);
+    }
+    .btn-primary:hover { background: #ffb43a; transform: translateY(-1px); box-shadow: 0 14px 34px -12px rgb(var(--c-ember) / .8); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-ghost { color: rgb(var(--c-ink)); background: rgb(var(--c-line) / .03); border: 1px solid rgb(var(--c-line) / .14); }
+    .btn-ghost:hover { border-color: rgb(var(--c-accent) / .6); background: rgb(var(--c-accent) / .08); transform: translateY(-1px); }
+    .btn-sm { min-height: 2.3rem; padding: .5rem 1rem; font-size: .85rem; border-radius: .65rem; }
+    .btn-block { width: 100%; }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .8rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 500; line-height: 1; color: rgb(var(--c-muted));
+      border: 1px solid rgb(var(--c-line) / .1); background: rgb(var(--c-line) / .04); white-space: nowrap;
+    }
+    .chip svg { width: .95rem; height: .95rem; flex: none; color: rgb(var(--c-accent)); }
+    .chip-ember { color: #ffd28a; border-color: rgb(var(--c-ember) / .35); background: rgb(var(--c-ember) / .1); }
+    .chip-ember svg { color: rgb(var(--c-ember)); }
+    .chip-solid { background: rgb(var(--c-raised) / .8); border-color: rgb(var(--c-line) / .08); color: rgb(var(--c-ink)); }
+
+    .glass { background: rgb(var(--c-line) / .035); border: 1px solid rgb(var(--c-line) / .08); border-radius: 1.25rem; }
+    .glass-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .hairline { border-color: rgb(var(--c-line) / .08); }
+    .dot { display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; background: var(--track, rgb(var(--c-accent))); box-shadow: 0 0 0 3px color-mix(in srgb, var(--track, #38BDF8) 22%, transparent); flex: none; }
+
+    .icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: .9rem; background: rgb(var(--c-accent) / .1); color: rgb(var(--c-accent)); border: 1px solid rgb(var(--c-accent) / .18); }
+    .icon-tile svg { width: 1.35rem; height: 1.35rem; }
+
+    /* ---------- Header / nav ---------- */
+    #progress { position: fixed; top: 0; left: 0; z-index: 60; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, rgb(var(--c-accent)), rgb(var(--c-ember))); pointer-events: none; }
+    #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--header-h); transition: background-color .35s, border-color .35s, box-shadow .35s; border-bottom: 1px solid transparent; }
+    #site-header.is-scrolled { background: rgb(var(--c-base) / .78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: rgb(var(--c-line) / .07); box-shadow: 0 10px 40px -20px rgba(0,0,0,.8); }
+    .nav-link { position: relative; padding: .5rem .15rem; font-size: .9rem; font-weight: 500; color: rgb(var(--c-muted)); text-decoration: none; transition: color .2s; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .1rem; height: 2px; border-radius: 2px; background: rgb(var(--c-accent)); transform: scaleX(0); transform-origin: 0 50%; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+    .nav-link:hover { color: rgb(var(--c-ink)); }
+    .nav-link[aria-current="true"] { color: rgb(var(--c-ink)); }
+    .nav-link[aria-current="true"]::after { transform: scaleX(1); }
+    .logo-plate { display: inline-flex; align-items: center; height: 2.6rem; }
+    .logo-plate img { height: 100%; width: auto; display: block; }
+    .wordmark { font-family: Sora, system-ui, sans-serif; font-weight: 800; letter-spacing: .12em; font-size: 1.25rem; }
+
+    .hamburger { position: relative; width: 2.75rem; height: 2.75rem; border-radius: .75rem; display: inline-flex; align-items: center; justify-content: center; }
+    .hamburger span { position: absolute; left: .8rem; right: .8rem; height: 2px; border-radius: 2px; background: rgb(var(--c-ink)); transition: transform .3s cubic-bezier(.2,.7,.2,1), opacity .2s; }
+    .hamburger span:nth-child(1) { transform: translateY(-6px); }
+    .hamburger span:nth-child(3) { transform: translateY(6px); }
+    .hamburger.is-open span:nth-child(1) { transform: rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(.2); }
+    .hamburger.is-open span:nth-child(3) { transform: rotate(-45deg); }
+
+    #mobile-menu { position: fixed; inset: 0; z-index: 40; padding-top: var(--header-h); background: rgb(var(--c-base) / .96); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; transform: translateY(-10px); transition: opacity .28s, transform .28s cubic-bezier(.2,.7,.2,1); overflow-y: auto; }
+    #mobile-menu.is-open { opacity: 1; transform: none; }
+    .menu-link { display: block; padding: .9rem 0; font-family: Sora, system-ui, sans-serif; font-size: 1.75rem; font-weight: 600; letter-spacing: -.01em; color: rgb(var(--c-ink)); text-decoration: none; border-bottom: 1px solid rgb(var(--c-line) / .07); }
+    .menu-link[aria-current="true"] { color: rgb(var(--c-accent)); }
+
+    /* ---------- Hero ---------- */
+    #hero { min-height: 100vh; min-height: 100svh; }
+    #ridge-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .hero-vignette { position: absolute; inset: 0; background:
+      radial-gradient(70% 55% at 50% 40%, rgb(var(--c-brand) / .35), transparent 70%),
+      radial-gradient(60% 40% at 50% 100%, rgb(var(--c-base) / .95), transparent 70%),
+      linear-gradient(to bottom, rgb(var(--c-base) / .55), rgb(var(--c-base) / .1) 30%, rgb(var(--c-base) / .85)); }
+    .hero-grid { position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(rgb(var(--c-line) / .05) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-line) / .05) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(70% 60% at 50% 50%, #000 30%, transparent 100%); -webkit-mask-image: radial-gradient(70% 60% at 50% 50%, #000 30%, transparent 100%); }
+    .hero-title { font-family: Sora, system-ui, sans-serif; font-weight: 800; font-size: clamp(2.9rem, 10.5vw, 8rem); line-height: .92; letter-spacing: -.035em; }
+    .hero-year { background: linear-gradient(100deg, rgb(var(--c-accent)) 0%, #7dd3fc 45%, rgb(var(--c-ember)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+    .cd-tile { text-align: center; padding: .7rem .25rem .6rem; border-radius: .9rem; background: rgb(var(--c-line) / .04); border: 1px solid rgb(var(--c-line) / .08); }
+    .cd-num { display: block; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .cd-label { display: block; margin-top: .35rem; font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--c-muted)); }
+    .live-dot { width: .6rem; height: .6rem; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 0 rgba(52,211,153,.6); animation: livepulse 1.8s ease-out infinite; }
+    @keyframes livepulse { 0% { box-shadow: 0 0 0 0 rgba(52,211,153,.55); } 100% { box-shadow: 0 0 0 12px rgba(52,211,153,0); } }
+    .scroll-cue { width: 1.5rem; height: 2.4rem; border-radius: 999px; border: 1px solid rgb(var(--c-line) / .25); position: relative; }
+    .scroll-cue::after { content: ""; position: absolute; left: 50%; top: .5rem; width: 3px; height: .55rem; margin-left: -1.5px; border-radius: 2px; background: rgb(var(--c-accent)); animation: cue 1.8s ease-in-out infinite; }
+    @keyframes cue { 0%, 100% { transform: translateY(0); opacity: 1; } 60% { transform: translateY(.8rem); opacity: 0; } }
+
+    /* ---------- Ridge dividers ---------- */
+    .divider { display: block; width: 100%; height: 3.5rem; color: rgb(var(--c-line) / .12); }
+    @media (min-width: 768px) { .divider { height: 5.5rem; } }
+    .divider.flip { transform: scaleX(-1); }
+
+    /* ---------- Reveal ---------- */
+    .js-reveal .reveal { opacity: 0; transform: translateY(16px); transition: opacity .38s ease, transform .42s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 55ms); }
+    .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ---------- Stats ---------- */
+    .stat-cell { padding: 1.5rem 1rem; }
+    .stat-num { white-space: nowrap; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+
+    /* ---------- Bento ---------- */
+    .bento { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+    @media (min-width: 640px) {
+      .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "a a" "b c" "d d"; }
+      .bento [data-slot="a"] { grid-area: a; } .bento [data-slot="b"] { grid-area: b; }
+      .bento [data-slot="c"] { grid-area: c; } .bento [data-slot="d"] { grid-area: d; }
+    }
+    @media (min-width: 1024px) {
+      .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-areas: "a a b c" "a a d d"; }
+    }
+    .bento-card {
+      position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column;
+      padding: 1.5rem; border-radius: 1.25rem; cursor: pointer;
+      background: linear-gradient(160deg, rgb(var(--c-line) / .05), rgb(var(--c-line) / .02));
+      border: 1px solid rgb(var(--c-line) / .08);
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;
+    }
+    .bento-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--track), transparent 70%); opacity: .7; }
+    .bento-card::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s; pointer-events: none;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 30%), color-mix(in srgb, var(--track) 16%, transparent), transparent 65%); }
+    .bento-card:hover, .bento-card:focus-within { transform: translateY(-4px); border-color: color-mix(in srgb, var(--track) 45%, transparent); box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--track) 55%, transparent); }
+    .bento-card:hover::after, .bento-card:focus-within::after { opacity: 1; }
+    .bento-icon { transition: transform .4s cubic-bezier(.2,.7,.2,1); transform: translate(var(--px, 0px), var(--py, 0px)); }
+    .bento-watermark { position: absolute; right: 1.1rem; top: .6rem; font-family: Sora, system-ui, sans-serif; font-weight: 800; font-size: 4.5rem; line-height: 1; color: rgb(var(--c-line) / .045); letter-spacing: -.05em; pointer-events: none; }
+    .fact { display: flex; flex-direction: column; gap: .15rem; }
+    .fact dt { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgb(var(--c-muted)); }
+    .fact dd { margin: 0; font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+    /* ---------- Podium ---------- */
+    .podium { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; align-items: end; }
+    .podium-bar { border-radius: .7rem .7rem .35rem .35rem; background: linear-gradient(to top, color-mix(in srgb, var(--track) 8%, rgb(var(--c-raised))), color-mix(in srgb, var(--track) 38%, rgb(var(--c-raised)))); border: 1px solid color-mix(in srgb, var(--track) 30%, transparent); border-bottom: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: .5rem; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: .8rem; color: rgb(var(--c-ink)); }
+
+    /* ---------- Schedule / timeline ---------- */
+    .tab { position: relative; padding: .7rem 1.2rem; border-radius: .8rem; font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: .95rem; color: rgb(var(--c-muted)); transition: color .2s, background-color .2s; }
+    .tab[aria-selected="true"] { color: rgb(var(--c-ink)); background: rgb(var(--c-raised) / .85); box-shadow: inset 0 0 0 1px rgb(var(--c-line) / .08); }
+    .tab small { display: block; font-family: Inter, system-ui, sans-serif; font-weight: 400; font-size: .75rem; color: rgb(var(--c-muted)); }
+    .legend-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .75rem; border-radius: 999px; font-size: .8rem; color: rgb(var(--c-muted)); border: 1px solid rgb(var(--c-line) / .1); transition: all .2s; }
+    .legend-btn[aria-pressed="true"] { color: rgb(var(--c-ink)); border-color: color-mix(in srgb, var(--track, #38BDF8) 55%, transparent); background: color-mix(in srgb, var(--track, #38BDF8) 12%, transparent); }
+    .tl { position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .75rem; }
+    .tl::before { content: ""; position: absolute; top: .5rem; bottom: .5rem; left: .9rem; width: 2px; background: linear-gradient(to bottom, rgb(var(--c-accent) / .55), rgb(var(--c-accent) / .08)); }
+    .tl-row { position: relative; padding-left: 2.6rem; transition: opacity .25s; }
+    .tl-row.is-dim { opacity: .28; }
+    .tl-node { position: absolute; left: calc(.9rem - 5px); top: 1.15rem; width: 12px; height: 12px; border-radius: 50%; background: var(--track); box-shadow: 0 0 0 4px rgb(var(--c-base)), 0 0 0 6px color-mix(in srgb, var(--track) 30%, transparent); }
+    .tl-card { position: relative; padding: .9rem 1.1rem; border-radius: 1rem; background: rgb(var(--c-line) / .035); border: 1px solid rgb(var(--c-line) / .08); border-left: 2px solid var(--track); }
+    .tl-row.is-milestone .tl-card { background: rgb(var(--c-ember) / .07); border-color: rgb(var(--c-ember) / .25); border-left-color: rgb(var(--c-ember)); }
+    .tl-time { font-family: Sora, system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: .75rem; font-weight: 600; letter-spacing: .04em; color: rgb(var(--c-accent)); }
+    .tl-row.is-milestone .tl-time { color: rgb(var(--c-ember)); }
+    .badge { display: inline-flex; align-items: center; gap: .35rem; font-size: .7rem; font-weight: 500; color: rgb(var(--c-muted)); }
+    .badge i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--track); display: inline-block; }
+    @media (min-width: 768px) {
+      .tl { gap: 0; }
+      .tl::before { left: 50%; margin-left: -1px; }
+      .tl-row { width: 50%; padding-left: 0; }
+      .tl-row.is-left { padding-right: 2.25rem; }
+      .tl-row.is-right { margin-left: 50%; padding-left: 2.25rem; margin-top: -1.6rem; }
+      .tl-row + .tl-row.is-left { margin-top: .9rem; }
+      .tl-row.is-left .tl-node { left: auto; right: -6px; }
+      .tl-row.is-right .tl-node { left: -6px; }
+      .tl-row.is-left .tl-card { border-left: 1px solid rgb(var(--c-line) / .08); border-right: 2px solid var(--track); }
+      .tl-row.is-milestone.is-left .tl-card { border-left-color: rgb(var(--c-ember) / .25); border-right-color: rgb(var(--c-ember)); }
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq-btn { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; text-align: left; font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: 1.02rem; line-height: 1.35; color: rgb(var(--c-ink)); }
+    .faq-btn svg { flex: none; width: 1.25rem; height: 1.25rem; color: rgb(var(--c-accent)); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+    .faq-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .faq-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .32s cubic-bezier(.2,.7,.2,1); }
+    .faq-panel.is-open { grid-template-rows: 1fr; }
+    .faq-panel > div { overflow: hidden; }
+
+    /* ---------- Contact form ---------- */
+    .field { display: flex; flex-direction: column; gap: .4rem; }
+    .field label { font-size: .85rem; font-weight: 500; color: rgb(var(--c-ink)); }
+    .input { width: 100%; min-height: 2.9rem; padding: .7rem .9rem; border-radius: .75rem; background: rgb(var(--c-raised) / .55); border: 1px solid rgb(var(--c-line) / .1); color: rgb(var(--c-ink)); font: inherit; transition: border-color .2s, box-shadow .2s; }
+    .input::placeholder { color: rgb(var(--c-muted) / .7); }
+    .input:focus { outline: none; border-color: rgb(var(--c-accent) / .7); box-shadow: 0 0 0 3px rgb(var(--c-accent) / .18); }
+    .input[aria-invalid="true"] { border-color: #f87171; }
+    .field-error { font-size: .8rem; color: #fca5a5; }
+    select.input { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239AA9BF' stroke-width='2' viewBox='0 0 24 24'><path d='m6 9 6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right .8rem center; padding-right: 2.4rem; }
+    select.input option { background: #0B1526; color: #E6EDF7; }
+
+    /* ---------- Modal ---------- */
+    dialog#event-modal { position: fixed; inset: 0; width: 100%; height: 100%; max-width: 100vw; max-height: 100vh; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; display: none; }
+    dialog#event-modal[open] { display: flex; align-items: flex-end; justify-content: center; }
+    dialog#event-modal::backdrop { background: rgb(7 11 20 / .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .modal-panel { width: 100%; max-height: 92vh; max-height: 92svh; display: flex; flex-direction: column; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-line) / .1); border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -20px 80px -20px rgba(0,0,0,.8); transform: translateY(28px); opacity: 0; transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .25s; }
+    dialog.is-open .modal-panel { transform: none; opacity: 1; }
+    @media (min-width: 640px) {
+      dialog#event-modal[open] { align-items: center; padding: 1.5rem; }
+      .modal-panel { max-width: 46rem; max-height: 86vh; max-height: 86svh; border-radius: 1.5rem; }
+    }
+    .modal-body { overflow-y: auto; overscroll-behavior: contain; }
+    .step { display: grid; grid-template-columns: 1.75rem 1fr; gap: .75rem; align-items: start; }
+    .step i { display: inline-flex; align-items: center; justify-content: center; width: 1.75rem; height: 1.75rem; border-radius: 50%; font-style: normal; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: .75rem; background: rgb(var(--c-accent) / .12); color: rgb(var(--c-accent)); border: 1px solid rgb(var(--c-accent) / .25); }
+    .check li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; align-items: start; }
+    .check svg { width: 1.1rem; height: 1.1rem; color: rgb(var(--c-accent)); margin-top: .15rem; }
+
+    /* ---------- Sponsors ---------- */
+    .slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; border-radius: 1rem; border: 1px dashed rgb(var(--c-line) / .14); background: rgb(var(--c-line) / .02); color: rgb(var(--c-muted) / .7); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: .5rem; }
+    .slot img { max-height: 70%; width: auto; filter: grayscale(1) brightness(1.2); transition: filter .3s; }
+    .slot:hover img { filter: none; }
+
+    /* ---------- Misc ---------- */
+    #to-top { position: fixed; right: 1rem; bottom: 1rem; z-index: 45; width: 2.75rem; height: 2.75rem; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgb(var(--c-raised) / .9); border: 1px solid rgb(var(--c-line) / .12); color: rgb(var(--c-ink)); backdrop-filter: blur(10px); opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; pointer-events: none; }
+    #to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+    .contour-bg { position: absolute; inset: 0; opacity: .5; pointer-events: none; }
+    .map-wrap { position: relative; aspect-ratio: 16 / 10; border-radius: 1.25rem; overflow: hidden; background: rgb(var(--c-raised) / .5); border: 1px solid rgb(var(--c-line) / .08); }
+    .map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.7) contrast(1.05); }
+    .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .6rem 1rem; border-radius: .6rem; background: rgb(var(--c-ember)); color: #12100a; font-weight: 600; text-decoration: none; transition: top .2s; }
+    .skip-link:focus { top: 1rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js-reveal .reveal { opacity: 1; transform: none; transition: none; }
+      .live-dot, .scroll-cue::after { animation: none; }
+      .btn, .btn-inner, .bento-card, .bento-icon, .faq-panel, .faq-btn svg, .modal-panel, #mobile-menu, .hamburger span, .nav-link::after, .tl-row { transition: none !important; }
+      .bento-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body class="bg-base text-ink font-sans antialiased">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- SVG sprite: Himalayan ridge divider + contour pattern -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0 70 L100 56 L200 64 L300 36 L400 50 L500 22 L600 44 L700 14 L800 38 L900 20 L1000 46 L1100 28 L1200 52 L1300 34 L1400 58 L1440 50" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" opacity=".45"/>
+      <path d="M0 96 L80 78 L160 88 L240 60 L320 72 L400 44 L480 66 L560 38 L640 58 L720 30 L800 54 L880 40 L960 64 L1040 46 L1120 70 L1200 52 L1280 80 L1360 66 L1440 84" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+      <path d="M0 108 L120 98 L240 104 L360 86 L480 96 L600 78 L720 90 L840 72 L960 88 L1080 76 L1200 94 L1320 84 L1440 100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" opacity=".7"/>
+    </symbol>
+    <pattern id="contours" patternUnits="userSpaceOnUse" width="360" height="360">
+      <g fill="none" stroke="currentColor" stroke-width="1" transform="rotate(-8 180 180)">
+        <ellipse cx="180" cy="180" rx="40" ry="26" opacity=".9"/>
+        <ellipse cx="184" cy="178" rx="70" ry="48" opacity=".7"/>
+        <ellipse cx="176" cy="184" rx="100" ry="72" opacity=".55"/>
+        <ellipse cx="182" cy="180" rx="132" ry="98" opacity=".4"/>
+        <ellipse cx="178" cy="182" rx="164" ry="126" opacity=".25"/>
+      </g>
+    </pattern>
+  </svg>
+
+  <div id="progress" aria-hidden="true"></div>
+
+  <header id="site-header">
+    <nav class="mx-auto flex h-full max-w-wrap items-center justify-between gap-4 px-5 sm:px-8" aria-label="Primary">
+      <a href="#hero" class="flex items-center gap-3 rounded-lg" aria-label="HIMOVATION 2026 home">
+        <span class="logo-plate">
+          <img src="assets/SRHU LOGO WITH NAAC A+.png" alt="Swami Rama Himalayan University" width="797" height="516" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <span class="wordmark" hidden>SRHU</span>
+        </span>
+        <span class="hidden flex-col leading-tight md:flex">
+          <span class="font-display text-sm font-bold tracking-wide">HIMOVATION 2026</span>
+          <span class="text-[11px] text-muted">School of Science &amp; Technology · SRHU, Dehradun</span>
+        </span>
+      </a>
+      <ul class="hidden items-center gap-6 lg:flex" data-render="nav"></ul>
+      <div class="flex items-center gap-2">
+        <a class="btn btn-primary btn-sm hidden sm:inline-flex" data-register data-magnetic><span class="btn-inner">Register</span></a>
+        <button id="menu-btn" class="hamburger lg:hidden" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu" hidden>
+      <nav class="mx-auto flex h-full w-full max-w-wrap flex-col px-5 pb-10 pt-4 sm:px-8" aria-label="Mobile">
+        <ul data-render="mobile-nav"></ul>
+        <div class="mt-8 flex flex-col gap-3">
+          <a class="btn btn-primary btn-block" data-register><span class="btn-inner">Register now</span></a>
+          <p class="text-center text-xs text-muted">27–28 November 2026 · SRHU, Jolly Grant, Dehradun</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="page">
+    <main id="main" tabindex="-1">
+
+      <!-- HERO -->
+      <section id="hero" class="relative flex items-center overflow-hidden bg-base" aria-label="HIMOVATION 2026">
+        <canvas id="ridge-canvas" aria-hidden="true"></canvas>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-vignette" aria-hidden="true"></div>
+        <div class="relative z-10 mx-auto w-full max-w-wrap px-5 pb-24 pt-32 sm:px-8 md:pb-28 md:pt-40" data-render="hero"></div>
+        <div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
+          <svg class="divider text-accent/25" style="height:4rem"><use href="#ridge"/></svg>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="relative bg-base py-20 md:py-28" aria-labelledby="about-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div class="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+            <div>
+              <div data-head="about"></div>
+              <div data-render="about" class="mt-8"></div>
+            </div>
+            <div data-render="glance"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section id="stats" class="relative border-y hairline bg-surface/70" aria-label="Festival in numbers">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <ul class="grid grid-cols-2 md:grid-cols-4 md:divide-x hairline" data-render="stats"></ul>
+        </div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="events" class="relative bg-base py-20 md:py-28" aria-labelledby="events-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div data-head="events" class="max-w-2xl"></div>
+          <div data-render="events" class="mt-12"></div>
+          <div data-render="general-rules" class="mt-6"></div>
+        </div>
+      </section>
+
+      <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
+
+      <!-- PRIZES -->
+      <section id="prizes" class="relative bg-base py-20 md:py-28" aria-labelledby="prizes-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div data-head="prizes" class="max-w-2xl"></div>
+            <div data-render="prize-total"></div>
+          </div>
+          <div data-render="prizes" class="mt-12"></div>
+        </div>
+      </section>
+
+      <!-- SCHEDULE -->
+      <section id="schedule" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="schedule-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div data-head="schedule" class="max-w-2xl"></div>
+          <div data-render="schedule" class="mt-10"></div>
+        </div>
+      </section>
+
+      <svg class="divider flip" aria-hidden="true"><use href="#ridge"/></svg>
+
+      <!-- WHY PARTICIPATE -->
+      <section id="why" class="relative bg-base py-20 md:py-28" aria-labelledby="why-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div data-head="why" class="max-w-2xl"></div>
+          <div data-render="why" class="mt-12"></div>
+        </div>
+      </section>
+
+      <!-- SPONSORS -->
+      <section id="sponsors" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="sponsors-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div data-head="sponsors" class="max-w-2xl"></div>
+          <div data-render="sponsors" class="mt-12"></div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="relative bg-base py-20 md:py-28" aria-labelledby="faq-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+            <div data-head="faq"></div>
+            <div data-render="faq"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGISTER CTA BAND -->
+      <section id="register" class="relative overflow-hidden border-y hairline bg-surface py-20 md:py-28" aria-labelledby="register-title">
+        <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
+        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 80% at 50% 50%, rgb(var(--c-brand) / .45), transparent 70%)" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8" data-render="register"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="relative bg-base py-20 md:py-28" aria-labelledby="contact-title">
+        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+          <div data-head="contact" class="max-w-2xl"></div>
+          <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
+            <div class="flex flex-col gap-8">
+              <div data-render="contact-info"></div>
+              <div class="map-wrap">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center text-sm text-muted" aria-hidden="true">
+                  <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                  <span>Map of SRHU, Jolly Grant, Dehradun</span>
+                </div>
+                <iframe data-map title="Map: Swami Rama Himalayan University, Jolly Grant, Dehradun" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              </div>
+              <p class="-mt-4 text-sm text-muted"><a class="link" data-map-link target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in new tab)</span></a></p>
+            </div>
+
+            <div class="glass p-6 sm:p-8">
+              <h3 class="h3">Send us a message</h3>
+              <p class="mt-2 text-sm text-muted">Registration queries, sponsorship, school participation or anything else. We reply within two working days.</p>
+              <form id="contact-form" class="mt-6 flex flex-col gap-5" novalidate>
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div class="field">
+                    <label for="cf-name">Full name</label>
+                    <input class="input" id="cf-name" name="name" type="text" autocomplete="name" placeholder="Aditi Rawat" aria-describedby="err-name" required>
+                    <p class="field-error" id="err-name" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="cf-email">Email</label>
+                    <input class="input" id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@college.edu" aria-describedby="err-email" required>
+                    <p class="field-error" id="err-email" hidden></p>
+                  </div>
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div class="field">
+                    <label for="cf-phone">Phone <span class="font-normal text-muted">(optional)</span></label>
+                    <input class="input" id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98XXX XXXXX" aria-describedby="err-phone">
+                    <p class="field-error" id="err-phone" hidden></p>
+                  </div>
+                  <div class="field">
+                    <label for="cf-subject">Topic</label>
+                    <select class="input" id="cf-subject" name="subject" aria-describedby="err-subject" data-render="subjects"></select>
+                    <p class="field-error" id="err-subject" hidden></p>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="cf-message">Message</label>
+                  <textarea class="input" id="cf-message" name="message" rows="5" placeholder="Tell us which event you are interested in and how we can help." aria-describedby="err-message" required></textarea>
+                  <p class="field-error" id="err-message" hidden></p>
+                </div>
+                <div class="sr-only" aria-hidden="true">
+                  <label for="cf-website">Leave this field empty</label>
+                  <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs text-muted">We only use your details to reply to this message.</p>
+                  <button class="btn btn-primary" type="submit" data-magnetic><span class="btn-inner">Send message</span></button>
+                </div>
+              </form>
+              <div id="contact-success" class="mt-6" role="status" aria-live="polite" hidden></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="relative border-t hairline bg-surface" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="sr-only">Footer</h2>
+      <div class="mx-auto max-w-wrap px-5 py-14 sm:px-8" data-render="footer"></div>
+    </footer>
+  </div>
+
+  <!-- EVENT MODAL -->
+  <dialog id="event-modal" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal-panel">
+      <div class="flex items-start justify-between gap-4 border-b hairline px-5 pt-5 pb-4 sm:px-8 sm:pt-7" data-modal-head></div>
+      <div class="modal-body px-5 py-6 sm:px-8" data-modal-body></div>
+      <div class="flex flex-col gap-3 border-t hairline px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8" data-modal-foot></div>
+    </div>
+  </dialog>
+
+  <button id="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+  /* ============================================================================
+     CONFIG-START — the ONLY block the organising team needs to edit.
+     Dates, fees, prizes, schedule, FAQ, contacts and the registration link live
+     here. Markup below is rendered from this object. Do not use raw HTML in
+     strings; **bold** and [link text](https://url) are supported in text.
+     Open the page with #debug in the URL to print configuration warnings.
+     ========================================================================== */
+  const REGISTRATION_LINK = "https://forms.gle/REPLACE_WITH_REGISTRATION_FORM";
+
+  const CONFIG = {
+    debug: false,
+    REGISTRATION_LINK,
+
+    site: {
+      name: "HIMOVATION 2026",
+      edition: "2026",
+      eyebrow: "National Technical Festival",
+      tagline: "Where Code Meets Combat, Play Meets Purpose",
+      url: "https://srhu.edu.in/himovation/",
+      logo: { src: "assets/srhu-logo.png", alt: "Swami Rama Himalayan University", fallbackText: "SRHU" },
+      organizer: {
+        dept: "Department of Computer Science & Engineering",
+        school: "School of Science & Technology",
+        university: "Swami Rama Himalayan University",
+        city: "Dehradun, Uttarakhand",
+        footfall: "500–600 participants and visitors",
+      },
+    },
+
+    dates: {
+      start: "2026-11-27T09:00:00+05:30",   // countdown target: inauguration
+      end:   "2026-11-28T16:30:00+05:30",   // end of valedictory ceremony
+      display: "27–28 November 2026",
+      short: "27–28 Nov 2026",
+      tentative: false,                     // true shows a "dates tentative" note
+      registrationDeadline: null,           // e.g. "2026-11-10T23:59:00+05:30" or null
+      liveLabel: "Happening now on campus",
+      endedLabel: "That's a wrap for 2026. See you next November.",
+    },
+
+    venue: {
+      name: "SST Building & Auditorium",
+      short: "SRHU, Jolly Grant, Dehradun",
+      address: "School of Science & Technology, Swami Rama Himalayan University, Jolly Grant, Dehradun, Uttarakhand 248016",
+      mapEmbedUrl: "https://www.google.com/maps?q=Swami+Rama+Himalayan+University,+Jolly+Grant,+Dehradun&output=embed",
+      mapLink: "https://www.google.com/maps/search/?api=1&query=Swami+Rama+Himalayan+University+Jolly+Grant+Dehradun",
+      travel: [
+        { mode: "Air",  icon: "plane", name: "Jolly Grant Airport",       distanceKm: 6 },
+        { mode: "Rail", icon: "train", name: "Dehradun Railway Station",  distanceKm: 18 },
+        { mode: "Bus",  icon: "bus",   name: "ISBT Dehradun",             distanceKm: 25 },
+      ],
+    },
+
+    nav: [
+      { id: "events",   label: "Events" },
+      { id: "schedule", label: "Schedule" },
+      { id: "prizes",   label: "Prizes" },
+      { id: "sponsors", label: "Sponsors" },
+      { id: "faq",      label: "FAQ" },
+      { id: "contact",  label: "Contact" },
+    ],
+
+    hero: {
+      ctas: [
+        { label: "Register now",   href: "REGISTRATION_LINK", style: "primary", external: true },
+        { label: "Explore events", href: "#events",           style: "ghost" },
+      ],
+    },
+
+    sections: {
+      about:    { eyebrow: "About the festival", heading: "Built in the Himalayan foothills. Aimed at the country.", intro: "" },
+      events:   { eyebrow: "Four flagship events", heading: "Pick your arena.", intro: "Two days, four parallel tracks. Each event is built for a different kind of builder, from 24-hour AI sprints to combat robots, LAN tournaments and school science stalls." },
+      prizes:   { eyebrow: "Prize pool", heading: "₹1,95,000 on the line.", intro: "Cash prizes and Certificates of Achievement in every event, presented at the valedictory ceremony on 28 November." },
+      schedule: { eyebrow: "Schedule", heading: "Two days, running in parallel.", intro: "The hackathon runs continuously from Day 1 morning to Day 2 noon. Robo-War, E-Sports and the Exhibition run alongside it. Filter by track to see your day." },
+      why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
+      sponsors: { eyebrow: "Sponsors & partners", heading: "Put your brand in front of 500+ builders.", intro: "We invite technology companies, gaming brands and robotics vendors to partner with HIMOVATION 2026. Sponsorship tiers cover arena branding, stage mentions, stalls and digital visibility." },
+      faq:      { eyebrow: "FAQ", heading: "Questions, answered.", intro: "Everything drawn from the official participant guidelines. Anything not confirmed yet is marked to be announced." },
+      register: { eyebrow: "Registrations open", heading: "Seats are limited and allotted first come, first served.", intro: "Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Bring your institutional ID on the day." },
+      contact:  { eyebrow: "Contact", heading: "Talk to the organising team.", intro: "Faculty and student coordinators for each event will be listed here as they are confirmed." },
+    },
+
+    about: {
+      paragraphs: [
+        "**HIMOVATION** is the flagship annual technical festival of the Department of Computer Science & Engineering at SRHU's School of Science & Technology. It grew out of the department's national hackathon on AI for the Sustainable Development Goals, and in 2026 it expands into a two-day, four-track festival on the Jolly Grant campus.",
+        "Across 27–28 November, university teams build AI prototypes in a 24-hour sprint, robotics crews fight it out in a fabricated combat arena, squads compete on a LAN in a structured e-sports tournament, and school students from Dehradun and nearby districts exhibit their science and technology projects to SRHU faculty and the public. Software innovation, hardware engineering, competitive gaming and early scientific curiosity, under one roof.",
+        "The festival positions SRHU as a regional hub for technology and innovation: deployable prototypes with incubation potential, a structured bridge to schools, a responsible platform for digital sportsmanship, and two days of contact between students, faculty, industry mentors and school communities.",
+      ],
+      glance: [
+        { label: "Organised by", value: "Dept. of CSE, SST, SRHU" },
+        { label: "Dates",        value: "27–28 November 2026" },
+        { label: "Venue",        value: "SST Building & Auditorium, Jolly Grant" },
+        { label: "Mode",         value: "Offline, on campus" },
+        { label: "Footfall",     value: "500–600 expected" },
+        { label: "Events",       value: "4 parallel tracks" },
+      ],
+    },
+
+    stats: [
+      { value: 4,    label: "Flagship events" },
+      { value: 1.95, decimals: 2, prefix: "₹", suffix: " L+", label: "Total prize pool" },
+      { value: 500,  suffix: "+", label: "Participants & visitors" },
+      { value: 24,   suffix: " hrs", label: "Non-stop hacking" },
+    ],
+
+    tracks: {
+      hackathon:  { label: "Hackathon",  color: "#38BDF8" },
+      robowar:    { label: "Robo-War",   color: "#F5A524" },
+      esports:    { label: "E-Sports",   color: "#A78BFA" },
+      exhibition: { label: "Exhibition", color: "#34D399" },
+      common:     { label: "All events", color: "#9AA9BF" },
+    },
+
+    events: [
+      {
+        id: "hackathon", track: "hackathon", bentoSlot: "a", icon: "code",
+        name: "Solve-a-Thon: AI for SDGs",
+        subtitle: "National Hackathon · 24 hours",
+        blurb: "A continuous 24-hour coding sprint to build AI-powered solutions mapped to the UN Sustainable Development Goals. Online shortlisting first, then the offline finale on campus.",
+        format: "Two rounds. Round 1 is online: register and submit a problem statement in the HIMOVATION 2026 template for panel evaluation. Shortlisted teams come to SRHU for the continuous 24-hour build with progress checks, mentor visits, final presentations and live demos.",
+        teamSize: { min: 3, max: 5, unit: "members" },
+        fee: { amount: 800, per: "team", note: "Payable only by teams shortlisted after Round 1" },
+        capacity: "40–50 teams",
+        eligibility: "Students participating through their institutions, with an interest in programming, AI/ML, data science or software development. Multidisciplinary teams encouraged. One optional mentor per team, declared at registration.",
+        prizes: [ { place: "1st", amount: 51000 }, { place: "2nd", amount: 31000 }, { place: "3rd", amount: 11000 } ],
+        specialAwards: [],
+        prizePool: 93000,
+        cardFacts: ["teamSize", "fee", "prizePool"],
+        highlights: ["AI for Healthcare", "Education", "Climate Action", "Agriculture", "Smart Cities", "Governance", "Clean Water", "Open Theme"],
+        sections: [
+          { heading: "Themes", type: "chips", items: ["AI for Healthcare", "AI for Education", "AI for Climate Action", "AI for Agriculture", "AI for Smart Cities", "AI for Governance", "AI for Clean Water", "Open Theme"] },
+          { heading: "How it works", type: "steps", items: [
+            "Round 1, online: complete registration and verification, then submit your problem statement in the prescribed HIMOVATION 2026 template before the deadline.",
+            "The evaluation panel reviews submissions and shortlists teams. Only shortlisted teams pay the ₹800 fee, within the due date, to confirm their seat.",
+            "Day 1 at SRHU: orientation, rules and evaluation criteria, then the problem statement release and the start of the 24-hour coding phase at 11:00 AM.",
+            "Progress Check I in the evening, overnight coding with mentor visits and technical support, and Progress Check II at 8:00 AM on Day 2.",
+            "Final submission and presentations by 10:30 AM, final evaluation and live demonstration until 1:00 PM, results at the valedictory.",
+          ] },
+          { heading: "Project requirements", type: "list", items: [
+            "An original, innovative solution with a clearly stated problem and its link to the chosen SDG.",
+            "A functional prototype, application, model or demonstrable proof of concept.",
+            "Clear documentation of technologies, tools, datasets and frameworks used, respecting IP and licence terms.",
+            "Public libraries, frameworks, APIs and datasets are allowed; declare any pre-existing components.",
+          ] },
+          { heading: "Rules on the day", type: "list", items: [
+            "At least 50% of the team must be present in the Hackathon Arena at all times.",
+            "Attendance at both progress reviews is mandatory; missing the submission deadline may mean disqualification.",
+            "Separate rest areas for male and female participants. Running tea and snacks during the day and dinner are provided; food stalls are available on a paid basis.",
+            "Plagiarism or copying another team's work leads to immediate disqualification.",
+          ] },
+          { heading: "Evaluation criteria", type: "chips", items: ["Innovation & originality", "Relevance to theme", "Technical implementation", "Use of AI", "Feasibility", "Social or environmental impact", "Scalability", "Prototype quality", "Presentation", "Teamwork"] },
+        ],
+      },
+      {
+        id: "robowar", track: "robowar", bentoSlot: "b", icon: "robot",
+        name: "Robo-War",
+        subtitle: "Combat Robotics",
+        blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds across two weight classes.",
+        format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Weight classes of up to 8 kg and up to 15 kg (indicative, to be confirmed in the final rulebook).",
+        teamSize: { min: 2, max: 3, unit: "members" },
+        fee: { amount: 500, per: "team", note: "" },
+        capacity: "20–25 teams",
+        eligibility: "Students and eligible robotics enthusiasts as permitted by the organisers, with knowledge of robotics, electronics, mechanical systems, embedded systems or remote-control technologies.",
+        prizes: [ { place: "1st", amount: 21000 }, { place: "2nd", amount: 11000 }, { place: "3rd", amount: 5000 } ],
+        specialAwards: [],
+        prizePool: 37000,
+        cardFacts: ["teamSize", "fee", "prizePool"],
+        highlights: ["Up to 8 kg", "Up to 15 kg"],
+        sections: [
+          { heading: "Weight classes", type: "chips", items: ["Up to 8 kg", "Up to 15 kg", "Classes indicative, final specs to be announced"] },
+          { heading: "Robot guidelines", type: "list", items: [
+            "The robot must be remotely controlled and safe to operate inside the designated arena.",
+            "Every robot passes a technical and safety inspection before its first match. The committee may reject any robot it considers unsafe.",
+            "Teams bring all equipment needed to run their robot, including spares, and may be asked for technical details during verification.",
+          ] },
+          { heading: "Safety and match rules", type: "list", items: [
+            "Only authorised team members operate the robot, from outside the safety barricade. Nobody enters the arena without permission.",
+            "Robots are switched off or made safe whenever they are not in a match. Stop immediately when instructed by the referee.",
+            "Report to the arena before your scheduled match; late arrival may result in a walkover. The referee's decision during a match is final.",
+            "Fire safety and emergency procedures announced by the organisers apply at all times.",
+          ] },
+          { heading: "Evaluation", type: "chips", items: ["Technical design", "Mechanical robustness", "Control & manoeuvrability", "Strategy", "Match performance", "Safety compliance"] },
+        ],
+      },
+      {
+        id: "esports", track: "esports", bentoSlot: "c", icon: "gamepad",
+        name: "E-Sports",
+        subtitle: "Competitive Gaming · LAN",
+        blurb: "Squad-based tournament on a campus LAN across one or two titles, with group stages, knockouts and a grand finale on the big screen.",
+        format: "Squad-based tournament with group stage and/or knockout rounds across one or two finalised titles, played on LAN or approved on-campus setups. Proposed titles are BGMI, Valorant and FIFA; final titles depend on participant interest and platform availability.",
+        teamSize: { min: 4, max: 5, unit: "players" },
+        fee: { amount: 500, per: "squad", note: "" },
+        capacity: "20–30 squads",
+        eligibility: "Students and participants as specified by the organising committee. Players must meet the age and eligibility requirements of the selected title.",
+        prizes: [ { place: "1st", amount: 21000 }, { place: "2nd", amount: 11000 }, { place: "3rd", amount: 5000 } ],
+        specialAwards: [],
+        prizePool: 37000,
+        cardFacts: ["teamSize", "fee", "prizePool"],
+        highlights: ["BGMI", "Valorant", "FIFA"],
+        sections: [
+          { heading: "Proposed titles", type: "chips", items: ["BGMI", "Valorant", "FIFA", "Final titles to be announced"] },
+          { heading: "Tournament format", type: "steps", items: [
+            "Squad check-in on Day 1 morning; each squad nominates a Captain who handles all official communication and protests.",
+            "Group Stage Round 1 before lunch, Round 2 and Knockout Round 1 in the afternoon.",
+            "Grand Finale on Day 2 morning on the main screen, followed by prize distribution at the valedictory.",
+          ] },
+          { heading: "Fair play", type: "list", items: [
+            "No cheating, hacks, unauthorised software or modifications, or exploitation of prohibited bugs.",
+            "No account sharing, impersonation or unregistered players. Only registered players take part in official matches.",
+            "Respect opponents; abusive, discriminatory or threatening communication leads to disqualification.",
+            "Where BYOD is permitted, your device must meet the announced technical requirements. The committee's decision on technical issues and restarts is final.",
+          ] },
+        ],
+      },
+      {
+        id: "exhibition", track: "exhibition", bentoSlot: "d", icon: "flask",
+        name: "School Level Project Exhibition",
+        subtitle: "Classes 8–12 · Free entry",
+        blurb: "A stall-based exhibition for school students to present science, technology and innovation projects to SRHU faculty judges and the public.",
+        format: "Stall-based project display with faculty and expert judging across two rounds, plus public viewing. Each team is allotted display space with a table and power point.",
+        teamSize: { min: 1, max: 3, unit: "students" },
+        fee: { amount: 0, per: "team", note: "One accompanying teacher per school" },
+        capacity: "20–25 schools from Dehradun and nearby districts",
+        eligibility: "School students of Classes 8 to 12 from Dehradun and nearby districts, accompanied by a teacher or authorised representative from the school.",
+        prizes: [ { place: "1st", amount: 15000 }, { place: "2nd", amount: 8000 }, { place: "3rd", amount: 5000 } ],
+        specialAwards: ["Best Innovator Award × 2"],
+        prizePool: 28000,
+        cardFacts: ["teamSize", "fee", "prizePool"],
+        highlights: ["Science & Technology", "AI", "Robotics", "Sustainability", "Clean Energy", "Healthcare"],
+        sections: [
+          { heading: "Project categories", type: "chips", items: ["Science & Technology", "Artificial Intelligence", "Robotics", "Environment & Sustainability", "Clean Energy", "Agriculture", "Healthcare Innovation", "Smart Solutions", "Social Innovation", "Other scientific ideas"] },
+          { heading: "What judges look for", type: "list", items: [
+            "A clearly explained problem, the objective and the innovation behind the project.",
+            "A working model or prototype wherever applicable, with the scientific principles explained.",
+            "Practical usefulness, social or environmental impact, and the ability to answer questions from judges and visitors.",
+          ] },
+          { heading: "Logistics and safety", type: "list", items: [
+            "Register the school, project details, participating students and the accompanying teacher through the prescribed process. No fee.",
+            "Electrical equipment must be properly insulated. Projects involving hazardous materials must be declared in advance for approval.",
+            "Stalls should not be left unattended during exhibition hours. Running tea and snacks are provided.",
+          ] },
+        ],
+      },
+    ],
+
+    generalRules: [
+      "Each participant may take part in a maximum of two events, with a separate fee for each where applicable.",
+      "Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Wait for the official confirmation.",
+      "Registration fees, once paid, are generally non-refundable.",
+      "Carry a valid institutional identity card or other valid ID for verification.",
+      "Every team nominates a Team Leader who receives all announcements, schedules and instructions.",
+      "A dedicated volunteer is assigned to each participating team for coordination and venue support.",
+      "Participation certificates are issued to everyone who completes the required participation process.",
+      "Photography and videography during the festival may be used for institutional and promotional purposes.",
+    ],
+
+    schedule: {
+      legendNote: "Filter by track",
+      days: [
+        { id: "day1", label: "Day 1", date: "Friday, 27 November", rows: [
+          { time: "09:00 – 10:00 AM", title: "Inauguration Ceremony & Registration", tracks: ["common"], note: "All events · Auditorium", milestone: true },
+          { time: "10:00 – 11:00 AM", title: "Orientation & problem statement release", tracks: ["hackathon"] },
+          { time: "10:00 – 11:00 AM", title: "Team check-in, technical & safety inspection", tracks: ["robowar", "esports"] },
+          { time: "10:00 – 11:00 AM", title: "Stall setup", tracks: ["exhibition"] },
+          { time: "11:00 AM onwards", title: "Coding phase begins (continuous)", tracks: ["hackathon"] },
+          { time: "11:00 AM – 01:00 PM", title: "Qualifying rounds", tracks: ["robowar"] },
+          { time: "11:00 AM – 01:00 PM", title: "Group Stage Round 1", tracks: ["esports"] },
+          { time: "11:00 AM – 02:00 PM", title: "Judging Round 1 & public viewing", tracks: ["exhibition"] },
+          { time: "01:00 – 02:00 PM", title: "Lunch break", tracks: ["common"] },
+          { time: "02:00 – 05:00 PM", title: "Quarterfinals & semifinals", tracks: ["robowar"] },
+          { time: "02:00 – 05:00 PM", title: "Group Stage Round 2 & Knockout Round 1", tracks: ["esports"] },
+          { time: "06:00 PM", title: "Progress Check Round I", tracks: ["hackathon"] },
+          { time: "08:00 PM", title: "Dinner break", tracks: ["common"] },
+          { time: "Overnight", title: "Continuous coding, mentor visits & technical support", tracks: ["hackathon"] },
+        ] },
+        { id: "day2", label: "Day 2", date: "Saturday, 28 November", rows: [
+          { time: "07:30 AM", title: "Breakfast", tracks: ["common"] },
+          { time: "08:00 AM", title: "Progress Check Round II & submission prep", tracks: ["hackathon"] },
+          { time: "09:00 – 10:30 AM", title: "Final submission & presentations", tracks: ["hackathon"] },
+          { time: "09:00 – 11:00 AM", title: "Grand Finale", tracks: ["robowar"] },
+          { time: "09:00 – 11:00 AM", title: "Grand Finale", tracks: ["esports"] },
+          { time: "09:00 – 11:00 AM", title: "Judging Round 2 (final)", tracks: ["exhibition"] },
+          { time: "11:00 AM – 01:00 PM", title: "Final evaluation & live demonstration", tracks: ["hackathon"] },
+          { time: "01:00 – 02:00 PM", title: "Lunch break", tracks: ["common"] },
+          { time: "02:00 – 03:30 PM", title: "Judging consolidation, all events", tracks: ["common"] },
+          { time: "03:30 – 04:30 PM", title: "Valedictory Ceremony & Prize Distribution", tracks: ["common"], note: "All events · Auditorium", milestone: true },
+        ] },
+      ],
+    },
+
+    why: [
+      { icon: "trophy",  title: "₹1,95,000+ in cash prizes",       text: "Three cash prizes in every event, plus two Best Innovator awards for schools, presented on stage at the valedictory." },
+      { icon: "globe",   title: "National exposure",               text: "A national hackathon with teams from institutions across India, judged by faculty and industry evaluators, on a stage that grows every year." },
+      { icon: "users",   title: "Mentors and industry judges",     text: "Overnight mentor visits during the hackathon, referees and technical panels for Robo-War and E-Sports, expert judging for school projects." },
+      { icon: "award",   title: "Certificates for everyone",       text: "Certificates of Achievement for winners and participation certificates for every participant who completes the event." },
+      { icon: "rocket",  title: "Incubation potential",            text: "Deployable AI prototypes and robotics designs built here can be taken forward for incubation and development with SRHU's support." },
+      { icon: "school",  title: "Schools meet the university",     text: "Students of Classes 8–12 exhibit alongside university teams, meet SRHU faculty and see a working campus of science and technology." },
+    ],
+
+    sponsors: {
+      pitch: "Technology companies, gaming brands and robotics vendors: reach 500+ participants and visitors over two days on a live campus. Arena naming, stage mentions, stalls, product demos and digital visibility are available across tiers.",
+      tiers: [
+        { id: "title",    label: "Title Sponsor", slots: 1, size: "lg", sponsors: [] },
+        { id: "gold",     label: "Gold",          slots: 3, size: "md", sponsors: [] },
+        { id: "silver",   label: "Silver",        slots: 4, size: "sm", sponsors: [] },
+        { id: "partners", label: "Partners",      slots: 6, size: "sm", sponsors: [] },   // { name, logo: "assets/sponsors/x.png", url }
+      ],
+      cta: { label: "Become a Sponsor", email: "himovation@srhu.edu.in", brochure: null },
+    },
+
+    faq: [
+      { q: "Who can participate, and in how many events?",
+        a: ["The Hackathon, Robo-War and E-Sports are open to eligible students participating through their institutions; Robo-War also admits robotics enthusiasts as permitted by the organisers. The School Project Exhibition is for students of Classes 8 to 12 from Dehradun and nearby districts.",
+            "Each participant may take part in a **maximum of two events**, paying a separate fee for each where applicable. Schedules run in parallel, so plan for overlaps."] },
+      { q: "How does hackathon registration and the ₹800 fee work?",
+        a: ["Round 1 is online: register, get verified, and submit your problem statement in the HIMOVATION 2026 template before the deadline. The evaluation panel then shortlists teams for the offline finale at SRHU.",
+            "**Only shortlisted teams pay the ₹800 per-team fee**, within the due date communicated by the Organising Committee. A seat is confirmed only after payment and verification."] },
+      { q: "Can I get a refund if my team cannot attend?",
+        a: "Registration fees, once paid, are generally non-refundable, unless the Organising Committee decides otherwise. Changes to team composition after registration need prior approval." },
+      { q: "What should we bring?",
+        a: ["Everyone: a valid institutional ID card. Hackathon teams: laptops, chargers, any hardware your prototype needs, and your Round 1 problem statement. Robo-War teams: the robot, controllers, batteries, chargers, spares and tools; you are responsible for your own equipment.",
+            "E-Sports squads: your own devices and peripherals where BYOD is permitted, meeting the announced specs, with accounts ready. Schools: the project, display material, extension cords and anything the stall needs."] },
+      { q: "Is accommodation or food provided?",
+        a: ["Accommodation arrangements are **to be announced**. Hackathon participants get separate rest areas for male and female participants on campus, with running tea and snacks during the day and dinner provided. Robo-War, E-Sports and Exhibition participants get running tea and snacks.",
+            "Food stalls are available at the venue on a paid basis for additional meals."] },
+      { q: "Which games will E-Sports feature, and can I bring my own device?",
+        a: "Proposed titles are BGMI, Valorant and FIFA; the final one or two titles will be announced based on participant interest and platform availability. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. Game-specific rules and the match schedule are published before the event." },
+      { q: "What are the Robo-War safety rules?",
+        a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Weight classes of up to 8 kg and up to 15 kg are indicative; the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
+      { q: "What does a school need to arrange for the Exhibition?",
+        a: "Participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
+      { q: "Will I receive a certificate?",
+        a: "Yes. Winners receive cash prizes with Certificates of Achievement, and every participant who completes the required participation process receives a participation certificate. Prizes are distributed at the valedictory ceremony on 28 November at 3:30 PM." },
+      { q: "How do I reach SRHU, Jolly Grant?",
+        a: "The campus is about 6 km from Jolly Grant Airport, 18 km from Dehradun Railway Station and 25 km from ISBT Dehradun, and is well connected by road. Report at the venue by the time communicated by the Organising Committee; a volunteer is assigned to every team on arrival." },
+    ],
+
+    contact: {
+      email: "himovation@srhu.edu.in",
+      phone: "+91 XXXXX XXXXX",
+      coordinators: [
+        { role: "Faculty Coordinator",  name: "To be announced", phone: "", email: "" },
+        { role: "Student Coordinator",  name: "To be announced", phone: "", email: "" },
+      ],
+      form: { subjects: ["Registration query", "Hackathon", "Robo-War", "E-Sports", "School Exhibition", "Sponsorship", "Other"], endpoint: "" },
+    },
+
+    social: [
+      { name: "Instagram", icon: "instagram", href: "https://www.instagram.com/REPLACE_HANDLE" },
+      { name: "LinkedIn",  icon: "linkedin",  href: "https://www.linkedin.com/school/REPLACE_HANDLE" },
+      { name: "YouTube",   icon: "youtube",   href: "https://www.youtube.com/@REPLACE_HANDLE" },
+      { name: "Website",   icon: "globe",     href: "https://srhu.edu.in" },
+    ],
+
+    footer: {
+      initiative: "An initiative of the Department of Computer Science & Engineering, SST, SRHU.",
+      copyright: "© 2026 Swami Rama Himalayan University. All rights reserved.",
+    },
+  };
+  /* ============================ CONFIG-END ================================ */
+
+  /* ============================ UTILITIES ================================= */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  class Raw { constructor(s) { this.s = s; } toString() { return this.s; } }
+  const raw = s => new Raw(s);
+  const part = v => v instanceof Raw ? v.s : Array.isArray(v) ? v.map(part).join('') : (v === null || v === undefined || v === false) ? '' : esc(v);
+  const html = (strings, ...vals) => raw(strings.reduce((out, str, i) => out + part(vals[i - 1]) + str));
+  const md = s => raw(esc(s)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>'));
+  const fmtINR = n => '₹' + Number(n).toLocaleString('en-IN');
+  const resolveHref = h => h === 'REGISTRATION_LINK' ? CONFIG.REGISTRATION_LINK : h;
+  const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const render = (sel, content) => { const el = $(sel); if (el) el.innerHTML = part(content); return el; };
+  const teamSizeText = t => t.min === t.max ? `${t.min} ${t.unit}` : `${t.min}–${t.max} ${t.unit}`;
+  const feeText = f => f.amount === 0 ? 'Free' : `${fmtINR(f.amount)} / ${f.per}`;
+  const trackOf = key => CONFIG.tracks[key] || CONFIG.tracks.common;
+
+  const ICONS = {
+    code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+    robot: '<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V4M8 4h8"/><circle cx="9" cy="14" r="1.2"/><circle cx="15" cy="14" r="1.2"/><path d="M3 13H1M23 13h-2M9 18h6"/>',
+    gamepad: '<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.6l-.9 8.5A2.6 2.6 0 0 0 6.3 19l2.4-3h6.6l2.4 3a2.6 2.6 0 0 0 4.5-1.9l-.9-8.5A4 4 0 0 0 17.32 5Z"/>',
+    flask: '<path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10"/>',
+    calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+    pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+    trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+    users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+    tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8Z"/><circle cx="7" cy="7" r="1.5"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    chevron: '<path d="m6 9 6 6 6-6"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+    external: '<path d="M15 3h6v6M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>',
+    mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+    phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/>',
+    globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    instagram: '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+    linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+    youtube: '<path d="M22.5 7.2a3 3 0 0 0-2.1-2.1C18.5 4.6 12 4.6 12 4.6s-6.5 0-8.4.5A3 3 0 0 0 1.5 7.2 31 31 0 0 0 1 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23 12a31 31 0 0 0-.5-4.8z"/><path d="m10 15 5-3-5-3z"/>',
+    award: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>',
+    rocket: '<path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.9 12.9 0 0 1 22 2c0 2.7-.9 7.6-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.5-3 2-4 4-1 4-1M15 15v5s3-.5 4-2 1-4 1-4"/>',
+    school: '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+    clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+    plane: '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+    train: '<rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M12 3v8M8 19l-2 3M16 19l2 3"/><circle cx="8.5" cy="15.5" r="1"/><circle cx="15.5" cy="15.5" r="1"/>',
+    bus: '<path d="M8 6v6M15 6v6M2 12h19.6M4 18V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12M4 18h16"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    ticket: '<path d="M2 9a3 3 0 0 1 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 1 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 17v2M13 11v2"/>',
+    info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+    sparkle: '<path d="m12 3 1.9 5.6 5.6 1.9-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/>',
+  };
+  const icon = (name, cls = '') => raw(`<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[name] || ICONS.sparkle}</svg>`);
+
+  /* ============================ RENDERERS ================================= */
+  function renderHead(id) {
+    const s = CONFIG.sections[id]; if (!s) return;
+    render(`[data-head="${id}"]`, html`
+      <p class="eyebrow reveal">${s.eyebrow}</p>
+      <h2 id="${id}-title" class="h2 mt-3 reveal" style="--i:1">${s.heading}</h2>
+      ${s.intro ? html`<p class="prose-muted mt-5 text-base md:text-lg reveal" style="--i:2">${md(s.intro)}</p>` : ''}`);
+  }
+
+  function renderNav() {
+    render('[data-render="nav"]', CONFIG.nav.map(n => html`<li><a class="nav-link" href="#${n.id}" data-nav="${n.id}">${n.label}</a></li>`));
+    render('[data-render="mobile-nav"]', CONFIG.nav.map(n => html`<li><a class="menu-link" href="#${n.id}" data-nav="${n.id}">${n.label}</a></li>`));
+    $$('[data-register]').forEach(a => {
+      a.href = CONFIG.REGISTRATION_LINK;
+      if (/^https?:/i.test(CONFIG.REGISTRATION_LINK)) { a.target = '_blank'; a.rel = 'noopener'; }
+    });
+  }
+
+  const countdownMarkup = (compact = false) => html`
+    <div class="countdown-wrap" data-countdown role="timer" aria-label="Countdown to HIMOVATION 2026">
+      <div class="countdown ${compact ? 'max-w-md mx-auto' : 'max-w-md'}" data-cd-tiles aria-hidden="true">
+        ${['Days', 'Hours', 'Minutes', 'Seconds'].map(l => html`<div class="cd-tile"><span class="cd-num" data-cd="${l[0].toLowerCase()}">00</span><span class="cd-label">${l}</span></div>`)}
+      </div>
+      <div data-cd-state hidden></div>
+    </div>`;
+
+  function ctaMarkup(c, extra = '') {
+    const href = resolveHref(c.href);
+    const ext = c.external && /^https?:/i.test(href);
+    return html`<a class="btn ${c.style === 'primary' ? 'btn-primary' : 'btn-ghost'} ${extra}" href="${href}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic>
+      <span class="btn-inner">${c.label}${icon(c.style === 'primary' ? 'arrow' : 'chevron')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>`;
+  }
+
+  function renderHero() {
+    const s = CONFIG.site, o = s.organizer, d = CONFIG.dates, total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
+    render('[data-render="hero"]', html`
+      <div class="max-w-4xl">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
+          <span class="eyebrow">${s.eyebrow}</span>
+          <span aria-hidden="true" class="hidden sm:inline">·</span>
+          <span>${o.school} · ${o.university}, Dehradun</span>
+        </div>
+        <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
+        <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
+        <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
+          <li class="chip">${icon('calendar')}${d.display}</li>
+          <li class="chip">${icon('pin')}${CONFIG.venue.short}</li>
+          <li class="chip chip-ember">${icon('trophy')}${fmtINR(total)}+ prize pool</li>
+          ${d.tentative ? html`<li class="chip">${icon('info')}Dates tentative</li>` : ''}
+        </ul>
+        <div class="mt-9 reveal" style="--i:4">
+          <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
+          ${countdownMarkup(false)}
+        </div>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
+          ${CONFIG.hero.ctas.map(c => ctaMarkup(c))}
+        </div>
+        <ul class="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted reveal" style="--i:6" aria-label="Events">
+          ${CONFIG.events.map(e => html`<li class="badge" style="--track:${trackOf(e.track).color}"><i></i>${trackOf(e.track).label}</li>`)}
+        </ul>
+      </div>
+      <a href="#about" class="absolute bottom-24 right-5 hidden items-center gap-3 text-xs uppercase tracking-[.18em] text-muted md:flex" aria-label="Scroll to about section">Scroll <span class="scroll-cue" aria-hidden="true"></span></a>`);
+  }
+
+  function renderAbout() {
+    renderHead('about');
+    render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted text-base md:text-lg ${i ? 'mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
+    const o = CONFIG.site.organizer;
+    render('[data-render="glance"]', html`
+      <div class="glass p-6 sm:p-8 reveal lg:mt-2" style="--i:2">
+        <p class="eyebrow">At a glance</p>
+        <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-6">
+          ${CONFIG.about.glance.map(g => html`<div class="fact"><dt>${g.label}</dt><dd class="text-[.98rem] leading-snug">${g.value}</dd></div>`)}
+        </dl>
+        <div class="mt-7 border-t hairline pt-5 text-sm text-muted">
+          <p class="font-medium text-ink">${o.dept}</p>
+          <p>${o.school}, ${o.university}</p>
+          <p>${o.city}</p>
+        </div>
+      </div>`);
+  }
+
+  function renderStats() {
+    render('[data-render="stats"]', CONFIG.stats.map((s, i) => {
+      const final = `${s.prefix || ''}${Number(s.value).toLocaleString('en-IN', { minimumFractionDigits: s.decimals || 0, maximumFractionDigits: s.decimals || 0 })}${s.suffix || ''}`;
+      return html`<li class="stat-cell text-center reveal" style="--i:${i}">
+        <span class="sr-only">${final}</span>
+        <span class="stat-num text-ink" aria-hidden="true" data-counter data-value="${s.value}" data-decimals="${s.decimals || 0}" data-prefix="${s.prefix || ''}" data-suffix="${s.suffix || ''}">${s.prefix || ''}0${s.suffix || ''}</span>
+        <span class="mt-2 block text-sm text-muted">${s.label}</span></li>`;
+    }));
+  }
+
+  const factItems = ev => ({
+    teamSize: ['Team size', teamSizeText(ev.teamSize)],
+    fee:      ['Entry fee', feeText(ev.fee)],
+    prizePool:['Prize pool', fmtINR(ev.prizePool)],
+    capacity: ['Capacity', ev.capacity],
+  });
+
+  function renderEvents() {
+    renderHead('events');
+    render('[data-render="events"]', html`<div class="bento">${CONFIG.events.map((ev, i) => {
+      const t = trackOf(ev.track), featured = ev.bentoSlot === 'a', facts = factItems(ev);
+      return html`
+      <article class="bento-card reveal" data-slot="${ev.bentoSlot}" data-event="${ev.id}" style="--track:${t.color}; --i:${i}" aria-labelledby="ev-${ev.id}-title">
+        <span class="absolute -right-6 -top-6 h-40 w-40 opacity-[.045]" aria-hidden="true">${icon(ev.icon, 'h-full w-full')}</span>
+        <div class="flex items-center justify-between gap-3">
+          <span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(ev.icon)}</span>
+          <span class="badge"><i></i>${t.label}</span>
+        </div>
+        <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${ev.name}</h3>
+        <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-emerald-400/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-emerald-300">Free</span>` : ''}</p>
+        <p class="prose-muted mt-4 text-sm ${featured ? 'md:text-base max-w-xl' : ''}">${ev.blurb}</p>
+        ${featured ? html`<ul class="mt-5 flex flex-wrap gap-2" aria-label="Themes">${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}</ul>
+        <div class="mt-7 grid gap-3 sm:grid-cols-[1.2fr_1fr]">
+          <ol class="grid gap-2" aria-label="Rounds">
+            <li class="step"><i>1</i><span class="text-sm"><span class="font-semibold">Round 1, online.</span> <span class="text-muted">Register and submit a problem statement in the HIMOVATION template. Panel shortlists teams.</span></span></li>
+            <li class="step"><i>2</i><span class="text-sm"><span class="font-semibold">Round 2, on campus.</span> <span class="text-muted">24 hours of building with two progress checks, mentor visits and a live demo.</span></span></li>
+          </ol>
+          <div class="grid grid-cols-3 gap-2 self-start">${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-base/60 px-2 py-2.5 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-sm font-bold ${pi === 0 ? 'text-ember' : ''}">${fmtINR(p.amount)}</p></div>`)}</div>
+        </div>` : ''}
+        <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5 ${featured ? 'mt-8' : 'mt-6'}">
+          ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
+        </dl>
+        <div class="mt-5"><button class="btn btn-ghost btn-sm" type="button" data-open-event="${ev.id}" aria-haspopup="dialog" aria-label="View details: ${ev.name}"><span class="btn-inner">View details ${icon('arrow')}</span></button></div>
+      </article>`; })}</div>`);
+    render('[data-render="general-rules"]', html`
+      <div class="glass p-6 sm:p-8 reveal">
+        <div class="flex items-center gap-3"><span class="icon-tile">${icon('shield')}</span><h3 class="h3">For every participant</h3></div>
+        <ul class="check prose-muted mt-6 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+          ${CONFIG.generalRules.map(r => html`<li>${icon('check')}<span>${r}</span></li>`)}
+        </ul>
+        <p class="mt-6 text-xs text-muted">The Organising Committee may revise rules, schedules, formats, game titles and weight categories before the event. Final rulebooks are issued through the official registration channels.</p>
+      </div>`);
+  }
+
+  function renderEventModal(ev) {
+    const t = trackOf(ev.track);
+    render('[data-modal-head]', html`
+      <div class="min-w-0">
+        <span class="badge" style="--track:${t.color}"><i></i>${t.label}</span>
+        <h2 id="modal-title" class="h2 mt-2" style="font-size:clamp(1.5rem,3.2vw,2.1rem)" tabindex="-1">${ev.name}</h2>
+        <p class="mt-1 text-sm text-muted">${ev.subtitle} · ${ev.capacity}</p>
+      </div>
+      <button class="hamburger flex-none" type="button" data-close aria-label="Close dialog">${icon('x', 'h-5 w-5')}</button>`);
+    const sectionMarkup = s => {
+      if (s.type === 'chips') return html`<ul class="flex flex-wrap gap-2">${s.items.map(i => html`<li class="chip chip-solid">${i}</li>`)}</ul>`;
+      if (s.type === 'steps') return html`<ol class="grid gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted text-sm">${md(it)}</span></li>`)}</ol>`;
+      return html`<ul class="check grid gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted text-sm">${md(it)}</span></li>`)}</ul>`;
+    };
+    render('[data-modal-body]', html`
+      <dl class="grid gap-5 sm:grid-cols-3">
+        <div class="fact sm:col-span-3"><dt>Format</dt><dd class="prose-muted text-sm font-normal font-sans">${ev.format}</dd></div>
+        <div class="fact"><dt>Team size</dt><dd>${teamSizeText(ev.teamSize)}</dd></div>
+        <div class="fact"><dt>Entry fee</dt><dd>${feeText(ev.fee)}${ev.fee.note ? html`<span class="mt-1 block text-xs font-normal font-sans text-muted">${ev.fee.note}</span>` : ''}</dd></div>
+        <div class="fact"><dt>Expected participation</dt><dd>${ev.capacity}</dd></div>
+        <div class="fact sm:col-span-3"><dt>Eligibility</dt><dd class="prose-muted text-sm font-normal font-sans">${ev.eligibility}</dd></div>
+      </dl>
+      <div class="mt-8 rounded-2xl border hairline bg-raised/40 p-5" style="--track:${t.color}">
+        <div class="flex items-center justify-between gap-3"><p class="eyebrow">Prizes</p><p class="num text-sm text-muted">Pool <span class="text-ink font-semibold">${fmtINR(ev.prizePool)}</span></p></div>
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          ${ev.prizes.map((p, i) => html`<div class="rounded-xl border hairline bg-base/60 p-3 text-center"><p class="text-[11px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-1 text-base font-bold sm:text-xl ${i === 0 ? 'text-ember' : 'text-ink'}">${fmtINR(p.amount)}</p></div>`)}
+        </div>
+        ${ev.specialAwards.length ? html`<ul class="mt-4 flex flex-wrap gap-2">${ev.specialAwards.map(a => html`<li class="chip chip-ember">${icon('award')}${a}</li>`)}</ul>` : ''}
+        <p class="mt-4 text-xs text-muted">Certificates of Achievement accompany every cash prize. Prize distribution at the valedictory ceremony, Day 2.</p>
+      </div>
+      ${ev.sections.map(s => html`<section class="mt-8" aria-label="${s.heading}"><h3 class="h3 text-base">${s.heading}</h3><div class="mt-4">${sectionMarkup(s)}</div></section>`)}`);
+    const reg = CONFIG.REGISTRATION_LINK, ext = /^https?:/i.test(reg);
+    render('[data-modal-foot]', html`
+      <p class="text-sm text-muted">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)}</p>
+      <a class="btn btn-primary" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">Register for ${t.label} ${icon('arrow')}</span></a>`);
+  }
+
+  function renderPrizes() {
+    renderHead('prizes');
+    const total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
+    const specials = CONFIG.events.flatMap(e => e.specialAwards);
+    render('[data-render="prize-total"]', html`
+      <div class="glass flex items-center gap-5 px-6 py-5 reveal" style="--i:2">
+        <span class="icon-tile" style="color: rgb(var(--c-ember)); background: rgb(var(--c-ember) / .12); border-color: rgb(var(--c-ember) / .25)">${icon('trophy')}</span>
+        <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${fmtINR(total)}<span class="text-ember">+</span></p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
+      </div>`);
+    render('[data-render="prizes"]', html`<div class="grid gap-5 md:grid-cols-2">${CONFIG.events.map((ev, i) => {
+      const t = trackOf(ev.track), [p1, p2, p3] = ev.prizes;
+      const bar = (p, h, cls) => html`<div class="flex flex-col items-center gap-2"><p class="num text-sm font-bold sm:text-base ${cls}">${fmtINR(p.amount)}</p><div class="podium-bar w-full" style="height:${h}">${p.place}</div></div>`;
+      return html`
+      <article class="glass p-6 reveal sm:p-7" style="--track:${t.color}; --i:${i}" aria-labelledby="pz-${ev.id}">
+        <div class="flex items-start justify-between gap-4">
+          <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${ev.name}</h3></div>
+          <p class="num whitespace-nowrap text-right text-sm text-muted">Pool<br><span class="text-lg font-bold text-ink">${fmtINR(ev.prizePool)}</span></p>
+        </div>
+        <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink')}${bar(p1, '7.5rem', 'text-ember')}${bar(p3, '4.25rem', 'text-ink')}</div>
+        <div class="mt-4 flex flex-wrap items-center gap-2 border-t hairline pt-4 text-xs text-muted">
+          <span>Certificates of Achievement for all winners</span>
+          ${ev.specialAwards.map(a => html`<span class="chip chip-ember">${icon('award')}${a}</span>`)}
+        </div>
+      </article>`; })}</div>`);
+  }
+
+  function renderSchedule() {
+    renderHead('schedule');
+    const days = CONFIG.schedule.days;
+    render('[data-render="schedule"]', html`
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between reveal">
+        <div class="inline-flex gap-1 rounded-2xl border hairline bg-base/60 p-1" role="tablist" aria-label="Festival days">
+          ${days.map((d, i) => html`<button class="tab" role="tab" type="button" id="tab-${d.id}" aria-controls="panel-${d.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.label}<small>${d.date}</small></button>`)}
+        </div>
+        <div class="flex flex-wrap items-center gap-2" role="group" aria-label="${CONFIG.schedule.legendNote}">
+          <span class="mr-1 text-xs uppercase tracking-[.14em] text-muted">${CONFIG.schedule.legendNote}</span>
+          <button class="legend-btn" type="button" data-filter="" aria-pressed="true">All</button>
+          ${Object.entries(CONFIG.tracks).filter(([k]) => k !== 'common').map(([k, t]) => html`<button class="legend-btn" type="button" data-filter="${k}" aria-pressed="false" style="--track:${t.color}"><span class="dot"></span>${t.label}</button>`)}
+        </div>
+      </div>
+      ${days.map((d, di) => html`
+      <div class="mt-10" role="tabpanel" id="panel-${d.id}" aria-labelledby="tab-${d.id}" tabindex="0" ${di ? raw('hidden') : ''}>
+        <ol class="tl">${d.rows.map((r, i) => {
+          const first = trackOf(r.tracks[0]), parallel = i > 0 && d.rows[i - 1].time === r.time;
+          return html`<li class="tl-row ${i % 2 ? 'is-right' : 'is-left'} ${r.milestone ? 'is-milestone' : ''} reveal" data-tracks="${r.tracks.join(' ')}" style="--track:${first.color}; --i:${Math.min(i, 5)}">
+            <span class="tl-node" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="tl-time">${r.time}</span>${parallel ? html`<span class="text-[10px] uppercase tracking-[.14em] text-muted">∥ parallel</span>` : ''}</div>
+              <h3 class="mt-1 font-sans text-[.98rem] font-semibold leading-snug">${r.title}</h3>
+              ${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}
+              <div class="mt-2.5 flex flex-wrap gap-x-4 gap-y-1">${r.tracks.map(k => html`<span class="badge" style="--track:${trackOf(k).color}"><i></i>${trackOf(k).label}</span>`)}</div>
+            </div></li>`; })}</ol>
+      </div>`)}`);
+  }
+
+  function renderWhy() {
+    renderHead('why');
+    render('[data-render="why"]', html`<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${CONFIG.why.map((w, i) => html`
+      <li class="glass p-6 reveal" style="--i:${i}"><span class="icon-tile">${icon(w.icon)}</span><h3 class="h3 mt-5 text-lg">${w.title}</h3><p class="prose-muted mt-2 text-sm">${w.text}</p></li>`)}</ul>`);
+  }
+
+  const TIER_GRID = { lg: 'grid-cols-1 sm:max-w-sm', md: 'grid-cols-1 sm:grid-cols-3', sm: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' };
+  function renderSponsors() {
+    renderHead('sponsors');
+    const sp = CONFIG.sponsors, mail = `mailto:${sp.cta.email}?subject=${encodeURIComponent('Sponsorship enquiry – HIMOVATION 2026')}`;
+    render('[data-render="sponsors"]', html`
+      <div class="grid gap-10">
+        ${sp.tiers.map((t, ti) => html`<div class="reveal" style="--i:${ti}">
+          <div class="flex items-baseline gap-3"><h3 class="h3 text-base">${t.label}</h3><span class="text-xs text-muted">${t.slots} ${t.slots === 1 ? 'slot' : 'slots'}</span></div>
+          <ul class="mt-4 grid gap-3 ${TIER_GRID[t.size] || TIER_GRID.sm}">
+            ${Array.from({ length: t.slots }, (_, i) => { const s = t.sponsors[i]; return s
+              ? html`<li class="slot">${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener" class="flex h-full w-full items-center justify-center">${s.logo ? html`<img src="${s.logo}" alt="${s.name}" loading="lazy">` : s.name}</a>` : (s.logo ? html`<img src="${s.logo}" alt="${s.name}" loading="lazy">` : s.name)}</li>`
+              : html`<li class="slot" aria-hidden="true">Your logo here</li>`; })}
+          </ul></div>`)}
+        <div class="glass flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-center md:justify-between reveal">
+          <div class="max-w-2xl"><p class="eyebrow">Partner with us</p><p class="prose-muted mt-3 text-sm md:text-base">${sp.pitch}</p></div>
+          <div class="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
+            <a class="btn btn-primary" href="${mail}" data-magnetic><span class="btn-inner">${sp.cta.label} ${icon('mail')}</span></a>
+            ${sp.cta.brochure ? html`<a class="btn btn-ghost" href="${sp.cta.brochure}" target="_blank" rel="noopener"><span class="btn-inner">Sponsor deck ${icon('external')}</span></a>` : ''}
+          </div>
+        </div>
+      </div>`);
+  }
+
+  function renderFAQ() {
+    renderHead('faq');
+    render('[data-render="faq"]', html`<div class="divide-y hairline border-y">${CONFIG.faq.map((f, i) => html`
+      <div class="reveal" style="--i:${Math.min(i, 5)}">
+        <h3><button class="faq-btn" type="button" id="faq-q-${i}" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span>${icon('chevron')}</button></h3>
+        <div class="faq-panel" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}" inert><div><div class="prose-muted grid gap-3 pb-5 text-sm md:text-[.95rem]">${(Array.isArray(f.a) ? f.a : [f.a]).map(p => html`<p>${md(p)}</p>`)}</div></div></div>
+      </div>`)}</div>`);
+  }
+
+  function renderRegisterBand() {
+    const s = CONFIG.sections.register, d = CONFIG.dates;
+    const deadline = d.registrationDeadline ? new Date(d.registrationDeadline) : null;
+    render('[data-render="register"]', html`
+      <p class="eyebrow reveal">${s.eyebrow}</p>
+      <h2 id="register-title" class="h2 mx-auto mt-3 max-w-3xl reveal" style="--i:1">${s.heading}</h2>
+      <p class="prose-muted mx-auto mt-5 max-w-2xl reveal" style="--i:2">${md(s.intro)}</p>
+      <div class="mt-9 reveal" style="--i:3">
+        <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
+        ${countdownMarkup(true)}
+      </div>
+      ${deadline && !isNaN(deadline) ? html`<p class="mt-5 reveal" style="--i:4"><span class="chip chip-ember">${icon('clock')}Registration closes ${deadline.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span></p>` : ''}
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:5">
+        ${ctaMarkup(CONFIG.hero.ctas[0])}
+        ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
+      </div>`);
+  }
+
+  function renderContact() {
+    renderHead('contact');
+    const c = CONFIG.contact, v = CONFIG.venue;
+    render('[data-render="contact-info"]', html`
+      <div class="grid gap-4 sm:grid-cols-2 reveal">
+        ${c.coordinators.map(k => html`<div class="glass p-5"><p class="text-xs uppercase tracking-[.14em] text-muted">${k.role}</p><p class="mt-2 font-display font-semibold">${k.name}</p>
+          ${k.phone ? html`<a class="link mt-1 block text-sm" href="tel:${k.phone.replace(/\s/g, '')}">${k.phone}</a>` : ''}
+          ${k.email ? html`<a class="link mt-1 block text-sm" href="mailto:${k.email}">${k.email}</a>` : ''}</div>`)}
+      </div>
+      <ul class="mt-5 grid gap-3 text-sm reveal" style="--i:1">
+        <li class="flex items-center gap-3"><span class="icon-tile">${icon('mail')}</span><div><p class="text-xs text-muted">Email</p><a class="link" href="mailto:${c.email}">${c.email}</a></div></li>
+        <li class="flex items-center gap-3"><span class="icon-tile">${icon('phone')}</span><div><p class="text-xs text-muted">Helpline</p><a class="link" href="tel:${c.phone.replace(/[^\d+]/g, '')}">${c.phone}</a></div></li>
+        <li class="flex items-start gap-3"><span class="icon-tile">${icon('pin')}</span><div><p class="text-xs text-muted">Venue</p><p>${v.name}, ${v.address}</p></div></li>
+      </ul>
+      <div class="mt-6 reveal" style="--i:2">
+        <p class="eyebrow">Getting here</p>
+        <ul class="mt-3 grid gap-2 sm:grid-cols-3">${v.travel.map(t => html`<li class="rounded-xl border hairline bg-raised/30 p-3"><div class="flex items-center gap-2 text-accent">${icon(t.icon, 'h-4 w-4')}<span class="text-xs uppercase tracking-wider text-muted">${t.mode}</span></div><p class="mt-1 text-sm font-medium">${t.name}</p><p class="num text-xs text-muted">≈ ${t.distanceKm} km</p></li>`)}</ul>
+      </div>
+      <ul class="mt-6 flex gap-2 reveal" style="--i:3" aria-label="Social media">
+        ${CONFIG.social.map(s => html`<li><a class="icon-tile" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.name} (opens in new tab)">${icon(s.icon)}</a></li>`)}
+      </ul>`);
+    render('[data-render="subjects"]', c.form.subjects.map(s => html`<option>${s}</option>`));
+    const map = $('[data-map]'); if (map) map.src = v.mapEmbedUrl;
+    const ml = $('[data-map-link]'); if (ml) ml.href = v.mapLink;
+  }
+
+  function renderFooter() {
+    const s = CONFIG.site, o = s.organizer, f = CONFIG.footer;
+    render('[data-render="footer"]', html`
+      <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <span class="logo-plate" style="height:3.4rem"><img src="${s.logo.src}" alt="${s.logo.alt}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="wordmark" hidden>${s.logo.fallbackText}</span></span>
+          <p class="mt-5 font-display text-lg font-bold">${s.name}</p>
+          <p class="mt-2 text-sm text-muted">${o.dept}<br>${o.school}<br>${o.university}, ${o.city}</p>
+          <p class="mt-4 max-w-md text-sm text-muted">${f.initiative}</p>
+        </div>
+        <div>
+          <p class="eyebrow">Quick links</p>
+          <ul class="mt-4 grid gap-2 text-sm">${CONFIG.nav.map(n => html`<li><a class="text-muted hover:text-ink" href="#${n.id}">${n.label}</a></li>`)}<li><a class="text-muted hover:text-ink" href="#register">Register</a></li></ul>
+        </div>
+        <div>
+          <p class="eyebrow">Reach us</p>
+          <ul class="mt-4 grid gap-2 text-sm text-muted"><li><a class="hover:text-ink" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></li><li>${CONFIG.venue.short}</li><li>${CONFIG.dates.display}</li></ul>
+          <ul class="mt-5 flex gap-2" aria-label="Social media">${CONFIG.social.map(x => html`<li><a class="icon-tile" style="width:2.4rem;height:2.4rem" href="${x.href}" target="_blank" rel="noopener" aria-label="${x.name} (opens in new tab)">${icon(x.icon, 'h-4 w-4')}</a></li>`)}</ul>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col gap-3 border-t hairline pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>${f.copyright}</p>
+        <p>${s.tagline}</p>
+      </div>`);
+  }
+
+  /* ============================ BEHAVIOURS ================================ */
+  function trapFocus(root) {
+    const SEL = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+    const onKey = e => {
+      if (e.key !== 'Tab') return;
+      const f = $$(SEL, root).filter(el => el.offsetParent !== null || el === document.activeElement);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    root.addEventListener('keydown', onKey);
+    return () => root.removeEventListener('keydown', onKey);
+  }
+
+  function initHeader() {
+    const header = $('#site-header'), progress = $('#progress'), toTop = $('#to-top');
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY || 0, max = document.documentElement.scrollHeight - window.innerHeight;
+      header.classList.toggle('is-scrolled', y > 24);
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+      toTop.classList.toggle('is-shown', y > 700);
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    toTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' }); $('#main').focus({ preventScroll: true }); });
+
+    const links = $$('[data-nav]');
+    const sections = $$('main section[id]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          links.forEach(l => { if (l.dataset.nav === en.target.id) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current'); });
+        });
+      }, { rootMargin: '-38% 0px -55% 0px', threshold: 0 });
+      sections.forEach(s => io.observe(s));
+    }
+  }
+
+  function initMenu() {
+    const btn = $('#menu-btn'), menu = $('#mobile-menu'), page = $('#page'), header = $('#site-header');
+    let release = null;
+    const isOpen = () => btn.getAttribute('aria-expanded') === 'true';
+    const open = () => {
+      menu.hidden = false;
+      requestAnimationFrame(() => menu.classList.add('is-open'));
+      btn.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-label', 'Close menu');
+      document.documentElement.style.overflow = 'hidden';
+      if ('inert' in page) page.inert = true; else page.setAttribute('aria-hidden', 'true');
+      release = trapFocus(header);
+      const first = $('a', menu); if (first) first.focus();
+    };
+    const close = (returnFocus = true) => {
+      menu.classList.remove('is-open'); btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu');
+      document.documentElement.style.overflow = '';
+      if ('inert' in page) page.inert = false; else page.removeAttribute('aria-hidden');
+      if (release) { release(); release = null; }
+      const done = () => { menu.hidden = true; };
+      prefersReducedMotion() ? done() : setTimeout(done, 280);
+      if (returnFocus) btn.focus();
+    };
+    btn.addEventListener('click', () => isOpen() ? close() : open());
+    menu.addEventListener('click', e => { if (e.target.closest('a')) close(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) close(); });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', e => { if (e.matches && isOpen()) close(false); });
+  }
+
+  function initReveal() {
+    const els = $$('.reveal');
+    if (!('IntersectionObserver' in window) || prefersReducedMotion()) return;
+    document.documentElement.classList.add('js-reveal');
+    void document.documentElement.offsetWidth; // commit hidden state so the first reveal animates
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    const vh = window.innerHeight;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.95 && r.bottom > 0 && el.offsetParent !== null) el.classList.add('is-visible'); else io.observe(el);
+    });
+  }
+
+  function initCounters() {
+    const els = $$('[data-counter]');
+    const fmt = (v, d) => Number(v).toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const run = el => {
+      const v = +el.dataset.value, d = +el.dataset.decimals, p = el.dataset.prefix, s = el.dataset.suffix;
+      if (prefersReducedMotion()) { el.textContent = p + fmt(v, d) + s; return; }
+      const t0 = performance.now(), dur = 1400;
+      const step = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = p + fmt(v * e, d) + s; if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    if (!('IntersectionObserver' in window)) { els.forEach(run); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } }), { threshold: 0.5 });
+    els.forEach(el => io.observe(el));
+  }
+
+  function initCountdown() {
+    const start = Date.parse(CONFIG.dates.start), end = Date.parse(CONFIG.dates.end);
+    const roots = $$('[data-countdown]');
+    if (!roots.length || isNaN(start)) return;
+    const pad = n => String(n).padStart(2, '0');
+    let lastLabel = '';
+    const tick = () => {
+      const now = Date.now(), diff = start - now;
+      roots.forEach(root => {
+        const tiles = $('[data-cd-tiles]', root), state = $('[data-cd-state]', root), caption = root.parentElement.querySelector('[data-cd-caption]');
+        if (diff > 0) {
+          const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+          $('[data-cd="d"]', root).textContent = pad(d); $('[data-cd="h"]', root).textContent = pad(h);
+          $('[data-cd="m"]', root).textContent = pad(m); $('[data-cd="s"]', root).textContent = pad(s);
+          tiles.hidden = false; state.hidden = true; if (caption) caption.hidden = false;
+          const label = `Inauguration in ${d} days, ${h} hours and ${m} minutes`;
+          if (label !== lastLabel) { root.setAttribute('aria-label', label); lastLabel = label; }
+        } else if (!isNaN(end) && now < end) {
+          tiles.hidden = true; state.hidden = false; if (caption) caption.hidden = true;
+          if (!state.dataset.mode || state.dataset.mode !== 'live') {
+            state.dataset.mode = 'live';
+            state.innerHTML = String(html`<div class="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border hairline bg-raised/60 px-5 py-3 font-display font-semibold"><span class="live-dot" aria-hidden="true"></span>${CONFIG.dates.liveLabel}<a class="link font-sans text-sm font-normal" href="#schedule">See today's schedule</a></div>`);
+            root.setAttribute('aria-label', CONFIG.dates.liveLabel);
+          }
+        } else {
+          tiles.hidden = true; state.hidden = false; if (caption) caption.hidden = true;
+          if (state.dataset.mode !== 'ended') {
+            state.dataset.mode = 'ended';
+            state.innerHTML = String(html`<p class="font-display text-lg font-semibold text-muted">${CONFIG.dates.endedLabel}</p>`);
+            root.setAttribute('aria-label', CONFIG.dates.endedLabel);
+          }
+        }
+      });
+    };
+    tick();
+    setInterval(tick, 1000);
+    window.__himovationTick = tick;
+  }
+
+  function initModal() {
+    const dlg = $('#event-modal'); if (!dlg) return;
+    const page = $('#page'), supportsDialog = typeof dlg.showModal === 'function';
+    let lastTrigger = null, release = null, closing = false;
+    const setHash = h => { try { history.replaceState(null, '', h || location.pathname + location.search); } catch (_) {} };
+    const open = (id, trigger) => {
+      const ev = CONFIG.events.find(e => e.id === id); if (!ev) return;
+      lastTrigger = trigger || document.activeElement;
+      renderEventModal(ev); initMagnetic(dlg);
+      if (supportsDialog) { if (!dlg.open) dlg.showModal(); }
+      else { dlg.setAttribute('open', ''); if ('inert' in page) page.inert = true; }
+      if (!release) release = trapFocus(dlg); // keeps Tab inside the panel even where the native dialog lets it reach browser UI
+      document.documentElement.style.overflow = 'hidden';
+      $('.modal-body', dlg).scrollTop = 0;
+      requestAnimationFrame(() => dlg.classList.add('is-open'));
+      const title = $('#modal-title', dlg); if (title) title.focus({ preventScroll: true });
+      setHash('#event-' + id);
+    };
+    const finishClose = () => {
+      if (supportsDialog) dlg.close();
+      else { dlg.removeAttribute('open'); if ('inert' in page) page.inert = false; }
+      if (release) { release(); release = null; }
+      document.documentElement.style.overflow = '';
+      closing = false;
+      if (location.hash.startsWith('#event-')) setHash('');
+      if (lastTrigger && lastTrigger.focus) lastTrigger.focus({ preventScroll: true });
+    };
+    const close = () => { if (closing || !(dlg.open || dlg.hasAttribute('open'))) return; closing = true; dlg.classList.remove('is-open'); prefersReducedMotion() ? finishClose() : setTimeout(finishClose, 300); };
+    dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
+    dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-close]')) close(); });
+    if (!supportsDialog) document.addEventListener('keydown', e => { if (e.key === 'Escape' && dlg.hasAttribute('open')) close(); });
+    document.addEventListener('click', e => {
+      const b = e.target.closest('[data-open-event]');
+      if (b) { open(b.dataset.openEvent, b); return; }
+      const card = e.target.closest('[data-event]');
+      if (card && !e.target.closest('a')) open(card.dataset.event, card.querySelector('[data-open-event]'));
+    });
+    const m = location.hash.match(/^#event-([\w-]+)$/);
+    if (m) setTimeout(() => open(m[1], null), 80);
+    window.__himovationOpenEvent = open;
+  }
+
+  function initTabs() {
+    const tabs = $$('[role="tab"]'); if (!tabs.length) return;
+    const activate = (tab, focus = true) => {
+      tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; const p = $('#' + t.getAttribute('aria-controls')); if (p) p.hidden = !on; });
+      if (focus) tab.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => activate(t, false));
+      t.addEventListener('keydown', e => {
+        const n = tabs.length; let j = null;
+        if (e.key === 'ArrowRight') j = (i + 1) % n; else if (e.key === 'ArrowLeft') j = (i - 1 + n) % n; else if (e.key === 'Home') j = 0; else if (e.key === 'End') j = n - 1;
+        if (j !== null) { e.preventDefault(); activate(tabs[j]); }
+      });
+    });
+    const legend = $$('[data-filter]');
+    legend.forEach(b => b.addEventListener('click', () => {
+      legend.forEach(x => x.setAttribute('aria-pressed', x === b));
+      const k = b.dataset.filter;
+      $$('.tl-row').forEach(r => { const ts = r.dataset.tracks.split(' '); r.classList.toggle('is-dim', !!k && !ts.includes(k) && !ts.includes('common')); });
+    }));
+  }
+
+  function initAccordion() {
+    document.addEventListener('click', e => {
+      const b = e.target.closest('.faq-btn'); if (!b) return;
+      const panel = $('#' + b.getAttribute('aria-controls')), open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('is-open', !open);
+      if ('inert' in panel) panel.inert = open;
+    });
+  }
+
+  function initMagnetic(scope = document) {
+    if (!isFinePointer() || prefersReducedMotion()) return;
+    $$('[data-magnetic]', scope).forEach(btn => {
+      if (btn.dataset.magneticReady) return; btn.dataset.magneticReady = '1';
+      const inner = $('.btn-inner', btn) || btn;
+      btn.addEventListener('pointermove', e => {
+        const r = btn.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        inner.style.transform = `translate(${Math.max(-6, Math.min(6, dx * .18)).toFixed(1)}px, ${Math.max(-4, Math.min(4, dy * .25)).toFixed(1)}px)`;
+        btn.style.setProperty('--mx', (e.clientX - r.left) + 'px'); btn.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+      btn.addEventListener('pointerleave', () => { inner.style.transform = ''; });
+    });
+    $$('.bento-card', scope).forEach(card => {
+      if (card.dataset.glowReady) return; card.dataset.glowReady = '1';
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+        card.style.setProperty('--mx', x + 'px'); card.style.setProperty('--my', y + 'px');
+        card.style.setProperty('--px', ((x / r.width - .5) * 10).toFixed(1) + 'px'); card.style.setProperty('--py', ((y / r.height - .5) * 10).toFixed(1) + 'px');
+      });
+      card.addEventListener('pointerleave', () => { card.style.setProperty('--px', '0px'); card.style.setProperty('--py', '0px'); });
+    });
+  }
+
+  function initForm() {
+    const form = $('#contact-form'); if (!form) return;
+    const success = $('#contact-success');
+    const rules = {
+      name:    v => v.trim().length >= 2 || 'Enter your full name.',
+      email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || 'Enter a valid email address, like name@college.edu.',
+      phone:   v => !v.trim() || /^(\+?91)?[6-9]\d{9}$/.test(v.replace(/[\s-]/g, '')) || 'Enter a 10-digit Indian mobile number, or leave this empty.',
+      subject: v => !!v || 'Choose a topic.',
+      message: v => (v.trim().length >= 10 && v.trim().length <= 1000) || 'Write at least 10 characters (up to 1,000).',
+    };
+    let attempted = false;
+    const field = k => ({ el: $('#cf-' + k), err: $('#err-' + k) });
+    const validate = k => {
+      const { el, err } = field(k); const res = rules[k](el.value);
+      if (res === true) { el.removeAttribute('aria-invalid'); err.hidden = true; err.textContent = ''; return true; }
+      el.setAttribute('aria-invalid', 'true'); err.textContent = res; err.hidden = false; return false;
+    };
+    Object.keys(rules).forEach(k => { const { el } = field(k); el.addEventListener('input', () => { if (attempted) validate(k); }); el.addEventListener('blur', () => { if (attempted) validate(k); }); });
+    form.addEventListener('submit', e => {
+      e.preventDefault(); attempted = true;
+      if ($('#cf-website').value) return; // honeypot
+      const bad = Object.keys(rules).filter(k => !validate(k));
+      if (bad.length) { field(bad[0]).el.focus(); return; }
+      const data = Object.fromEntries(Object.keys(rules).map(k => [k, field(k).el.value.trim()]));
+      if (CONFIG.contact.form.endpoint) { form.action = CONFIG.contact.form.endpoint; form.method = 'POST'; form.submit(); return; }
+      const body = `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || '-'}\nTopic: ${data.subject}\n\n${data.message}`;
+      const mail = `mailto:${CONFIG.contact.email}?subject=${encodeURIComponent('[HIMOVATION 2026] ' + data.subject + ' – ' + data.name)}&body=${encodeURIComponent(body)}`;
+      form.hidden = true;
+      success.innerHTML = String(html`
+        <div class="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 p-5">
+          <div class="flex items-center gap-3"><span class="icon-tile" style="color:#34d399;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.3)">${icon('check')}</span><h4 class="h3 text-base">Thanks, ${data.name.split(' ')[0]}. Your message is ready.</h4></div>
+          <p class="prose-muted mt-3 text-sm">This site has no mail server yet, so the message opens in your mail app addressed to <strong>${CONFIG.contact.email}</strong>. Send it from there and we will reply to <strong>${data.email}</strong> within two working days.</p>
+          <div class="mt-4 flex flex-col gap-2 sm:flex-row"><a class="btn btn-primary btn-sm" href="${mail}"><span class="btn-inner">Open in mail app ${icon('mail')}</span></a><button class="btn btn-ghost btn-sm" type="button" data-form-reset><span class="btn-inner">Write another</span></button></div>
+        </div>`);
+      success.hidden = false;
+      $('h4', success).setAttribute('tabindex', '-1'); $('h4', success).focus();
+      $('[data-form-reset]', success).addEventListener('click', () => { success.hidden = true; form.hidden = false; form.reset(); attempted = false; Object.keys(rules).forEach(k => { const { el, err } = field(k); el.removeAttribute('aria-invalid'); err.hidden = true; }); $('#cf-name').focus(); });
+    });
+  }
+
+  function initCanvas() {
+    const canvas = $('#ridge-canvas'), hero = $('#hero');
+    if (!canvas || !hero || !canvas.getContext) return;
+    const ctx = canvas.getContext('2d'); if (!ctx) return;
+    const reduced = prefersReducedMotion();
+    const accent = (getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '56 189 248').split(/\s+/).join(',');
+    let w = 0, h = 0, lines = [], raf = 0, last = 0, visible = true, running = false;
+    const build = () => {
+      const L = w < 640 ? 6 : 9;
+      lines = Array.from({ length: L }, (_, i) => {
+        const k = i / (L - 1);
+        return { base: 0.34 + 0.62 * k, amp: [30, 15, 6].map(a => a * (0.8 + k)), freq: [0.0032, 0.0071, 0.0158], speed: [0.00011, 0.00019, 0.00033].map(s => s * (1 + 0.15 * i)), phase: [0, 1, 2].map(() => Math.random() * Math.PI * 2), alpha: 0.07 + 0.16 * k, fill: i % 2 === 0 };
+      });
+    };
+    const draw = t => {
+      ctx.clearRect(0, 0, w, h);
+      const step = 8;
+      for (const ln of lines) {
+        ctx.beginPath();
+        for (let x = 0; x <= w + step; x += step) {
+          let y = h * ln.base;
+          for (let k = 0; k < 3; k++) y += ln.amp[k] * Math.sin(x * ln.freq[k] + t * ln.speed[k] + ln.phase[k]);
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(${accent},${ln.alpha})`; ctx.lineWidth = 1; ctx.stroke();
+        if (ln.fill) { ctx.lineTo(w + step, h); ctx.lineTo(0, h); ctx.closePath(); ctx.fillStyle = `rgba(${accent},0.02)`; ctx.fill(); }
+      }
+    };
+    const frame = now => {
+      raf = 0;
+      if (!running) return;
+      if (now - last >= 33) { last = now; draw(now); }
+      raf = requestAnimationFrame(frame);
+    };
+    const sync = () => {
+      const should = visible && !document.hidden && !reduced;
+      if (should && !running) { running = true; if (!raf) raf = requestAnimationFrame(frame); }
+      else if (!should && running) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+    };
+    const resize = () => {
+      const r = hero.getBoundingClientRect();
+      w = Math.max(1, Math.round(r.width)); h = Math.max(1, Math.round(r.height));
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      build(); draw(reduced ? 0 : performance.now());
+    };
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 150); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(en => { visible = en[0].isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
+    document.addEventListener('visibilitychange', sync);
+    resize(); sync();
+  }
+
+  function validateConfig() {
+    const warn = [];
+    CONFIG.nav.forEach(n => { if (!$('#' + n.id)) warn.push(`nav id "${n.id}" has no matching section`); });
+    const tracks = Object.keys(CONFIG.tracks);
+    CONFIG.events.forEach(e => {
+      if (!tracks.includes(e.track)) warn.push(`event ${e.id}: unknown track "${e.track}"`);
+      const sum = e.prizes.reduce((a, p) => a + p.amount, 0);
+      if (sum !== e.prizePool) warn.push(`event ${e.id}: prizePool ${e.prizePool} differs from the sum of prizes ${sum}`);
+    });
+    const slots = CONFIG.events.map(e => e.bentoSlot);
+    if (new Set(slots).size !== slots.length) warn.push('events have duplicate bentoSlot values');
+    CONFIG.schedule.days.forEach(d => d.rows.forEach(r => r.tracks.forEach(t => { if (!tracks.includes(t)) warn.push(`schedule row "${r.title}": unknown track "${t}"`); })));
+    if (CONFIG.faq.length < 8 || CONFIG.faq.length > 10) warn.push(`FAQ has ${CONFIG.faq.length} items (expected 8–10)`);
+    if (/REPLACE/i.test(CONFIG.REGISTRATION_LINK)) warn.push('REGISTRATION_LINK still contains the placeholder');
+    CONFIG.social.forEach(s => { if (/REPLACE/i.test(s.href)) warn.push(`social link for ${s.name} still contains the placeholder`); });
+    if (/XXXX/.test(CONFIG.contact.phone)) warn.push('contact.phone is still a placeholder');
+    const st = Date.parse(CONFIG.dates.start), en = Date.parse(CONFIG.dates.end);
+    if (isNaN(st) || isNaN(en)) warn.push('dates.start / dates.end are not valid ISO strings'); else if (en <= st) warn.push('dates.end is not after dates.start');
+    if (!CONFIG.dates.display.includes(CONFIG.dates.start.slice(0, 4))) warn.push('dates.display year does not match dates.start');
+    const total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
+    const stat = CONFIG.stats.find(s => /L/.test(s.suffix || ''));
+    if (stat && Math.abs(stat.value * 1e5 - total) > 5000) warn.push(`prize pool stat ₹${stat.value}L differs from the computed total ${fmtINR(total)}`);
+    (warn.length ? console.warn : console.info)(`[HIMOVATION config] ${warn.length ? warn.length + ' warning(s)' : 'no warnings'}`, warn);
+    return warn;
+  }
+
+  /* ============================ INIT ====================================== */
+  function init() {
+    renderNav(); renderHero(); renderAbout(); renderStats(); renderEvents(); renderPrizes(); renderSchedule();
+    renderWhy(); renderSponsors(); renderFAQ(); renderRegisterBand(); renderContact(); renderFooter();
+    initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initModal(); initTabs();
+    initAccordion(); initMagnetic(); initForm(); initCanvas();
+    if (CONFIG.debug || location.hash === '#debug') validateConfig();
+    window.HIMOVATION = { CONFIG, validateConfig };
+  }
+  init();
+  </script>
+</body>
+</html>
