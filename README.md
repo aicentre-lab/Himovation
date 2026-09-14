@@ -35,12 +35,13 @@ Open the page with `#debug` in the URL (for example `index.html#debug`) and look
 
 ## Assets
 
-- `assets/srhu-logo.png` — white SRHU brand mark on a transparent background (navbar and footer). Replace with an official PNG/SVG of the same mark if one is supplied; keep it unstretched and uncropped.
-- `assets/srhu-logo-plate.png` — official reverse mark on the Prussian Blue plate (for use on light or photographic backgrounds).
-- `assets/srhu-logo-light.png` — blue mark on white (favicon source, print).
+- `assets/SRHU LOGO WITH NAAC A+.png` — the official logo file supplied by the department (blue mark, transparent background).
+- `assets/srhu-logo-dark.png` — reverse version for **dark backgrounds**: blue swapped to white, white fills made transparent. Used in the navbar and footer.
+- `assets/srhu-logo-light.png` — trimmed original for **light backgrounds** (print, light-theme pages, favicon source).
+- `assets/og-cover.png` — 1200×630 share image for link previews.
 - `assets/favicon-96.png`
 
-Both logo versions were extracted from the SRHU brand guidelines deck (May 2025). Brand colour: Prussian Blue `#0D3668`.
+Both variants are generated from the official file with ImageMagick; regenerate them if the department issues a new logo. Brand colour: Prussian Blue `#0D3668`.
 
 ## Source documents
 
