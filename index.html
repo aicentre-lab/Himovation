@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#F5F7FB">
-  <script>(function(){try{var t=localStorage.getItem("himovation-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FBFBFA">
   <title>HIMOVATION 2026 · SRHU Dehradun</title>
-  <meta name="description" content="HIMOVATION 2026, the national technical festival of the Department of CSE, School of Science & Technology, Swami Rama Himalayan University, Dehradun. 27–28 November 2026. National Hackathon on AI for SDGs, Robo-War, E-Sports and a School Project Exhibition. ₹1,95,000+ in prizes.">
+  <meta name="description" content="HIMOVATION 2026, the national technical festival of the Department of CSE, School of Science &amp; Technology, Swami Rama Himalayan University, Dehradun. 27–28 November 2026. National Hackathon on AI for SDGs, Robo-War, E-Sports and a School Project Exhibition. ₹1,95,000+ in prizes.">
   <link rel="canonical" href="https://aicentre-lab.github.io/Himovation/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="HIMOVATION 2026 · SRHU">
@@ -22,16 +21,9 @@
   <meta name="twitter:description" content="National Hackathon · Robo-War · E-Sports · School Project Exhibition. 27–28 Nov 2026.">
   <link rel="icon" type="image/png" href="assets/favicon-96.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="assets/tailwind-config.js"></script>
-
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="index.css">
 </head>
-<body class="bg-ground text-ink font-sans antialiased" data-page="home">
+<body data-page="home">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <div id="progress" aria-hidden="true"></div>
@@ -42,20 +34,18 @@
     <main id="main" tabindex="-1">
 
       <!-- HERO -->
-      <section id="hero" class="relative flex items-center overflow-hidden bg-ground" aria-label="HIMOVATION 2026">
-        <canvas id="ridge-canvas" aria-hidden="true"></canvas>
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-vignette" aria-hidden="true"></div>
-        <div class="relative z-10 mx-auto w-full max-w-wrap px-5 pb-24 pt-32 sm:px-8 md:pb-28 md:pt-40" data-render="hero"></div>
-        <div class="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
-          <svg class="divider text-accent/25" style="height:4rem"><use href="#ridge"/></svg>
-        </div>
+      <section id="hero" aria-label="HIMOVATION 2026">
+        <canvas id="ridge-canvas" aria-hidden="true" style="display:none"></canvas>
+        <div data-render="hero"></div>
       </section>
 
+      <!-- MARQUEE TICKER -->
+      <div data-render="marquee"></div>
+
       <!-- ABOUT -->
-      <section id="about" class="relative bg-ground py-20 md:py-28" aria-labelledby="about-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <div class="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+      <section id="about" class="section-py" aria-labelledby="about-title">
+        <div class="section-inner">
+          <div style="display:grid;gap:3rem" class="lg-about-grid">
             <div>
               <div data-head="about"></div>
               <div data-render="about" class="mt-8"></div>
@@ -67,27 +57,27 @@
       </section>
 
       <!-- STATS -->
-      <section id="stats" class="relative border-y hairline bg-surface/70" aria-label="Festival in numbers">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <ul class="grid grid-cols-2 md:grid-cols-4 md:divide-x hairline" data-render="stats"></ul>
+      <section id="stats" class="section-surface" aria-label="Festival in numbers">
+        <div class="section-inner">
+          <ul class="stats-grid" data-render="stats"></ul>
         </div>
       </section>
 
       <!-- EVENTS -->
-      <section id="events" class="relative bg-ground py-20 md:py-28" aria-labelledby="events-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+      <section id="events" class="section-py" aria-labelledby="events-title">
+        <div class="section-inner">
           <div data-head="events" class="max-w-2xl"></div>
           <div data-render="events" class="mt-12"></div>
-          <div data-render="general-rules" class="mt-6"></div>
+          <div data-render="general-rules" class="mt-8"></div>
         </div>
       </section>
 
-      <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
+      <hr class="divider" aria-hidden="true">
 
       <!-- PRIZES -->
-      <section id="prizes" class="relative bg-ground py-20 md:py-28" aria-labelledby="prizes-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+      <section id="prizes" class="section-py" aria-labelledby="prizes-title">
+        <div class="section-inner">
+          <div class="flex items-end justify-between gap-6 flex-wrap">
             <div data-head="prizes" class="max-w-2xl"></div>
             <div data-render="prize-total"></div>
           </div>
@@ -96,27 +86,27 @@
       </section>
 
       <!-- SCHEDULE -->
-      <section id="schedule" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="schedule-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+      <section id="schedule" class="section-py section-surface" aria-labelledby="schedule-title">
+        <div class="section-inner">
           <div data-head="schedule" class="max-w-2xl"></div>
           <div data-render="schedule" class="mt-10"></div>
         </div>
       </section>
 
-      <svg class="divider flip" aria-hidden="true"><use href="#ridge"/></svg>
+      <hr class="divider" aria-hidden="true">
 
       <!-- WHY PARTICIPATE -->
-      <section id="why" class="relative bg-ground py-20 md:py-28" aria-labelledby="why-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+      <section id="why" class="section-py" aria-labelledby="why-title">
+        <div class="section-inner">
           <div data-head="why" class="max-w-2xl"></div>
           <div data-render="why" class="mt-12"></div>
         </div>
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="faq-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+      <section id="faq" class="section-py section-surface" aria-labelledby="faq-title">
+        <div class="section-inner">
+          <div style="display:grid;gap:2.5rem" class="lg-faq-grid">
             <div data-head="faq"></div>
             <div data-render="faq"></div>
           </div>
@@ -124,17 +114,15 @@
       </section>
 
       <!-- REGISTER CTA BAND -->
-      <section id="register" class="theme-dark relative overflow-hidden border-y hairline bg-surface py-20 md:py-28" aria-labelledby="register-title">
-        <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
-        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 80% at 50% 50%, rgb(var(--c-brand) / .45), transparent 70%)" aria-hidden="true"></div>
-        <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8" data-render="register"></div>
+      <section id="register" class="register-band" aria-labelledby="register-title">
+        <div class="section-inner" style="position:relative;text-align:center" data-render="register"></div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="relative bg-ground py-20 md:py-28" aria-labelledby="contact-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
+      <section id="contact" class="section-py" aria-labelledby="contact-title">
+        <div class="section-inner">
           <div data-head="contact" class="max-w-2xl"></div>
-          <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
+          <div class="mt-12 grid-2 lg-contact-grid" style="display:grid">
             <div class="flex flex-col gap-8">
               <div data-render="contact-info"></div>
               <div class="map-wrap">
@@ -144,14 +132,14 @@
                 </div>
                 <iframe data-map title="Map: Swami Rama Himalayan University, Jolly Grant, Dehradun" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
               </div>
-              <p class="-mt-4 text-sm text-muted"><a class="link" data-map-link target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in new tab)</span></a></p>
+              <p class="text-sm text-muted" style="margin-top:-.5rem"><a class="link" data-map-link target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in new tab)</span></a></p>
             </div>
 
-            <div class="glass p-6 sm:p-8">
+            <div class="contact-card p-6 sm:p-8">
               <h3 class="h3">Send us a message</h3>
               <p class="mt-2 text-sm text-muted">Registration queries, event rules, school participation or anything else. We reply within two working days.</p>
               <form id="contact-form" class="mt-6 flex flex-col gap-5" novalidate>
-                <div class="grid gap-5 sm:grid-cols-2">
+                <div style="display:grid;gap:1.25rem" class="sm-2col">
                   <div class="field">
                     <label for="cf-name">Full name</label>
                     <input class="input" id="cf-name" name="name" type="text" autocomplete="name" placeholder="Aditi Rawat" aria-describedby="err-name" required>
@@ -163,7 +151,7 @@
                     <p class="field-error" id="err-email" hidden></p>
                   </div>
                 </div>
-                <div class="grid gap-5 sm:grid-cols-2">
+                <div style="display:grid;gap:1.25rem" class="sm-2col">
                   <div class="field">
                     <label for="cf-phone">Phone <span class="font-normal text-muted">(optional)</span></label>
                     <input class="input" id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98XXX XXXXX" aria-describedby="err-phone">
@@ -196,15 +184,27 @@
       </section>
     </main>
 
-    <footer class="theme-dark relative border-t hairline bg-surface" aria-labelledby="footer-title">
+    <footer id="site-footer" aria-labelledby="footer-title">
       <h2 id="footer-title" class="sr-only">Footer</h2>
-      <div class="mx-auto max-w-wrap px-5 py-14 sm:px-8" data-render="footer"></div>
+      <div class="section-inner" style="padding-top:3.5rem;padding-bottom:3.5rem" data-render="footer"></div>
     </footer>
   </div>
 
   <button id="to-top" type="button" aria-label="Back to top">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
   </button>
+
+  <!-- About section responsive grid -->
+  <style>
+    @media (min-width: 1024px) {
+      .lg-about-grid { grid-template-columns: 1.25fr 1fr; gap: 4rem !important; }
+      .lg-faq-grid { grid-template-columns: 1fr 1.6fr; gap: 4rem !important; }
+      .lg-contact-grid { grid-template-columns: 1fr 1fr; gap: 3.5rem !important; }
+    }
+    @media (min-width: 640px) {
+      .sm-2col { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+  </style>
 
   <script src="assets/config.js"></script>
   <script src="assets/site.js"></script>

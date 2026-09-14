@@ -72,41 +72,41 @@ function renderHead(id) {
   render(`[data-head="${id}"]`, html`
     <p class="eyebrow reveal">${s.eyebrow}</p>
     <h2 id="${id}-title" class="h2 mt-3 reveal" style="--i:1">${s.heading}</h2>
-    ${s.intro ? html`<p class="prose-muted mt-5 text-base md:text-lg reveal" style="--i:2">${md(s.intro)}</p>` : ''}`);
-}
+    ${s.intro ? html`<p class="prose-muted mt-5 text-base md:text-lg reveal" style="--i:2">${md(s.intro)}</p>` : ''}`);}
 
 function renderHeader() {
   const site = CONFIG.site, o = site.organizer;
   render('#site-header', html`
-    <nav class="mx-auto flex h-full max-w-wrap items-center justify-between gap-4 px-5 sm:px-8" aria-label="Primary">
-      <a href="${IS_HOME ? '#hero' : 'index.html'}" class="flex items-center gap-3 rounded-lg" aria-label="HIMOVATION 2026 home">
+    <nav class="nav-inner" aria-label="Primary">
+      <a href="${IS_HOME ? '#hero' : 'index.html'}" class="flex items-center gap-3" aria-label="HIMOVATION 2026 home">
         <span class="logo-plate">
-          <img src="${site.logo.srcLight}" data-theme-logo alt="${site.logo.alt}" width="352" height="333" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-          <span class="wordmark" hidden>${site.logo.fallbackText}</span>
+          <img src="${site.logo.srcLight || site.logo.src}" data-theme-logo alt="${site.logo.alt}" width="352" height="333" decoding="async">
         </span>
-        <span class="hidden flex-col leading-tight md:flex">
-          <span class="font-display text-sm font-bold tracking-wide">${site.name}</span>
-          <span class="text-[11px] text-muted">${o.school} · SRHU, Dehradun</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="site-brand-text" id="site-wordmark">
+          <span class="site-brand-title">${site.name}</span>
+          <span class="site-brand-sub">${o.school} · SRHU</span>
         </span>
       </a>
-      <ul class="hidden items-center gap-6 lg:flex">${CONFIG.nav.map(n => html`<li><a class="nav-link" href="${homeHref(n.id)}" data-nav="${n.id}">${n.label}</a></li>`)}</ul>
-      <div class="flex items-center gap-2">
-        <a class="btn btn-primary btn-sm hidden sm:inline-flex" data-register data-magnetic><span class="btn-inner">Register</span></a>
-        <button id="theme-btn" class="icon-btn" type="button" aria-label="Switch to dark theme" aria-pressed="false"></button>
+      <ul class="nav-list">${CONFIG.nav.map(n => html`<li><a class="nav-link" href="${homeHref(n.id)}" data-nav="${n.id}">${n.label}</a></li>`)}</ul>
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-sm" id="nav-register-btn" data-register><span class="btn-inner">Register</span></a>
         <button id="menu-btn" class="hamburger lg:hidden" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
       </div>
     </nav>
     <div id="mobile-menu" hidden>
-      <nav class="mx-auto flex h-full w-full max-w-wrap flex-col px-5 pb-10 pt-4 sm:px-8" aria-label="Mobile">
+      <nav class="menu-nav" aria-label="Mobile">
         <ul>${CONFIG.nav.map(n => html`<li><a class="menu-link" href="${homeHref(n.id)}" data-nav="${n.id}">${n.label}</a></li>`)}</ul>
-        <p class="mt-6 text-xs uppercase tracking-[.16em] text-muted">Event pages</p>
-        <ul class="mt-3 grid grid-cols-2 gap-2">${CONFIG.events.map(e => html`<li><a class="chip chip-solid w-full" style="--track:${trackOf(e.track).color}" href="${e.href}"><span class="dot"></span>${trackOf(e.track).label}</a></li>`)}</ul>
-        <div class="mt-8 flex flex-col gap-3">
+        <p class="menu-eyebrow">Event pages</p>
+        <ul class="menu-events">${CONFIG.events.map(e => html`<li><a class="chip chip-solid w-full" href="${e.href}"><span class="dot"></span>${trackOf(e.track).label}</a></li>`)}</ul>
+        <div class="menu-actions">
           <a class="btn btn-primary btn-block" data-register><span class="btn-inner">Register now</span></a>
-          <p class="text-center text-xs text-muted">${CONFIG.dates.display} · ${CONFIG.venue.short}</p>
+          <p class="text-center text-xs text-muted mt-2">${CONFIG.dates.display} · ${CONFIG.venue.short}</p>
         </div>
       </nav>
     </div>`);
+  const wb = $('#site-wordmark'); if (wb) wb.style.display = 'flex';
+  const rb = $('#nav-register-btn'); if (rb) rb.style.display = 'inline-flex';
 }
 
 function applyRegisterLinks() {
@@ -117,9 +117,15 @@ function applyRegisterLinks() {
 }
 
 const countdownMarkup = (compact = false) => html`
-  <div class="countdown-wrap" data-countdown role="timer" aria-label="Countdown to HIMOVATION 2026">
-    <div class="countdown ${compact ? 'max-w-md mx-auto' : 'max-w-md'}" data-cd-tiles aria-hidden="true">
-      ${['Days', 'Hours', 'Minutes', 'Seconds'].map(l => html`<div class="cd-tile"><span class="cd-num" data-cd="${l[0].toLowerCase()}">00</span><span class="cd-label">${l}</span></div>`)}
+  <div data-countdown role="timer" aria-label="Countdown to HIMOVATION 2026">
+    <div class="countdown" style="${compact ? 'max-width:22rem;margin:0 auto' : 'max-width:22rem'}" data-cd-tiles aria-hidden="true">
+      <div class="cd-tile"><span class="cd-num" data-cd="d">00</span><span class="cd-label">Days</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-tile"><span class="cd-num" data-cd="h">00</span><span class="cd-label">Hours</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-tile"><span class="cd-num" data-cd="m">00</span><span class="cd-label">Minutes</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-tile"><span class="cd-num" data-cd="s">00</span><span class="cd-label">Seconds</span></div>
     </div>
     <div data-cd-state hidden></div>
   </div>`;
@@ -131,49 +137,91 @@ function ctaMarkup(c, extra = '') {
     <span class="btn-inner">${c.label}${icon(c.style === 'primary' ? 'arrow' : 'chevron')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>`;
 }
 
+const EVENT_PHOTOS = {
+  hackathon: 'assets/event-hackathon.jpg',
+  robowar: 'assets/event-robowar.jpg',
+  esports: 'assets/event-esports.jpg',
+  exhibition: 'assets/event-exhibition.jpg',
+};
+
 function renderHero() {
-  const s = CONFIG.site, o = s.organizer, d = CONFIG.dates, total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
+  const s = CONFIG.site, d = CONFIG.dates, o = s.organizer, total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
   render('[data-render="hero"]', html`
-    <div class="max-w-4xl">
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
-        <span class="eyebrow">${s.eyebrow}</span>
-        <span aria-hidden="true" class="hidden sm:inline">·</span>
-        <span>${o.school} · ${o.university}, Dehradun</span>
+    <div class="hero-editorial">
+      <div class="hero-header-meta reveal">
+        <span class="hero-institution">${o.dept} · ${o.school} · ${o.university}</span>
+        <span class="hero-dates-tag">${d.display}</span>
       </div>
-      <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
-      <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
-      <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
-        <li class="chip">${icon('calendar')}${d.display}</li>
-        <li class="chip">${icon('pin')}${CONFIG.venue.short}</li>
-        <li class="chip chip-ember">${icon('trophy')}${fmtINR(total)}+ prize pool</li>
-        ${d.tentative ? html`<li class="chip">${icon('info')}Dates tentative</li>` : ''}
-      </ul>
-      <div class="mt-9 reveal" style="--i:4">
-        <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
-        ${countdownMarkup(false)}
+
+      <div class="hero-layout-grid">
+        <div class="hero-left-col">
+          <div class="hero-headline-block reveal" style="--i:1">
+            <h1 class="hero-main-title">HIMOVATION <span class="hero-edition">${s.edition}</span></h1>
+            <p class="hero-serif-tagline">${s.tagline}</p>
+          </div>
+
+          <p class="hero-intro-lead reveal" style="--i:2">${md(CONFIG.about.paragraphs[0])}</p>
+          
+          <ul class="hero-chips reveal" style="--i:3" aria-label="Key details">
+            <li class="chip">${icon('calendar')} ${d.display}</li>
+            <li class="chip">${icon('pin')} ${CONFIG.venue.short}</li>
+            <li class="chip chip-blue">${icon('trophy')} ${fmtINR(total)}+ prize pool</li>
+            <li class="chip">${icon('code')} 4 Parallel Tracks</li>
+          </ul>
+
+          <div class="hero-countdown-box reveal" style="--i:4">
+            <p class="countdown-caption" data-cd-caption>Inauguration begins in</p>
+            ${countdownMarkup(false)}
+          </div>
+
+          <div class="hero-ctas reveal" style="--i:5">
+            ${CONFIG.hero.ctas.map(c => ctaMarkup(c))}
+          </div>
+        </div>
+
+        <div class="hero-right-col reveal" style="--i:6">
+          <div class="hero-location-badge">
+            ${icon('pin')}
+            <div>
+              <p class="hero-location-name">${CONFIG.venue.name}</p>
+              <p class="hero-location-sub">${CONFIG.venue.short}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
-        ${CONFIG.hero.ctas.map(c => ctaMarkup(c))}
-      </div>
-      <ul class="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted reveal" style="--i:6" aria-label="Events">
-        ${CONFIG.events.map(e => html`<li class="badge" style="--track:${trackOf(e.track).color}"><i></i>${trackOf(e.track).label}</li>`)}
-      </ul>
-    </div>
-    <a href="#about" class="absolute bottom-24 right-5 hidden items-center gap-3 text-xs uppercase tracking-[.18em] text-muted md:flex" aria-label="Scroll to about section">Scroll <span class="scroll-cue" aria-hidden="true"></span></a>`);
+
+      <a href="#about" class="scroll-hint reveal" style="--i:7" aria-label="Scroll to about section">Scroll down <span class="scroll-cue" aria-hidden="true"></span></a>
+    </div>`);
+}
+
+function renderMarquee() {
+  const items = [
+    ...CONFIG.events.map(e => ({ label: trackOf(e.track).label + ' — ' + e.name, color: trackOf(e.track).color })),
+    { label: '27–28 November 2026', color: 'var(--accent-blue)' },
+    { label: 'SRHU · Jolly Grant · Dehradun', color: 'var(--accent-blue)' },
+    { label: fmtINR(CONFIG.events.reduce((a, e) => a + e.prizePool, 0)) + '+ in prizes', color: 'var(--accent-blue)' },
+    ...CONFIG.events.map(e => ({ label: e.capacity, color: trackOf(e.track).color })),
+  ];
+  const set = [...items, ...items];
+  const container = $('[data-render="marquee"]');
+  if (!container) return;
+  container.innerHTML = `<div class="marquee-wrap" aria-hidden="true"><div class="marquee-track">` +
+    set.map(it => `<span class="marquee-item"><span class="dot"></span>${it.label}</span>`).join('') +
+    `</div></div>`;
 }
 
 function renderAbout() {
   renderHead('about');
   renderHosts();
-  render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted text-base md:text-lg ${i ? 'mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
+  render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted text-base md:text-lg${i ? ' mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
   const o = CONFIG.site.organizer;
   render('[data-render="glance"]', html`
-    <div class="glass p-6 sm:p-8 reveal lg:mt-2" style="--i:2">
+    <div class="fact-box reveal lg:mt-2" style="--i:2">
       <p class="eyebrow">At a glance</p>
-      <dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-6">
-        ${CONFIG.about.glance.map(g => html`<div class="fact"><dt>${g.label}</dt><dd class="text-[.98rem] leading-snug">${g.value}</dd></div>`)}
+      <dl class="fact-list">
+        ${CONFIG.about.glance.map(g => html`<div class="fact"><dt>${g.label}</dt><dd>${g.value}</dd></div>`)}
       </dl>
-      <div class="mt-7 border-t hairline pt-5 text-sm text-muted">
+      <div class="mt-7 border-t pt-5 text-sm text-muted">
         <p class="font-medium text-ink">${o.dept}</p>
         <p>${o.school}, ${o.university}</p>
         <p>${o.city}</p>
@@ -184,18 +232,18 @@ function renderAbout() {
 function renderHosts() {
   const h = CONFIG.about.hosts; if (!h) return;
   render('[data-render="hosts"]', html`
-    <div class="mt-16 border-t hairline pt-14">
+    <div class="hosts-container">
       <p class="eyebrow reveal">${h.eyebrow}</p>
-      <h3 class="h2 mt-3 max-w-3xl reveal" style="--i:1; font-size: clamp(1.6rem, 3vw, 2.4rem)">${h.heading}</h3>
-      <div class="mt-10 grid gap-5 md:grid-cols-2">
+      <h3 class="h2 mt-2 max-w-3xl reveal" style="--i:1;font-size:clamp(1.6rem,3vw,2.4rem)">${h.heading}</h3>
+      <div class="hosts-grid">
         ${h.cards.map((c, i) => html`
-        <article class="glass flex flex-col p-6 sm:p-8 reveal" style="--i:${i + 2}" aria-labelledby="host-${c.id}">
-          ${c.showLogo ? html`<span class="logo-plate mb-6" style="height:4.5rem"><img src="${CONFIG.site.logo.srcLight}" data-theme-logo alt="${CONFIG.site.logo.alt}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="wordmark" hidden>${CONFIG.site.logo.fallbackText}</span></span>` : ''}
+        <article class="host-card reveal" style="--i:${i + 2}" aria-labelledby="host-${c.id}">
+          ${c.showLogo ? html`<span class="logo-plate mb-5"><img src="${CONFIG.site.logo.srcLight || CONFIG.site.logo.src}" alt="${CONFIG.site.logo.alt}" loading="lazy" decoding="async"></span>` : ''}
           <p class="eyebrow">${c.eyebrow}</p>
-          <h4 id="host-${c.id}" class="h3 mt-2 text-xl md:text-2xl">${c.title}</h4>
-          <div class="prose-muted mt-4 grid gap-4 text-sm md:text-base">${c.paragraphs.map(t => html`<p>${md(t)}</p>`)}</div>
-          <ul class="mt-6 flex flex-wrap gap-2" aria-label="Key facts">${c.facts.map(f => html`<li class="chip chip-solid chip-wrap">${f}</li>`)}</ul>
-          ${c.link ? html`<p class="mt-auto pt-6"><a class="link inline-flex items-center gap-1.5 text-sm font-medium" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ${icon('external', 'h-4 w-4')}<span class="sr-only"> (opens in new tab)</span></a></p>` : ''}
+          <h4 id="host-${c.id}" class="host-card-title">${c.title}</h4>
+          <div class="prose-muted flex flex-col gap-3 text-sm">${c.paragraphs.map(t => html`<p>${md(t)}</p>`)}</div>
+          <ul class="mt-6 flex flex-wrap gap-2" aria-label="Key facts">${c.facts.map(f => html`<li class="chip chip-solid">${f}</li>`)}</ul>
+          ${c.link ? html`<p class="mt-auto pt-6"><a class="btn btn-ghost btn-sm" href="${c.link.href}" target="_blank" rel="noopener"><span class="btn-inner">${c.link.label} ${icon('external')}</span></a></p>` : ''}
         </article>`)}
       </div>
     </div>`);
@@ -204,11 +252,10 @@ function renderHosts() {
 function renderStats() {
   render('[data-render="stats"]', CONFIG.stats.map((s, i) => {
     const final = `${s.prefix || ''}${Number(s.value).toLocaleString('en-IN', { minimumFractionDigits: s.decimals || 0, maximumFractionDigits: s.decimals || 0 })}${s.suffix || ''}`;
-    return html`<li class="stat-cell text-center reveal" style="--i:${i}">
+    return html`<li class="stat-cell reveal" style="--i:${i}">
       <span class="sr-only">${final}</span>
-      <span class="stat-num text-ink" aria-hidden="true" data-counter data-value="${s.value}" data-decimals="${s.decimals || 0}" data-prefix="${s.prefix || ''}" data-suffix="${s.suffix || ''}">${s.prefix || ''}0${s.suffix || ''}</span>
-      <span class="mt-2 block text-sm text-muted">${s.label}</span></li>`;
-  }));
+      <span class="stat-num num" aria-hidden="true" data-counter data-value="${s.value}" data-decimals="${s.decimals || 0}" data-prefix="${s.prefix || ''}" data-suffix="${s.suffix || ''}">${s.prefix || ''}0${s.suffix || ''}</span>
+      <span class="stat-label">${s.label}</span></li>`; }));
 }
 
 const factItems = ev => ({
@@ -220,38 +267,94 @@ const factItems = ev => ({
 
 function renderEvents() {
   renderHead('events');
-  render('[data-render="events"]', html`<div class="bento">${CONFIG.events.map((ev, i) => {
-    const t = trackOf(ev.track), featured = ev.bentoSlot === 'a', facts = factItems(ev);
-    return html`
-    <a class="bento-card reveal" href="${ev.href}" data-slot="${ev.bentoSlot}" data-event="${ev.id}" style="--track:${t.color}; --i:${i}" aria-labelledby="ev-${ev.id}-title">
-      <span class="absolute -right-6 -top-6 h-40 w-40 opacity-[.045]" aria-hidden="true">${icon(ev.icon, 'h-full w-full')}</span>
-      <div class="flex items-center justify-between gap-3">
-        <span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(ev.icon)}</span>
-        <span class="badge"><i></i>${t.label}</span>
+  const flagships = CONFIG.events.filter(e => e.id !== 'exhibition');
+  const exhibition = CONFIG.events.find(e => e.id === 'exhibition');
+
+  render('[data-render="events"]', html`
+    <div class="flagship-events-grid">
+      ${flagships.map((ev, i) => {
+        const t = trackOf(ev.track), facts = factItems(ev), photo = EVENT_PHOTOS[ev.id] || 'assets/event-hackathon.jpg';
+        return html`
+        <article class="event-card reveal" style="--i:${i}">
+          <div class="event-card-media">
+            <img src="${photo}" alt="${ev.name}" class="event-card-img" loading="lazy" decoding="async">
+            <span class="event-card-track-badge">${t.label}</span>
+          </div>
+          <div class="event-card-body">
+            <h3 class="event-card-title">${ev.name}</h3>
+            <p class="event-card-sub">${ev.subtitle}</p>
+            <p class="event-card-blurb">${ev.blurb}</p>
+            <div class="event-card-facts">
+              <div class="event-fact-item">
+                <span class="event-fact-label">Team size</span>
+                <span class="event-fact-val">${teamSizeText(ev.teamSize)}</span>
+              </div>
+              <div class="event-fact-item">
+                <span class="event-fact-label">Entry fee</span>
+                <span class="event-fact-val">${feeText(ev.fee)}</span>
+              </div>
+              <div class="event-fact-item">
+                <span class="event-fact-label">Prize pool</span>
+                <span class="event-fact-val">${fmtINR(ev.prizePool)}</span>
+              </div>
+            </div>
+            <div class="event-card-action">
+              <a class="btn btn-ghost btn-sm" href="${ev.href}"><span class="btn-inner">View event details ${icon('arrow')}</span></a>
+              ${eventRegLink(ev) ? html`<a class="btn btn-primary btn-sm" href="${eventRegLink(ev)}" target="_blank" rel="noopener"><span class="btn-inner">Register ${icon('external')}</span></a>` : ''}
+            </div>
+          </div>
+        </article>`;
+      })}
+    </div>
+
+    ${exhibition ? html`
+    <article class="exhibition-spotlight-card reveal" style="--i:4">
+      <div class="exhibition-card-media">
+        <img src="${EVENT_PHOTOS.exhibition}" alt="${exhibition.name}" class="exhibition-card-img" loading="lazy" decoding="async">
       </div>
-      <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${ev.name}</h3>
-      <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</p>
-      <p class="prose-muted mt-4 text-sm ${featured ? 'md:text-base max-w-xl' : ''}">${ev.blurb}</p>
-      ${featured ? html`<ul class="mt-5 flex flex-wrap gap-2" aria-label="Themes">${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}</ul>
-      <div class="mt-7 grid gap-3 sm:grid-cols-[1.2fr_1fr]">
-        <ol class="grid gap-2" aria-label="Rounds">
-          <li class="step"><i>1</i><span class="text-sm"><span class="font-semibold">Round 1, online.</span> <span class="text-muted">Register and submit a problem statement in the HIMOVATION template. Panel shortlists teams.</span></span></li>
-          <li class="step"><i>2</i><span class="text-sm"><span class="font-semibold">Round 2, on campus.</span> <span class="text-muted">24 hours of building with two progress checks, mentor visits and a live demo.</span></span></li>
-        </ol>
-        <div class="grid grid-cols-3 gap-2 self-start">${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-ground/60 px-2 py-2.5 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-sm font-bold ${pi === 0 ? 'text-emberink' : ''}">${fmtINR(p.amount)}</p></div>`)}</div>
-      </div>` : ''}
-      <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5 ${featured ? 'mt-8' : 'mt-6'}">
-        ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
-      </dl>
-      <div class="mt-5"><span class="btn btn-ghost btn-sm"><span class="btn-inner">Open event page ${icon('arrow')}</span></span></div>
-    </a>`; })}</div>`);
+      <div class="exhibition-card-body">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge"><i></i>${trackOf(exhibition.track).label}</span>
+          <span class="chip" style="background:#ECFDF5;color:#047857;border-color:#A7F3D0">Free Entry</span>
+        </div>
+        <h3 class="h3">${exhibition.name}</h3>
+        <p class="text-sm text-accent font-medium mt-1">${exhibition.subtitle}</p>
+        <p class="prose-muted mt-3 text-sm">${exhibition.blurb}</p>
+        <div class="event-card-facts mt-4 mb-4">
+          <div class="event-fact-item">
+            <span class="event-fact-label">Eligibility</span>
+            <span class="event-fact-val">Classes 8–12</span>
+          </div>
+          <div class="event-fact-item">
+            <span class="event-fact-label">Entry fee</span>
+            <span class="event-fact-val">Free</span>
+          </div>
+          <div class="event-fact-item">
+            <span class="event-fact-label">Prize pool</span>
+            <span class="event-fact-val">${fmtINR(exhibition.prizePool)}</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a class="btn btn-ghost btn-sm" href="${exhibition.href}"><span class="btn-inner">Exhibition details ${icon('arrow')}</span></a>
+          ${eventRegLink(exhibition) ? html`<a class="btn btn-primary btn-sm" href="${eventRegLink(exhibition)}" target="_blank" rel="noopener"><span class="btn-inner">Register school team ${icon('external')}</span></a>` : ''}
+        </div>
+      </div>
+    </article>` : ''}
+  `);
+
   render('[data-render="general-rules"]', html`
-    <div class="glass p-6 sm:p-8 reveal">
-      <div class="flex items-center gap-3"><span class="icon-tile">${icon('shield')}</span><h3 class="h3">For every participant</h3></div>
-      <ul class="check prose-muted mt-6 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+    <div class="rules-card reveal">
+      <div class="flex items-center gap-3">
+        <span class="icon-tile">${icon('shield')}</span>
+        <div>
+          <h3 class="h3 text-xl">For every participant</h3>
+          <p class="text-xs text-muted mt-1">Official guidelines and code of conduct applicable across all festival arenas</p>
+        </div>
+      </div>
+      <ul class="rules-list">
         ${CONFIG.generalRules.map(r => html`<li>${icon('check')}<span>${r}</span></li>`)}
       </ul>
-      <p class="mt-6 text-xs text-muted">The Organising Committee may revise rules, schedules, formats, game titles and weight categories before the event. Final rulebooks are issued through the official registration channels.</p>
+      <p class="mt-6 text-xs text-muted border-t pt-4">The Organising Committee may revise rules, schedules, formats, game titles and weight categories before the event. Final rulebooks are issued through the official registration channels.</p>
     </div>`);
 }
 
@@ -260,93 +363,152 @@ function renderPrizes() {
   const total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
   const specials = CONFIG.events.flatMap(e => e.specialAwards);
   render('[data-render="prize-total"]', html`
-    <div class="glass flex items-center gap-5 px-6 py-5 reveal" style="--i:2">
-      <span class="icon-tile" style="color: rgb(var(--c-ember-ink)); background: rgb(var(--c-ember) / .14); border-color: rgb(var(--c-ember) / .3)">${icon('trophy')}</span>
-      <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${fmtINR(total)}<span class="text-emberink">+</span></p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
+    <div class="fact-box flex items-center gap-5 px-6 py-4 reveal" style="--i:2">
+      <span class="icon-tile">${icon('trophy')}</span>
+      <div>
+        <p class="text-xs uppercase text-muted" style="letter-spacing:.16em">Combined prize pool</p>
+        <p class="num text-2xl md:text-3xl font-bold text-ink mt-1">${fmtINR(total)}<span class="text-accent">+</span></p>
+        ${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}
+      </div>
     </div>`);
-  render('[data-render="prizes"]', html`<div class="grid gap-5 md:grid-cols-2">${CONFIG.events.map((ev, i) => {
-    const t = trackOf(ev.track), [p1, p2, p3] = ev.prizes;
-    const bar = (p, h, cls, rank) => html`<div class="flex flex-col items-center gap-2">${medal(rank)}<p class="num text-sm font-bold sm:text-base ${cls}">${fmtINR(p.amount)}</p><div class="podium-bar w-full" style="height:${h}">${p.place}</div></div>`;
-    return html`
-    <article class="glass p-6 reveal sm:p-7" style="--track:${t.color}; --i:${i}" aria-labelledby="pz-${ev.id}">
-      <div class="flex items-start justify-between gap-4">
-        <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${ev.name}</h3></div>
-        <p class="num whitespace-nowrap text-right text-sm text-muted">Pool<br><span class="text-lg font-bold text-ink">${fmtINR(ev.prizePool)}</span></p>
-      </div>
-      <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink', 1)}${bar(p1, '7.5rem', 'text-emberink', 0)}${bar(p3, '4.25rem', 'text-ink', 2)}</div>
-      <div class="mt-4 flex flex-wrap items-center gap-2 border-t hairline pt-4 text-xs text-muted">
-        <span>Certificates of Achievement for all winners</span>
-        ${ev.specialAwards.map(a => html`<span class="chip chip-ember">${icon('award')}${a}</span>`)}
-      </div>
-    </article>`; })}</div>`);
+
+  render('[data-render="prizes"]', html`
+    <div class="prizes-grid">
+      ${CONFIG.events.map((ev, i) => {
+        const t = trackOf(ev.track);
+        return html`
+        <article class="prize-card reveal" style="--i:${i}" aria-labelledby="pz-${ev.id}">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="badge"><i></i>${t.label}</span>
+              <h3 id="pz-${ev.id}" class="h3 text-xl mt-2">${ev.name}</h3>
+            </div>
+            <div class="text-right">
+              <span class="text-xs uppercase text-muted" style="letter-spacing:.08em">Prize Pool</span>
+              <p class="num text-xl font-bold text-accent">${fmtINR(ev.prizePool)}</p>
+            </div>
+          </div>
+          <div class="prize-breakdown-row">
+            ${ev.prizes.map((p, pi) => html`
+              <div class="prize-tier">
+                <span class="prize-tier-rank">${p.place} prize</span>
+                <p class="num prize-tier-amount">${fmtINR(p.amount)}</p>
+              </div>`)}
+          </div>
+          <div class="flex flex-wrap items-center gap-2 border-t pt-4 mt-5 text-xs text-muted">
+            <span>Certificates of Achievement for all winners</span>
+            ${ev.specialAwards.map(a => html`<span class="chip chip-blue">${icon('award')}${a}</span>`)}
+          </div>
+        </article>`;
+      })}
+    </div>`);
 }
 
 function renderSchedule() {
   renderHead('schedule');
   const days = CONFIG.schedule.days;
   render('[data-render="schedule"]', html`
-    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between reveal">
-      <div class="inline-flex gap-1 rounded-2xl border hairline bg-ground/60 p-1" role="tablist" aria-label="Festival days">
-        ${days.map((d, i) => html`<button class="tab" role="tab" type="button" id="tab-${d.id}" aria-controls="panel-${d.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.label}<small>${d.date}</small></button>`)}
+    <div class="schedule-controls reveal">
+      <div class="tablist" role="tablist" aria-label="Festival days">
+        ${days.map((d, i) => html`<button class="tab" role="tab" type="button" id="tab-${d.id}" aria-controls="panel-${d.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${d.label}</span><small>${d.date}</small></button>`)}
       </div>
       <div class="flex flex-wrap items-center gap-2" role="group" aria-label="${CONFIG.schedule.legendNote}">
-        <span class="mr-1 text-xs uppercase tracking-[.14em] text-muted">${CONFIG.schedule.legendNote}</span>
+        <span class="text-xs uppercase text-muted" style="letter-spacing:.12em">${CONFIG.schedule.legendNote}:</span>
         <button class="legend-btn" type="button" data-filter="" aria-pressed="true">All</button>
-        ${Object.entries(CONFIG.tracks).filter(([k]) => k !== 'common').map(([k, t]) => html`<button class="legend-btn" type="button" data-filter="${k}" aria-pressed="false" style="--track:${t.color}"><span class="dot"></span>${t.label}</button>`)}
+        ${Object.entries(CONFIG.tracks).filter(([k]) => k !== 'common').map(([k, t]) => html`<button class="legend-btn" type="button" data-filter="${k}" aria-pressed="false">${t.label}</button>`)}
       </div>
     </div>
     ${days.map((d, di) => html`
-    <div class="mt-10" role="tabpanel" id="panel-${d.id}" aria-labelledby="tab-${d.id}" tabindex="0" ${di ? raw('hidden') : ''}>
-      <ol class="tl">${d.rows.map((r, i) => {
-        const first = trackOf(r.tracks[0]), parallel = i > 0 && d.rows[i - 1].time === r.time;
-        return html`<li class="tl-row ${i % 2 ? 'is-right' : 'is-left'} ${r.milestone ? 'is-milestone' : ''} reveal" data-tracks="${r.tracks.join(' ')}" style="--track:${first.color}; --i:${Math.min(i, 5)}">
-          <span class="tl-node" aria-hidden="true"></span>
-          <div class="tl-card">
-            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="tl-time">${r.time}</span>${parallel ? html`<span class="text-[10px] uppercase tracking-[.14em] text-muted">∥ parallel</span>` : ''}</div>
-            <h3 class="mt-1 font-sans text-[.98rem] font-semibold leading-snug">${r.title}</h3>
-            ${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}
-            <div class="mt-2.5 flex flex-wrap gap-x-4 gap-y-1">${r.tracks.map(k => html`<span class="badge" style="--track:${trackOf(k).color}"><i></i>${trackOf(k).label}</span>`)}</div>
-          </div></li>`; })}</ol>
+    <div class="mt-6" role="tabpanel" id="panel-${d.id}" aria-labelledby="tab-${d.id}" tabindex="0" ${di ? raw('hidden') : ''}>
+      <ol class="tl">
+        ${d.rows.map((r, i) => {
+          const parallel = i > 0 && d.rows[i - 1].time === r.time;
+          return html`
+          <li class="tl-row reveal" data-tracks="${r.tracks.join(' ')}" style="--i:${Math.min(i, 5)}">
+            <div class="flex items-center gap-3">
+              <span class="tl-time">${r.time}</span>
+              ${parallel ? html`<span class="chip text-xs" style="padding:0.15rem 0.4rem;font-size:0.65rem">Parallel</span>` : ''}
+            </div>
+            <div class="tl-details">
+              <h4 class="tl-title">${r.title}</h4>
+              ${r.note ? html`<p class="tl-note">${r.note}</p>` : ''}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${r.tracks.map(k => html`<span class="badge"><i></i>${trackOf(k).label}</span>`)}
+            </div>
+          </li>`;
+        })}
+      </ol>
     </div>`)}`);
 }
 
 function renderWhy() {
   renderHead('why');
-  render('[data-render="why"]', html`<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${CONFIG.why.map((w, i) => html`
-    <li class="glass p-6 reveal" style="--i:${i}"><span class="icon-tile">${icon(w.icon)}</span><h3 class="h3 mt-5 text-lg">${w.title}</h3><p class="prose-muted mt-2 text-sm">${w.text}</p></li>`)}</ul>`);
+  render('[data-render="why"]', html`
+    <ul class="why-grid">
+      ${CONFIG.why.map((w, i) => html`
+      <li class="why-card reveal" style="--i:${i}">
+        <span class="why-icon">${icon(w.icon)}</span>
+        <h3 class="why-title">${w.title}</h3>
+        <p class="why-desc">${w.text}</p>
+      </li>`)}
+    </ul>`);
 }
 
 function renderFAQ() {
   renderHead('faq');
-  render('[data-render="faq"]', html`<div class="divide-y hairline border-y">${CONFIG.faq.map((f, i) => html`
-    <div class="reveal" style="--i:${Math.min(i, 5)}">
-      <h3><button class="faq-btn" type="button" id="faq-q-${i}" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span>${icon('chevron')}</button></h3>
-      <div class="faq-panel" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}" inert><div><div class="prose-muted grid gap-3 pb-5 text-sm md:text-[.95rem]">${(Array.isArray(f.a) ? f.a : [f.a]).map(p => html`<p>${md(p)}</p>`)}</div></div></div>
-    </div>`)}</div>`);
+  render('[data-render="faq"]', html`
+    <div class="faq-list">
+      ${CONFIG.faq.map((f, i) => html`
+      <div class="faq-item reveal" style="--i:${Math.min(i, 5)}">
+        <h3>
+          <button class="faq-btn" type="button" id="faq-q-${i}" aria-expanded="false" aria-controls="faq-a-${i}">
+            <span>${f.q}</span>
+            ${icon('chevron')}
+          </button>
+        </h3>
+        <div class="faq-panel" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}" inert>
+          <div>
+            <div class="faq-panel-content prose-muted flex flex-col gap-3">
+              ${(Array.isArray(f.a) ? f.a : [f.a]).map(p => html`<p>${md(p)}</p>`)}
+            </div>
+          </div>
+        </div>
+      </div>`)}
+    </div>`);
 }
 
 function renderRegisterBand() {
   const s = CONFIG.sections.register, d = CONFIG.dates;
   const deadline = d.registrationDeadline ? new Date(d.registrationDeadline) : null;
   render('[data-render="register"]', html`
-    <p class="eyebrow reveal">${s.eyebrow}</p>
-    <h2 id="register-title" class="h2 mx-auto mt-3 max-w-3xl reveal" style="--i:1">${s.heading}</h2>
-    <p class="prose-muted mx-auto mt-5 max-w-2xl reveal" style="--i:2">${md(s.intro)}</p>
-    <div class="mt-9 reveal" style="--i:3">
-      <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
-      ${countdownMarkup(true)}
-    </div>
-    ${deadline && !isNaN(deadline) ? html`<p class="mt-5 reveal" style="--i:4"><span class="chip chip-ember">${icon('clock')}Registration closes ${deadline.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span></p>` : ''}
-    <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 text-left sm:grid-cols-2 reveal" style="--i:5" aria-label="Register per event">
-      ${CONFIG.events.map(ev => { const t = trackOf(ev.track), link = eventRegLink(ev); return html`
-      <li class="glass flex items-center justify-between gap-4 p-4 sm:p-5" style="--track:${t.color}">
-        <div class="min-w-0 flex-1"><span class="badge"><i></i>${t.label}</span><p class="mt-1 font-display font-semibold leading-snug">${ev.name}</p><p class="mt-0.5 text-xs text-muted">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)}</p></div>
-        ${link ? html`<a class="btn btn-primary btn-sm flex-none" href="${link}" target="_blank" rel="noopener" data-magnetic><span class="btn-inner">Register ${icon('external')}</span><span class="sr-only"> for ${t.label} (opens in new tab)</span></a>`
-               : html`<span class="chip flex-none" title="Registration for this event has not opened yet">${icon('clock')}Opens soon</span>`}
-      </li>`; })}
-    </ul>
-    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:6">
-      ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
+    <div class="wrap" style="text-align:center">
+      <p class="eyebrow reveal">${s.eyebrow}</p>
+      <h2 id="register-title" class="h2 mx-auto mt-2 max-w-3xl reveal" style="--i:1">${s.heading}</h2>
+      <p class="prose-muted mx-auto mt-4 max-w-2xl reveal" style="--i:2">${md(s.intro)}</p>
+      <div class="mt-8 reveal" style="--i:3">
+        <p class="countdown-caption" data-cd-caption>Inauguration begins in</p>
+        ${countdownMarkup(true)}
+      </div>
+      ${deadline && !isNaN(deadline) ? html`<p class="mt-4 reveal" style="--i:4"><span class="chip chip-blue">${icon('clock')} Registration closes ${deadline.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span></p>` : ''}
+      <ul class="reg-event-list reveal" style="--i:5" aria-label="Register per event">
+        ${CONFIG.events.map(ev => {
+          const t = trackOf(ev.track), link = eventRegLink(ev);
+          return html`
+          <li class="reg-event-row">
+            <div>
+              <span class="badge"><i></i>${t.label}</span>
+              <p class="reg-event-title">${ev.name}</p>
+              <p class="reg-event-meta">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)}</p>
+            </div>
+            ${link ? html`<a class="btn btn-primary btn-sm" href="${link}" target="_blank" rel="noopener"><span class="btn-inner">Register ${icon('external')}</span><span class="sr-only"> for ${t.label} (opens in new tab)</span></a>`
+                   : html`<span class="chip" title="Registration for this event has not opened yet">${icon('clock')} Opens soon</span>`}
+          </li>`;
+        })}
+      </ul>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:6">
+        ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
+      </div>
     </div>`);
 }
 
@@ -354,21 +516,32 @@ function renderContact() {
   renderHead('contact');
   const c = CONFIG.contact, v = CONFIG.venue;
   render('[data-render="contact-info"]', html`
-    <div class="grid gap-4 sm:grid-cols-2 reveal">
-      ${c.coordinators.map(k => html`<div class="glass p-5"><p class="text-xs uppercase tracking-[.14em] text-muted">${k.role}</p><p class="mt-2 font-display font-semibold">${k.name}</p>
-        ${k.phone ? html`<a class="link mt-1 block text-sm" href="tel:${k.phone.replace(/\s/g, '')}">${k.phone}</a>` : ''}
-        ${k.email ? html`<a class="link mt-1 block text-sm" href="mailto:${k.email}">${k.email}</a>` : ''}</div>`)}
+    <div class="coord-grid reveal">
+      ${c.coordinators.map(k => html`
+        <div class="coord-cell">
+          <p class="text-xs uppercase text-muted" style="letter-spacing:.14em">${k.role}</p>
+          <p class="mt-2 font-medium text-ink">${k.name}</p>
+          ${k.phone ? html`<a class="link mt-1 block text-sm" href="tel:${k.phone.replace(/\s/g, '')}">${k.phone}</a>` : ''}
+          ${k.email ? html`<a class="link mt-1 block text-sm" href="mailto:${k.email}">${k.email}</a>` : ''}
+        </div>`)}
     </div>
-    <ul class="mt-5 grid gap-3 text-sm reveal" style="--i:1">
-      <li class="flex items-center gap-3"><span class="icon-tile">${icon('mail')}</span><div><p class="text-xs text-muted">Email</p><a class="link" href="mailto:${c.email}">${c.email}</a></div></li>
-      <li class="flex items-center gap-3"><span class="icon-tile">${icon('phone')}</span><div><p class="text-xs text-muted">Helpline</p><a class="link" href="tel:${c.phone.replace(/[^\d+]/g, '')}">${c.phone}</a></div></li>
-      <li class="flex items-start gap-3"><span class="icon-tile">${icon('pin')}</span><div><p class="text-xs text-muted">Venue</p><p>${v.name}, ${v.address}</p></div></li>
+    <ul class="mt-5 flex flex-col gap-3 text-sm reveal" style="--i:1;list-style:none">
+      <li class="flex items-center gap-3"><span class="icon-tile">${icon('mail')}</span><div><p class="text-xs text-muted">Email</p><a class="link font-medium" href="mailto:${c.email}">${c.email}</a></div></li>
+      <li class="flex items-center gap-3"><span class="icon-tile">${icon('phone')}</span><div><p class="text-xs text-muted">Helpline</p><a class="link font-medium" href="tel:${c.phone.replace(/[^\d+]/g, '')}">${c.phone}</a></div></li>
+      <li class="flex items-start gap-3"><span class="icon-tile">${icon('pin')}</span><div><p class="text-xs text-muted">Venue</p><p class="font-medium">${v.name}, ${v.address}</p></div></li>
     </ul>
     <div class="mt-6 reveal" style="--i:2">
       <p class="eyebrow">Getting here</p>
-      <ul class="mt-3 grid gap-2 sm:grid-cols-3">${v.travel.map(t => html`<li class="rounded-xl border hairline bg-raised/30 p-3"><div class="flex items-center gap-2 text-accent">${icon(t.icon, 'h-4 w-4')}<span class="text-xs uppercase tracking-wider text-muted">${t.mode}</span></div><p class="mt-1 text-sm font-medium">${t.name}</p><p class="num text-xs text-muted">≈ ${t.distanceKm} km</p></li>`)}</ul>
+      <ul class="travel-grid">
+        ${v.travel.map(t => html`
+          <li class="travel-card">
+            <div class="flex items-center gap-1 text-accent">${icon(t.icon, 'h-3 w-3')}<span class="text-xs uppercase text-muted" style="letter-spacing:.1em">${t.mode}</span></div>
+            <p class="mt-1 text-xs font-medium text-ink">${t.name}</p>
+            <p class="num text-xs text-muted">≈ ${t.distanceKm} km</p>
+          </li>`)}
+      </ul>
     </div>
-    <ul class="mt-6 flex gap-2 reveal" style="--i:3" aria-label="Social media">
+    <ul class="mt-6 flex gap-2 reveal" style="--i:3;list-style:none" aria-label="Social media">
       ${CONFIG.social.map(s => html`<li><a class="icon-tile" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.name} (opens in new tab)">${icon(s.icon)}</a></li>`)}
     </ul>`);
   render('[data-render="subjects"]', c.form.subjects.map(s => html`<option>${s}</option>`));
@@ -378,23 +551,24 @@ function renderContact() {
 
 function eventSectionMarkup(ev, s) {
   if (s.type === 'chips') return html`<ul class="flex flex-wrap gap-2">${s.items.map(i => html`<li class="chip chip-solid chip-wrap">${i}</li>`)}</ul>`;
-  if (s.type === 'steps') return html`<ol class="grid gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ol>`;
+  if (s.type === 'steps') return html`<ol class="flex flex-col gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ol>`;
   if (s.type === 'downloads') return downloadsMarkup(ev);
-  return html`<ul class="check grid gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ul>`;
+  return html`<ul class="check flex flex-col gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ul>`;
 }
+
 function downloadsMarkup(ev) {
   const d = (ev.page && ev.page.downloads) || [];
   if (!d.length) return html`<p class="prose-muted text-sm">Rulebooks and templates for this event will be published here once the committee finalises them.</p>`;
-  return html`<ul class="grid gap-3">${d.map(f => html`
+  return html`<ul class="flex flex-col gap-3">${d.map(f => html`
     <li class="glass flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex items-start gap-3"><span class="icon-tile flex-none">${icon('ticket')}</span><div><p class="font-semibold">${f.label}</p><p class="prose-muted mt-1 text-sm">${f.note}</p></div></div>
       <a class="btn btn-ghost btn-sm flex-none" href="${f.href}" download><span class="btn-inner">Download${f.size ? html` <span class="font-sans font-normal text-muted">(${f.size})</span>` : ''}</span></a>
-    </li>`)}</ul>`;
+    </li>`)}  </ul>`;
 }
 
 function renderEventPage() {
   const id = document.body.dataset.event, ev = CONFIG.events.find(e => e.id === id);
-  if (!ev) { render('[data-render="event-page"]', html`<section class="mx-auto max-w-wrap px-5 pt-40 pb-20 sm:px-8"><h1 class="h2">Event not found</h1><p class="prose-muted mt-4"><a class="link" href="index.html#events">Back to all events</a></p></section>`); return; }
+  if (!ev) { render('[data-render="event-page"]', html`<section class="section-inner section-py"><h1 class="h2">Event not found</h1><p class="prose-muted mt-4"><a class="link" href="index.html#events">Back to all events</a></p></section>`); return; }
   const t = trackOf(ev.track), pg = ev.page || {}, v = CONFIG.venue, reg = eventRegLink(ev), ext = isUrl(reg);
   const regBtn = (label, extra = '') => reg ? html`<a class="btn btn-primary btn-wrap ${extra}" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">${label} ${icon('arrow')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>` : html`<span class="btn btn-ghost btn-wrap ${extra}" aria-disabled="true"><span class="btn-inner">${icon('clock')} Registration opens soon</span></span>`;
   document.title = `${ev.name} · HIMOVATION 2026`;
@@ -402,31 +576,31 @@ function renderEventPage() {
   const others = CONFIG.events.filter(e => e.id !== ev.id);
   const coords = (pg.coordinators && pg.coordinators.length) ? pg.coordinators : CONFIG.contact.coordinators.filter(c => c.name && c.phone);
   render('[data-render="event-page"]', html`
-    <section class="relative overflow-hidden bg-ground pb-14 pt-28 md:pb-20 md:pt-36" aria-labelledby="event-title">
+    <section class="relative overflow-hidden section-py" style="padding-bottom:3.5rem" aria-labelledby="event-title">
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 50% at 20% 20%, color-mix(in srgb, ${t.color} 14%, transparent), transparent 70%)" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-wrap px-5 sm:px-8">
-        <nav class="text-sm text-muted reveal" aria-label="Breadcrumb"><ol class="flex flex-wrap items-center gap-2"><li><a class="hover:text-ink" href="index.html">Home</a></li><li aria-hidden="true">/</li><li><a class="hover:text-ink" href="index.html#events">Events</a></li><li aria-hidden="true">/</li><li class="text-ink" aria-current="page">${t.label}</li></ol></nav>
-        <div class="mt-8 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:items-end">
+      <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 50% at 20% 20%, color-mix(in srgb, ${t.color} 12%, transparent), transparent 70%)" aria-hidden="true"></div>
+      <div class="section-inner" style="position:relative">
+        <nav class="text-sm text-muted reveal" aria-label="Breadcrumb"><ol class="flex flex-wrap items-center gap-2"><li><a class="link" href="index.html">Home</a></li><li aria-hidden="true">/</li><li><a class="link" href="index.html#events">Events</a></li><li aria-hidden="true">/</li><li class="text-ink" aria-current="page">${t.label}</li></ol></nav>
+        <div class="mt-8" style="display:grid;gap:2.5rem" class="ev-hero-grid">
           <div class="min-w-0">
-            <span class="badge reveal" style="--track:${t.color}; --i:1"><i></i>${t.label}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</span>
+            <span class="badge reveal" style="--track:${t.color}; --i:1"><i></i>${t.label}${ev.fee.amount === 0 ? html` <span style="margin-left:.5rem;display:inline-flex;align-items:center;background:rgba(16,185,129,.15);color:rgb(var(--c-ok));border-radius:4px;padding:.2rem .55rem;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Free</span>` : ''}</span>
             <h1 id="event-title" class="hero-title mt-4 reveal" style="--i:1; font-size: clamp(2.3rem, 6.5vw, 4.75rem)">${ev.name}</h1>
-            <p class="mt-4 font-display text-lg font-medium text-ink/90 md:text-2xl reveal" style="--i:2">${ev.subtitle}</p>
+            <p class="hero-tagline mt-4 reveal" style="--i:2">${ev.subtitle}</p>
             <p class="prose-muted mt-5 max-w-2xl text-base md:text-lg reveal" style="--i:3">${ev.blurb}</p>
-            <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:4" aria-label="Key details">
+            <ul class="hero-chips mt-7 reveal" style="--i:4" aria-label="Key details">
               <li class="chip">${icon('calendar')}${pg.dates || CONFIG.dates.display}</li>
               <li class="chip">${icon('users')}${teamSizeText(ev.teamSize)}</li>
               <li class="chip">${icon('ticket')}${feeText(ev.fee)}</li>
               <li class="chip chip-ember">${icon('trophy')}${fmtINR(ev.prizePool)} prize pool</li>
             </ul>
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
+            <div class="hero-ctas mt-8 reveal" style="--i:5">
               ${regBtn(`Register for ${t.label}`)}
               ${(pg.downloads || []).slice(0, 1).map(f => html`<a class="btn btn-ghost btn-wrap" href="${f.href}" download data-magnetic><span class="btn-inner">${icon('ticket')} ${f.cta || f.label}</span></a>`)}
             </div>
           </div>
           <div class="glass p-6 sm:p-7 reveal" style="--i:3">
             <p class="eyebrow">At a glance</p>
-            <dl class="mt-5 grid grid-cols-2 gap-x-5 gap-y-5">
+            <dl class="mt-5" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem">
               <div class="fact"><dt>Dates</dt><dd>${pg.dates || CONFIG.dates.display}</dd></div>
               <div class="fact"><dt>Venue</dt><dd>${v.short}</dd></div>
               <div class="fact"><dt>Team size</dt><dd>${teamSizeText(ev.teamSize)}</dd></div>
@@ -438,59 +612,62 @@ function renderEventPage() {
         </div>
       </div>
     </section>
-    <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
+    <style>.ev-hero-grid { display: grid; gap: 2.5rem; } @media (min-width: 1024px) { .ev-hero-grid { grid-template-columns: 1.35fr 1fr; align-items: end; } }</style>
 
-    <section class="bg-ground py-16 md:py-24" aria-labelledby="details-title">
-      <div class="mx-auto max-w-wrap px-5 sm:px-8">
-        <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
+    <svg class="divider" aria-hidden="true" style="color:rgba(255,255,255,.06)"><use href="#ridge"/></svg>
+
+    <section class="section-py" aria-labelledby="details-title">
+      <div class="section-inner">
+        <div class="ev-detail-grid">
           <div class="min-w-0">
             <p class="eyebrow reveal">Details</p>
             <h2 id="details-title" class="h2 mt-3 reveal" style="--i:1">Everything you need to know.</h2>
-            <dl class="mt-8 grid gap-6 reveal" style="--i:2">
+            <dl class="mt-8 flex flex-col gap-6 reveal" style="--i:2">
               <div class="fact"><dt>Format</dt><dd class="prose-muted font-sans text-sm font-normal md:text-base">${ev.format}</dd></div>
               <div class="fact"><dt>Eligibility</dt><dd class="prose-muted font-sans text-sm font-normal md:text-base">${ev.eligibility}</dd></div>
             </dl>
             ${ev.sections.map((sec, i) => html`<section class="mt-12 reveal" aria-labelledby="sec-${i}"><h3 id="sec-${i}" class="h3 text-lg md:text-xl">${sec.heading}</h3><div class="mt-5">${eventSectionMarkup(ev, sec)}</div></section>`)}
           </div>
-          <aside class="grid content-start gap-5 lg:sticky lg:top-24">
+          <aside class="flex flex-col gap-5 aside-sticky">
             <div class="glass p-6 reveal" style="--track:${t.color}">
               <div class="flex items-center justify-between gap-3"><p class="eyebrow">Prizes</p><p class="num text-sm text-muted">Pool <span class="font-semibold text-ink">${fmtINR(ev.prizePool)}</span></p></div>
-              <div class="mt-4 grid gap-2">${ev.prizes.map((p, i) => html`<div class="flex items-center justify-between rounded-xl border hairline bg-raised/40 px-3 py-2.5"><span class="flex items-center gap-3">${medal(i)}<span class="text-xs uppercase tracking-wider text-muted">${p.place} prize</span></span><span class="num text-lg font-bold ${i === 0 ? 'text-emberink' : 'text-ink'}">${fmtINR(p.amount)}</span></div>`)}</div>
+              <div class="mt-4 flex flex-col gap-2">${ev.prizes.map((p, i) => html`<div class="flex items-center justify-between" style="border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:.6rem .75rem"><span class="flex items-center gap-3">${medal(i)}<span class="text-xs uppercase text-muted" style="letter-spacing:.1em">${p.place} prize</span></span><span class="num text-lg font-bold${i === 0 ? ' text-emberink' : ' text-ink'}">${fmtINR(p.amount)}</span></div>`)}</div>
               ${ev.specialAwards.length ? html`<ul class="mt-3 flex flex-wrap gap-2">${ev.specialAwards.map(a => html`<li class="chip chip-ember">${icon('award')}${a}</li>`)}</ul>` : ''}
               <p class="mt-4 text-xs text-muted">Certificates of Achievement with every cash prize; participation certificates for all who complete the event. Prize distribution at the valedictory, Day 2.</p>
             </div>
             <div class="glass p-6 reveal" style="--i:1">
               <p class="eyebrow">Coordinators</p>
-              ${coords.length ? html`<ul class="mt-4 grid gap-3">${coords.map(c => { const digits = c.phone.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, ''); return html`<li>${c.role ? html`<p class="text-[11px] uppercase tracking-wider text-muted">${c.role}</p>` : ''}<p class="font-semibold">${c.name}</p><a class="link text-sm" href="tel:+91${digits}">+91 ${digits.replace(/(\d{5})(\d{5})/, '$1 $2')}</a></li>`; })}</ul>` : html`<p class="prose-muted mt-3 text-sm">Event coordinators will be announced here. Until then, write to the festival desk.</p>`}
-              <p class="mt-4 border-t hairline pt-4 text-sm"><a class="link" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></p>
+              ${coords.length ? html`<ul class="mt-4 flex flex-col gap-3">${coords.map(c => { const digits = c.phone.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, ''); return html`<li>${c.role ? html`<p class="text-xs uppercase text-muted" style="letter-spacing:.1em">${c.role}</p>` : ''}<p class="font-semibold">${c.name}</p><a class="link text-sm" href="tel:+91${digits}">+91 ${digits.replace(/(\d{5})(\d{5})/, '$1 $2')}</a></li>`; })}</ul>` : html`<p class="prose-muted mt-3 text-sm">Event coordinators will be announced here. Until then, write to the festival desk.</p>`}
+              <p class="mt-4 border-t pt-4 text-sm"><a class="link" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></p>
             </div>
             <div class="glass p-6 reveal" style="--i:2">
               <p class="eyebrow">For every participant</p>
-              <ul class="check mt-4 grid gap-2.5 text-sm prose-muted">${CONFIG.generalRules.slice(0, 4).map(r => html`<li>${icon('check')}<span>${r}</span></li>`)}</ul>
+              <ul class="check mt-4 flex flex-col gap-2 text-sm prose-muted">${CONFIG.generalRules.slice(0, 4).map(r => html`<li>${icon('check')}<span>${r}</span></li>`)}</ul>
               <p class="mt-4 text-sm"><a class="link" href="index.html#events">All participant rules</a> · <a class="link" href="index.html#faq">FAQ</a></p>
             </div>
           </aside>
         </div>
+        <style>.ev-detail-grid { display: grid; gap: 3rem; } @media (min-width: 1024px) { .ev-detail-grid { grid-template-columns: minmax(0,1fr) 20rem; gap: 4rem; } }</style>
       </div>
     </section>
 
-    <section class="bg-surface/60 py-16 md:py-24" aria-labelledby="track-schedule-title">
-      <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <section class="section-py section-surface" aria-labelledby="track-schedule-title">
+      <div class="section-inner">
         <p class="eyebrow reveal">Schedule</p>
         <h2 id="track-schedule-title" class="h2 mt-3 reveal" style="--i:1">Your two days at SRHU.</h2>
         <p class="prose-muted mt-4 max-w-2xl reveal" style="--i:2">${t.label} sessions with the common festival moments. The <a class="link" href="index.html#schedule">full timeline</a> shows all four tracks side by side.</p>
-        <div class="mt-10 grid gap-8 md:grid-cols-2">
+        <div class="mt-10 grid-2">
           ${days.map((d, di) => html`<div class="reveal" style="--i:${di + 2}"><h3 class="h3 text-lg">${d.label} <span class="font-sans text-sm font-normal text-muted">· ${d.date}</span></h3>
-            <ol class="tl tl-compact mt-5">${d.rows.map(r => { const own = r.tracks.includes(ev.track); return html`<li class="tl-row ${r.milestone ? 'is-milestone' : ''} ${own ? '' : 'is-dim'}" style="--track:${own ? t.color : trackOf('common').color}"><span class="tl-node" aria-hidden="true"></span><div class="tl-card"><span class="tl-time">${r.time}</span><h4 class="mt-1 font-sans text-[.95rem] font-semibold leading-snug">${r.title}</h4>${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}</div></li>`; })}</ol></div>`)}
+            <ol class="tl tl-compact mt-5">${d.rows.map(r => { const own = r.tracks.includes(ev.track); return html`<li class="tl-row ${r.milestone ? 'is-milestone' : ''} ${own ? '' : 'is-dim'}" style="--track:${own ? t.color : trackOf('common').color}"><span class="tl-node" aria-hidden="true"></span><div class="tl-card"><span class="tl-time">${r.time}</span><h4 class="mt-1 font-display" style="font-size:.95rem;font-weight:600;line-height:1.35">${r.title}</h4>${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}</div></li>`; })}</ol></div>`)}
         </div>
       </div>
     </section>
 
-    <section class="bg-ground py-16 md:py-24" aria-labelledby="other-events-title">
-      <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <section class="section-py" aria-labelledby="other-events-title">
+      <div class="section-inner">
         <p class="eyebrow reveal">More arenas</p>
         <h2 id="other-events-title" class="h2 mt-3 reveal" style="--i:1">The other three events.</h2>
-        <ul class="mt-10 grid gap-4 md:grid-cols-3">${others.map((o, i) => { const ot = trackOf(o.track); return html`
+        <ul class="mt-10 grid-3">${others.map((o, i) => { const ot = trackOf(o.track); return html`
           <li><a class="bento-card h-full reveal" href="${o.href}" style="--track:${ot.color}; --i:${i + 2}">
             <div class="flex items-center justify-between gap-3"><span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(o.icon)}</span><span class="badge"><i></i>${ot.label}</span></div>
             <h3 class="h3 mt-5 text-lg">${o.name}</h3><p class="prose-muted mt-2 text-sm">${o.blurb}</p>
@@ -499,9 +676,10 @@ function renderEventPage() {
       </div>
     </section>
 
-    <section class="theme-dark relative overflow-hidden border-y hairline bg-surface py-16 md:py-24" aria-labelledby="event-register-title">
-      <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
-      <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8">
+    <section class="register-band" style="padding:4rem 0" aria-labelledby="event-register-title">
+      <svg class="contour-bg" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
+      <div class="register-glow" aria-hidden="true"></div>
+      <div class="section-inner" style="position:relative;text-align:center">
         <p class="eyebrow reveal">Registrations open</p>
         <h2 id="event-register-title" class="h2 mx-auto mt-3 max-w-3xl reveal" style="--i:1">Ready for ${t.label}?</h2>
         <p class="prose-muted mx-auto mt-4 max-w-2xl reveal" style="--i:2">${feeText(ev.fee)} · ${teamSizeText(ev.teamSize)} · ${ev.capacity}. Seats are allotted first come, first served and confirmed after verification.</p>
@@ -510,33 +688,43 @@ function renderEventPage() {
           <a class="btn btn-ghost" href="index.html#contact"><span class="btn-inner">Ask a question ${icon('chevron')}</span></a>
         </div>
       </div>
-    </section>`);
-}
+    </section>`);}
 
 function renderFooter() {
   const s = CONFIG.site, o = s.organizer, f = CONFIG.footer;
   render('[data-render="footer"]', html`
-    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div class="footer-top">
       <div>
-        <span class="logo-plate" style="height:5.5rem"><img src="${s.logo.src}" alt="${s.logo.alt}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="wordmark" hidden>${s.logo.fallbackText}</span></span>
-        <p class="mt-5 font-display text-lg font-bold">${s.name}</p>
+        <span class="logo-plate" style="height:3.25rem;margin-bottom:1.25rem"><img src="${s.logo.srcLight || s.logo.src}" alt="${s.logo.alt}" loading="lazy" decoding="async"></span>
+        <h3 class="h3 text-xl">${s.name}</h3>
         <p class="mt-2 text-sm text-muted">${o.dept}<br>${o.school}<br>${o.university}, ${o.city}</p>
-        <p class="mt-4 max-w-md text-sm text-muted">${f.initiative}</p>
+        <p class="mt-4 max-w-md text-xs text-muted">${f.initiative || 'Flagship Technical Festival'}</p>
       </div>
       <div>
         <p class="eyebrow">Quick links</p>
-        <ul class="mt-4 grid gap-2 text-sm">${CONFIG.nav.map(n => html`<li><a class="text-muted hover:text-ink" href="${homeHref(n.id)}">${n.label}</a></li>`)}<li><a class="text-muted hover:text-ink" href="${homeHref('register')}">Register</a></li></ul>
-        <p class="eyebrow mt-7">Event pages</p>
-        <ul class="mt-4 grid gap-2 text-sm">${CONFIG.events.map(e => html`<li><a class="text-muted hover:text-ink" href="${e.href}">${e.name}</a></li>`)}</ul>
+        <ul class="mt-4 flex flex-col gap-2 text-sm" style="list-style:none">
+          ${CONFIG.nav.map(n => html`<li><a class="link text-muted" href="${homeHref(n.id)}">${n.label}</a></li>`)}
+          <li><a class="link text-muted" href="${homeHref('register')}">Register</a></li>
+        </ul>
+        <p class="eyebrow mt-6">Event pages</p>
+        <ul class="mt-4 flex flex-col gap-2 text-sm" style="list-style:none">
+          ${CONFIG.events.map(e => html`<li><a class="link text-muted" href="${e.href}">${e.name}</a></li>`)}
+        </ul>
       </div>
       <div>
         <p class="eyebrow">Reach us</p>
-        <ul class="mt-4 grid gap-2 text-sm text-muted"><li><a class="hover:text-ink" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></li><li>${CONFIG.venue.short}</li><li>${CONFIG.dates.display}</li></ul>
-        <ul class="mt-5 flex gap-2" aria-label="Social media">${CONFIG.social.map(x => html`<li><a class="icon-tile" style="width:2.4rem;height:2.4rem" href="${x.href}" target="_blank" rel="noopener" aria-label="${x.name} (opens in new tab)">${icon(x.icon, 'h-4 w-4')}</a></li>`)}</ul>
+        <ul class="mt-4 flex flex-col gap-2 text-sm text-muted" style="list-style:none">
+          <li><a class="link" href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a></li>
+          <li>${CONFIG.venue.short}</li>
+          <li>${CONFIG.dates.display}</li>
+        </ul>
+        <ul class="mt-5 flex gap-2" style="list-style:none" aria-label="Social media">
+          ${CONFIG.social.map(x => html`<li><a class="icon-tile" href="${x.href}" target="_blank" rel="noopener" aria-label="${x.name} (opens in new tab)">${icon(x.icon, 'h-4 w-4')}</a></li>`)}
+        </ul>
       </div>
     </div>
-    <div class="mt-12 flex flex-col gap-3 border-t hairline pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-      <p>${f.copyright}</p>
+    <div class="footer-bottom">
+      <p>${f.copyright} · Swami Rama Himalayan University</p>
       <p>${s.tagline}</p>
     </div>`);
 }
@@ -617,7 +805,7 @@ function initReveal() {
   const els = $$('.reveal');
   if (!('IntersectionObserver' in window) || prefersReducedMotion()) return;
   document.documentElement.classList.add('js-reveal');
-  void document.documentElement.offsetWidth; // commit hidden state so the first reveal animates
+  void document.documentElement.offsetWidth;
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
@@ -664,7 +852,7 @@ function initCountdown() {
         tiles.hidden = true; state.hidden = false; if (caption) caption.hidden = true;
         if (!state.dataset.mode || state.dataset.mode !== 'live') {
           state.dataset.mode = 'live';
-          state.innerHTML = String(html`<div class="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border hairline bg-raised/60 px-5 py-3 font-display font-semibold"><span class="live-dot" aria-hidden="true"></span>${CONFIG.dates.liveLabel}<a class="link font-sans text-sm font-normal" href="#schedule">See today's schedule</a></div>`);
+          state.innerHTML = String(html`<div class="inline-flex flex-wrap items-center justify-center gap-3" style="border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);padding:.6rem 1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:600"><span class="live-dot" aria-hidden="true"></span>${CONFIG.dates.liveLabel}<a class="link font-sans text-sm font-normal" href="#schedule">See today's schedule</a></div>`);
           root.setAttribute('aria-label', CONFIG.dates.liveLabel);
         }
       } else {
@@ -763,7 +951,7 @@ function initForm() {
   Object.keys(rules).forEach(k => { const { el } = field(k); el.addEventListener('input', () => { if (attempted) validate(k); }); el.addEventListener('blur', () => { if (attempted) validate(k); }); });
   form.addEventListener('submit', e => {
     e.preventDefault(); attempted = true;
-    if ($('#cf-website').value) return; // honeypot
+    if ($('#cf-website').value) return;
     const bad = Object.keys(rules).filter(k => !validate(k));
     if (bad.length) { field(bad[0]).el.focus(); return; }
     const data = Object.fromEntries(Object.keys(rules).map(k => [k, field(k).el.value.trim()]));
@@ -772,8 +960,8 @@ function initForm() {
     const mail = `mailto:${CONFIG.contact.email}?subject=${encodeURIComponent('[HIMOVATION 2026] ' + data.subject + ' – ' + data.name)}&body=${encodeURIComponent(body)}`;
     form.hidden = true;
     success.innerHTML = String(html`
-      <div class="rounded-2xl border border-ok/25 bg-ok/10 p-5">
-        <div class="flex items-center gap-3"><span class="icon-tile" style="color:rgb(var(--c-ok));background:rgb(var(--c-ok) / .12);border-color:rgb(var(--c-ok) / .3)">${icon('check')}</span><h4 class="h3 text-base">Thanks, ${data.name.split(' ')[0]}. Your message is ready.</h4></div>
+      <div style="border-radius:8px;border:1px solid rgba(16,185,129,.25);background:rgba(16,185,129,.08);padding:1.25rem">
+        <div class="flex items-center gap-3"><span class="icon-tile" style="color:rgb(var(--c-ok));background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3)">${icon('check')}</span><h4 class="h3 text-base">Thanks, ${data.name.split(' ')[0]}. Your message is ready.</h4></div>
         <p class="prose-muted mt-3 text-sm">This site has no mail server yet, so the message opens in your mail app addressed to <strong>${CONFIG.contact.email}</strong>. Send it from there and we will reply to <strong>${data.email}</strong> within two working days.</p>
         <div class="mt-4 flex flex-col gap-2 sm:flex-row"><a class="btn btn-primary btn-sm" href="${mail}"><span class="btn-inner">Open in mail app ${icon('mail')}</span></a><button class="btn btn-ghost btn-sm" type="button" data-form-reset><span class="btn-inner">Write another</span></button></div>
       </div>`);
@@ -784,58 +972,8 @@ function initForm() {
 }
 
 function initCanvas() {
-  const canvas = $('#ridge-canvas'), hero = $('#hero');
-  if (!canvas || !hero || !canvas.getContext) return;
-  const ctx = canvas.getContext('2d'); if (!ctx) return;
-  const reduced = prefersReducedMotion();
-  const readAccent = () => (getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '3 105 161').split(/\s+/).join(',');
-  let accent = readAccent();
-  document.addEventListener('themechange', () => { accent = readAccent(); draw(reduced ? 0 : performance.now()); });
-  let w = 0, h = 0, lines = [], raf = 0, last = 0, visible = true, running = false;
-  const build = () => {
-    const L = w < 640 ? 6 : 9;
-    lines = Array.from({ length: L }, (_, i) => {
-      const k = i / (L - 1);
-      return { base: 0.34 + 0.62 * k, amp: [30, 15, 6].map(a => a * (0.8 + k)), freq: [0.0032, 0.0071, 0.0158], speed: [0.00011, 0.00019, 0.00033].map(s => s * (1 + 0.15 * i)), phase: [0, 1, 2].map(() => Math.random() * Math.PI * 2), alpha: 0.07 + 0.16 * k, fill: i % 2 === 0 };
-    });
-  };
-  const draw = t => {
-    ctx.clearRect(0, 0, w, h);
-    const step = 8;
-    for (const ln of lines) {
-      ctx.beginPath();
-      for (let x = 0; x <= w + step; x += step) {
-        let y = h * ln.base;
-        for (let k = 0; k < 3; k++) y += ln.amp[k] * Math.sin(x * ln.freq[k] + t * ln.speed[k] + ln.phase[k]);
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = `rgba(${accent},${ln.alpha})`; ctx.lineWidth = 1; ctx.stroke();
-      if (ln.fill) { ctx.lineTo(w + step, h); ctx.lineTo(0, h); ctx.closePath(); ctx.fillStyle = `rgba(${accent},0.02)`; ctx.fill(); }
-    }
-  };
-  const frame = now => {
-    raf = 0;
-    if (!running) return;
-    if (now - last >= 33) { last = now; draw(now); }
-    raf = requestAnimationFrame(frame);
-  };
-  const sync = () => {
-    const should = visible && !document.hidden && !reduced;
-    if (should && !running) { running = true; if (!raf) raf = requestAnimationFrame(frame); }
-    else if (!should && running) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
-  };
-  const resize = () => {
-    const r = hero.getBoundingClientRect();
-    w = Math.max(1, Math.round(r.width)); h = Math.max(1, Math.round(r.height));
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build(); draw(reduced ? 0 : performance.now());
-  };
-  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 150); });
-  if ('IntersectionObserver' in window) new IntersectionObserver(en => { visible = en[0].isIntersecting; sync(); }, { threshold: 0 }).observe(hero);
-  document.addEventListener('visibilitychange', sync);
-  resize(); sync();
+  // Disabled in minimal editorial aesthetic
+  return;
 }
 
 function validateConfig() {
@@ -866,36 +1004,20 @@ function validateConfig() {
   return warn;
 }
 
-function initTheme() {
-  const btn = $('#theme-btn'); if (!btn) return;
-  const meta = $('meta[name="theme-color"]'), root = document.documentElement;
-  const apply = (t, persist) => {
-    const dark = t === 'dark';
-    if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
-    btn.setAttribute('aria-pressed', String(dark));
-    btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-    btn.innerHTML = String(icon(dark ? 'sun' : 'moon'));
-    $$('[data-theme-logo]').forEach(img => { img.src = dark ? CONFIG.site.logo.src : CONFIG.site.logo.srcLight; });
-    if (meta) meta.setAttribute('content', dark ? '#070B14' : '#F5F7FB');
-    if (persist) { try { localStorage.setItem('himovation-theme', t); } catch (_) {} }
-    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: t } }));
-  };
-  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light', false);
-  btn.addEventListener('click', () => apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true));
-}
+/* Theme toggle removed — site is dark-only as per redesign plan */
 
 /* ============================ INIT ====================================== */
 function init() {
   document.body.insertAdjacentHTML('afterbegin', SPRITE);
   renderHeader();
   if (IS_HOME) {
-    renderHero(); renderAbout(); renderStats(); renderEvents(); renderPrizes(); renderSchedule();
+    renderHero(); renderMarquee(); renderAbout(); renderStats(); renderEvents(); renderPrizes(); renderSchedule();
     renderWhy(); renderFAQ(); renderRegisterBand(); renderContact();
   } else {
     renderEventPage();
   }
   renderFooter(); applyRegisterLinks();
-  initTheme(); initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initTabs();
+  initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initTabs();
   initAccordion(); initMagnetic(); initForm(); initCanvas();
   if (CONFIG.debug || location.hash === '#debug') validateConfig();
   window.HIMOVATION = { CONFIG, validateConfig };
