@@ -67,6 +67,19 @@ p { margin: 0; }
 :focus-visible { outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: rgb(var(--c-accent) / .35); }
 
+/* ---------- Decorative maths-alphabet face (subset of STIX Two Math, OFL) ----------
+   Used for the hero wordmark (bold script) and "Solve-a-Thon" (double-struck). The real text
+   stays in the page for screen readers and search; see fancy() in site.js. */
+@font-face {
+  font-family: "Fancy Math";
+  src: url("fonts/stix-two-math-fancy.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+  unicode-range: U+002D, U+2102, U+210D, U+2115, U+2119, U+211A, U+211D, U+2124, U+1D4D0-1D503, U+1D538-1D56B, U+1D7D8-1D7E1;
+}
+.fancy { font-family: "Fancy Math", "STIX Two Math", "Cambria Math", "Noto Sans Math", "Segoe UI Symbol", serif; font-weight: 400; letter-spacing: 0; font-synthesis: none; }
+.hero-title .fancy { font-size: .9em; line-height: 1; }
+@media (max-width: 420px) { .hero-title .fancy { font-size: .78em; } }
+
 /* ---------- Typography helpers ---------- */
 .eyebrow { font-family: Sora, system-ui, sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgb(var(--c-accent)); }
 .h2 { font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.06; letter-spacing: -.02em; }

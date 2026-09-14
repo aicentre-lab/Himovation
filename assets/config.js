@@ -14,6 +14,8 @@ const CONFIG = {
   site: {
     name: "HIMOVATION 2026",
     edition: "2026",
+    wordmark: "HIMOVATION",
+    titleStyle: "boldscript",      // hero wordmark drawn in the bold-script maths alphabet (𝓗𝓘𝓜𝓞𝓥𝓐𝓣𝓘𝓞𝓝); set to "" for plain Sora
     eyebrow: "National Technical Festival",
     tagline: "Where Code Meets Combat, Play Meets Purpose",
     url: "https://aicentre-lab.github.io/Himovation/",   // update when the site moves to a university domain
@@ -138,6 +140,7 @@ const CONFIG = {
     {
       id: "hackathon", track: "hackathon", bentoSlot: "a", icon: "code", href: "hackathon.html",
       name: "Solve-a-Thon: AI for SDGs",
+      nameStyle: { text: "Solve-a-Thon", style: "doublestruck" },   // headings show 𝕊𝕠𝕝𝕧𝕖-𝕒-𝕋𝕙𝕠𝕟; remove to use plain text
       subtitle: "National Hackathon · 24 hours",
       blurb: "A continuous 24-hour coding sprint to build AI-powered solutions mapped to the UN Sustainable Development Goals. Online shortlisting first, then the offline finale on campus.",
       format: "Two rounds. Round 1 is online: register, then submit a problem statement in the HIMOVATION 2026 template with a short video description for panel evaluation. Shortlisted teams come to SRHU for the continuous 24-hour build with two progress reviews, mentor support, final presentations and live demos.",

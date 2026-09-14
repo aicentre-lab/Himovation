@@ -44,6 +44,10 @@ The `<title>`, meta description and Open Graph tags in each page's `<head>` are 
 
 To add a download to an event page, drop the file in `assets/downloads/` and list it under that event's `page.downloads`.
 
+## Decorative lettering
+
+The hero wordmark uses the bold-script maths alphabet (𝓗𝓘𝓜𝓞𝓥𝓐𝓣𝓘𝓞𝓝) and "Solve-a-Thon" the double-struck one (𝕊𝕠𝕝𝕧𝕖-𝕒-𝕋𝕙𝕠𝕟), matching the department's PPT template. They are drawn from a small self-hosted subset of STIX Two Math (`assets/fonts/`, SIL Open Font License) while the plain words stay in the page for screen readers and search. Switch off with `site.titleStyle: ""` or by removing `nameStyle` from the hackathon event in `assets/config.js`.
+
 ## Theme
 
 The site is light by default. The sun/moon button in the navbar switches to the dark palette and remembers the choice in the browser. Both palettes are CSS custom properties at the top of the `<style>` block (`:root` for light, `:root[data-theme="dark"]` for dark). The registration band and the footer always use the dark palette (`class="theme-dark"`); remove that class to make them light too.

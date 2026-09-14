@@ -19,6 +19,14 @@ const render = (sel, content) => { const el = $(sel); if (el) el.innerHTML = par
 const teamSizeText = t => t.min === t.max ? `${t.min} ${t.unit}` : `${t.min}–${t.max} ${t.unit}`;
 const feeText = f => f.amount === 0 ? 'Free' : `${fmtINR(f.amount)} / ${f.per}`;
 const trackOf = key => CONFIG.tracks[key] || CONFIG.tracks.common;
+// Maps plain letters to Unicode maths alphabets (the look used in the department's PPT template).
+const FANCY_MAPS = {
+  boldscript: c => { const o = c.charCodeAt(0); if (o >= 65 && o <= 90) return String.fromCodePoint(0x1D4D0 + o - 65); if (o >= 97 && o <= 122) return String.fromCodePoint(0x1D4EA + o - 97); return c; },
+  doublestruck: c => { const bmp = { C: 0x2102, H: 0x210D, N: 0x2115, P: 0x2119, Q: 0x211A, R: 0x211D, Z: 0x2124 }; if (bmp[c]) return String.fromCodePoint(bmp[c]); const o = c.charCodeAt(0); if (o >= 65 && o <= 90) return String.fromCodePoint(0x1D538 + o - 65); if (o >= 97 && o <= 122) return String.fromCodePoint(0x1D552 + o - 97); if (o >= 48 && o <= 57) return String.fromCodePoint(0x1D7D8 + o - 48); return c; },
+};
+// Styled glyphs for sighted users, the real word for assistive tech, search and copy.
+const fancy = (text, style) => FANCY_MAPS[style] ? html`<span class="fancy" aria-hidden="true">${[...text].map(FANCY_MAPS[style]).join('')}</span><span class="sr-only">${text}</span>` : html`${text}`;
+const eventTitle = ev => { const ns = ev.nameStyle; if (!ns || !ev.name.includes(ns.text)) return html`${ev.name}`; const [pre, post] = ev.name.split(ns.text); return html`${pre}${fancy(ns.text, ns.style)}${post}`; };
 const PAGE = document.body.dataset.page || 'home';
 const IS_HOME = PAGE === 'home';
 const homeHref = id => (IS_HOME ? '' : 'index.html') + '#' + id;
@@ -135,7 +143,7 @@ function renderHero() {
         <span aria-hidden="true" class="hidden sm:inline">·</span>
         <span>${o.school} · ${o.university}, Dehradun</span>
       </div>
-      <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
+      <h1 class="hero-title mt-6 reveal" style="--i:1">${s.titleStyle ? fancy(s.wordmark || 'HIMOVATION', s.titleStyle) : (s.wordmark || 'HIMOVATION')} <span class="hero-year">${s.edition}</span></h1>
       <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
       <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
         <li class="chip">${icon('calendar')}${d.display}</li>
@@ -224,7 +232,7 @@ function renderEvents() {
         <span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(ev.icon)}</span>
         <span class="badge"><i></i>${t.label}</span>
       </div>
-      <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${ev.name}</h3>
+      <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${eventTitle(ev)}</h3>
       <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</p>
       <p class="prose-muted mt-4 text-sm ${featured ? 'md:text-base max-w-xl' : ''}">${ev.blurb}</p>
       ${featured ? html`<ul class="mt-5 flex flex-wrap gap-2" aria-label="Themes">${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}</ul>
@@ -265,7 +273,7 @@ function renderPrizes() {
     return html`
     <article class="glass p-6 reveal sm:p-7" style="--track:${t.color}; --i:${i}" aria-labelledby="pz-${ev.id}">
       <div class="flex items-start justify-between gap-4">
-        <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${ev.name}</h3></div>
+        <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${eventTitle(ev)}</h3></div>
         <p class="num whitespace-nowrap text-right text-sm text-muted">Pool<br><span class="text-lg font-bold text-ink">${fmtINR(ev.prizePool)}</span></p>
       </div>
       <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink')}${bar(p1, '7.5rem', 'text-emberink')}${bar(p3, '4.25rem', 'text-ink')}</div>
@@ -397,7 +405,7 @@ function renderEventPage() {
         <div class="mt-8 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:items-end">
           <div class="min-w-0">
             <span class="badge reveal" style="--track:${t.color}; --i:1"><i></i>${t.label}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</span>
-            <h1 id="event-title" class="hero-title mt-4 reveal" style="--i:1; font-size: clamp(2.3rem, 6.5vw, 4.75rem)">${ev.name}</h1>
+            <h1 id="event-title" class="hero-title mt-4 reveal" style="--i:1; font-size: clamp(2.3rem, 6.5vw, 4.75rem)">${eventTitle(ev)}</h1>
             <p class="mt-4 font-display text-lg font-medium text-ink/90 md:text-2xl reveal" style="--i:2">${ev.subtitle}</p>
             <p class="prose-muted mt-5 max-w-2xl text-base md:text-lg reveal" style="--i:3">${ev.blurb}</p>
             <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:4" aria-label="Key details">
@@ -480,7 +488,7 @@ function renderEventPage() {
         <ul class="mt-10 grid gap-4 md:grid-cols-3">${others.map((o, i) => { const ot = trackOf(o.track); return html`
           <li><a class="bento-card h-full reveal" href="${o.href}" style="--track:${ot.color}; --i:${i + 2}">
             <div class="flex items-center justify-between gap-3"><span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(o.icon)}</span><span class="badge"><i></i>${ot.label}</span></div>
-            <h3 class="h3 mt-5 text-lg">${o.name}</h3><p class="prose-muted mt-2 text-sm">${o.blurb}</p>
+            <h3 class="h3 mt-5 text-lg">${eventTitle(o)}</h3><p class="prose-muted mt-2 text-sm">${o.blurb}</p>
             <p class="mt-5 text-sm font-semibold text-accent">Open event page →</p>
           </a></li>`; })}</ul>
       </div>
