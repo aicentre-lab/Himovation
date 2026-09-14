@@ -157,7 +157,7 @@ const CONFIG = {
         dates: "27–28 November 2026",
         when: "Coding starts Day 1 at 11:00 AM and runs continuously until final submission on Day 2 at 10:30 AM.",
         downloads: [
-          { label: "Problem statement template (PPTX)", cta: "Download the template", href: "assets/downloads/HIMOVATION-2026-Solve-a-Thon-Template.pptx", note: "Five slides. Fill it in, export as PDF or PPT, and upload with your short video description in Round 1.", size: "217 KB" },
+          { label: "Solve-a-Thon PPT template", cta: "Download PPT template", href: "assets/downloads/HIMOVATION-2026-Solve-a-Thon-Template.pptx", note: "The official five-slide deck for your Round 1 problem statement. Fill it in, export as PDF or PPT, and upload it with your short video description.", size: "217 KB" },
         ],
         coordinators: [   // from the participant guidelines dated 14.09.2026
           { name: "Dr. Rohit Kanauzia", phone: "8126207090" },
@@ -176,7 +176,7 @@ const CONFIG = {
           "Progress Check Round I at 6:00 PM, overnight coding with mentor visits and technical support, and Progress Check Round II at 8:00 AM on Day 2.",
           "Final submission in the prescribed format and presentations by 10:30 AM, final evaluation and live demonstration until 1:00 PM. Winners are announced at the valedictory.",
         ] },
-        { heading: "The Round 1 template, slide by slide", type: "steps", items: [
+        { heading: "The PPT template, slide by slide", type: "steps", items: [
           "**Title slide.** Problem statement title, theme, team name exactly as on the registration form, and every member's name with affiliation.",
           "**Problem statement.** Identify the key problem and the existing challenges and limitations you are addressing.",
           "**Proposed solution.** A clear explanation of the idea, solution or prototype, how it addresses the problem, and what makes it innovative and unique.",
@@ -202,7 +202,7 @@ const CONFIG = {
           "Separate rest areas are provided for male and female participants. Follow the committee's instructions on their use.",
           "At least 50% of every team must remain present in the Hackathon Arena at all times.",
         ] },
-        { heading: "Downloads", type: "downloads" },
+        { heading: "Download the PPT template", type: "downloads" },
       ],
     },
     {
