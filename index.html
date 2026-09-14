@@ -168,6 +168,7 @@
     .chip-ember { color: rgb(var(--c-ember-ink)); border-color: rgb(var(--c-ember) / .45); background: rgb(var(--c-ember) / .12); }
     .chip-ember svg { color: rgb(var(--c-ember)); }
     .chip-solid { background: rgb(var(--c-raised) / .8); border-color: rgb(var(--c-line) / .08); color: rgb(var(--c-ink)); }
+    .chip-wrap { white-space: normal; line-height: 1.3; text-align: left; max-width: 100%; }
 
     .glass { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.25rem; box-shadow: var(--card-shadow); }
     .glass-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
@@ -336,11 +337,6 @@
     .check li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .6rem; align-items: start; }
     .check svg { width: 1.1rem; height: 1.1rem; color: rgb(var(--c-accent)); margin-top: .15rem; }
 
-    /* ---------- Sponsors ---------- */
-    .slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; border-radius: 1rem; border: 1px dashed rgb(var(--c-line) / .14); background: rgb(var(--c-line) / .02); color: rgb(var(--c-muted) / .7); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: .5rem; }
-    .slot img { max-height: 70%; width: auto; filter: grayscale(1); transition: filter .3s; }
-    .slot:hover img { filter: none; }
-
     /* ---------- Misc ---------- */
     #to-top { position: fixed; right: 1rem; bottom: 1rem; z-index: 45; width: 2.75rem; height: 2.75rem; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: rgb(var(--c-raised) / .9); border: 1px solid rgb(var(--c-line) / .12); color: rgb(var(--c-ink)); backdrop-filter: blur(10px); opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; pointer-events: none; }
     #to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
@@ -438,6 +434,7 @@
             </div>
             <div data-render="glance"></div>
           </div>
+          <div data-render="hosts"></div>
         </div>
       </section>
 
@@ -488,16 +485,8 @@
         </div>
       </section>
 
-      <!-- SPONSORS -->
-      <section id="sponsors" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="sponsors-title">
-        <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <div data-head="sponsors" class="max-w-2xl"></div>
-          <div data-render="sponsors" class="mt-12"></div>
-        </div>
-      </section>
-
       <!-- FAQ -->
-      <section id="faq" class="relative bg-ground py-20 md:py-28" aria-labelledby="faq-title">
+      <section id="faq" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="faq-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
             <div data-head="faq"></div>
@@ -532,7 +521,7 @@
 
             <div class="glass p-6 sm:p-8">
               <h3 class="h3">Send us a message</h3>
-              <p class="mt-2 text-sm text-muted">Registration queries, sponsorship, school participation or anything else. We reply within two working days.</p>
+              <p class="mt-2 text-sm text-muted">Registration queries, event rules, school participation or anything else. We reply within two working days.</p>
               <form id="contact-form" class="mt-6 flex flex-col gap-5" novalidate>
                 <div class="grid gap-5 sm:grid-cols-2">
                   <div class="field">
@@ -656,7 +645,7 @@
       { id: "events",   label: "Events" },
       { id: "schedule", label: "Schedule" },
       { id: "prizes",   label: "Prizes" },
-      { id: "sponsors", label: "Sponsors" },
+      { id: "about",    label: "About" },
       { id: "faq",      label: "FAQ" },
       { id: "contact",  label: "Contact" },
     ],
@@ -674,7 +663,6 @@
       prizes:   { eyebrow: "Prize pool", heading: "₹1,95,000 on the line.", intro: "Cash prizes and Certificates of Achievement in every event, presented at the valedictory ceremony on 28 November." },
       schedule: { eyebrow: "Schedule", heading: "Two days, running in parallel.", intro: "The hackathon runs continuously from Day 1 morning to Day 2 noon. Robo-War, E-Sports and the Exhibition run alongside it. Filter by track to see your day." },
       why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
-      sponsors: { eyebrow: "Sponsors & partners", heading: "Put your brand in front of 500+ builders.", intro: "We invite technology companies, gaming brands and robotics vendors to partner with HIMOVATION 2026. Sponsorship tiers cover arena branding, stage mentions, stalls and digital visibility." },
       faq:      { eyebrow: "FAQ", heading: "Questions, answered.", intro: "Everything drawn from the official participant guidelines. Anything not confirmed yet is marked to be announced." },
       register: { eyebrow: "Registrations open", heading: "Seats are limited and allotted first come, first served.", intro: "Registration is confirmed only after verification by the Organising Committee and payment of the applicable fee. Bring your institutional ID on the day." },
       contact:  { eyebrow: "Contact", heading: "Talk to the organising team.", intro: "Faculty and student coordinators for each event will be listed here as they are confirmed." },
@@ -694,6 +682,31 @@
         { label: "Footfall",     value: "500–600 expected" },
         { label: "Events",       value: "4 parallel tracks" },
       ],
+      // "The hosts" block under About. Verify years and programme wording against the university's official profile before launch.
+      hosts: {
+        eyebrow: "The hosts",
+        heading: "A university in the foothills, and its school of technology.",
+        cards: [
+          {
+            id: "srhu", eyebrow: "The university", title: "Swami Rama Himalayan University", showLogo: true,
+            paragraphs: [
+              "Swami Rama Himalayan University (SRHU) is a **NAAC A+ accredited** university at Jolly Grant, Dehradun, in the foothills of the Himalayas. It carries forward the work of the Himalayan Institute Hospital Trust founded by Swami Rama in 1989, and was established as a university in 2012 under an Act of the Government of Uttarakhand.",
+              "One campus brings together medicine, nursing, management, yoga sciences, biosciences and science & technology, alongside the Himalayan Hospital, a tertiary-care teaching hospital serving Uttarakhand and neighbouring states. The university's motto, **Life ka Compass**, sums up its approach: education that gives students direction as well as degrees.",
+            ],
+            facts: ["NAAC A+", "Established 2012", "Jolly Grant, Dehradun", "Multi-disciplinary campus"],
+            link: { label: "srhu.edu.in", href: "https://srhu.edu.in" },
+          },
+          {
+            id: "sst", eyebrow: "The school", title: "School of Science & Technology",
+            paragraphs: [
+              "The School of Science & Technology (SST) is SRHU's home for engineering, computing and the applied sciences. It offers undergraduate, postgraduate and doctoral programmes built around laboratory work, live projects, hackathons and industry exposure, on a campus where technology students share space with medicine, management and the life sciences.",
+              "Its **Department of Computer Science & Engineering** organises HIMOVATION. The department runs the national hackathon on AI for the Sustainable Development Goals that the festival grew out of, mentors student projects with incubation potential, and builds outreach with schools across Dehradun and nearby districts through events like the School Level Project Exhibition.",
+            ],
+            facts: ["Engineering & computing", "Applied sciences", "UG · PG · PhD", "Dept. of CSE organises HIMOVATION"],
+            link: { label: "Programmes at SRHU", href: "https://srhu.edu.in" },
+          },
+        ],
+      },
     },
 
     stats: [
@@ -897,17 +910,6 @@
       { icon: "school",  title: "Schools meet the university",     text: "Students of Classes 8–12 exhibit alongside university teams, meet SRHU faculty and see a working campus of science and technology." },
     ],
 
-    sponsors: {
-      pitch: "Technology companies, gaming brands and robotics vendors: reach 500+ participants and visitors over two days on a live campus. Arena naming, stage mentions, stalls, product demos and digital visibility are available across tiers.",
-      tiers: [
-        { id: "title",    label: "Title Sponsor", slots: 1, size: "lg", sponsors: [] },
-        { id: "gold",     label: "Gold",          slots: 3, size: "md", sponsors: [] },
-        { id: "silver",   label: "Silver",        slots: 4, size: "sm", sponsors: [] },
-        { id: "partners", label: "Partners",      slots: 6, size: "sm", sponsors: [] },   // { name, logo: "assets/sponsors/x.png", url }
-      ],
-      cta: { label: "Become a Sponsor", email: "himovation@srhu.edu.in", brochure: null },
-    },
-
     faq: [
       { q: "Who can participate, and in how many events?",
         a: ["The Hackathon, Robo-War and E-Sports are open to eligible students participating through their institutions; Robo-War also admits robotics enthusiasts as permitted by the organisers. The School Project Exhibition is for students of Classes 8 to 12 from Dehradun and nearby districts.",
@@ -942,7 +944,7 @@
         { role: "Faculty Coordinator",  name: "To be announced", phone: "", email: "" },
         { role: "Student Coordinator",  name: "To be announced", phone: "", email: "" },
       ],
-      form: { subjects: ["Registration query", "Hackathon", "Robo-War", "E-Sports", "School Exhibition", "Sponsorship", "Other"], endpoint: "" },
+      form: { subjects: ["Registration query", "Hackathon", "Robo-War", "E-Sports", "School Exhibition", "Other"], endpoint: "" },
     },
 
     social: [
@@ -1082,6 +1084,7 @@
 
   function renderAbout() {
     renderHead('about');
+    renderHosts();
     render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted text-base md:text-lg ${i ? 'mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
     const o = CONFIG.site.organizer;
     render('[data-render="glance"]', html`
@@ -1094,6 +1097,26 @@
           <p class="font-medium text-ink">${o.dept}</p>
           <p>${o.school}, ${o.university}</p>
           <p>${o.city}</p>
+        </div>
+      </div>`);
+  }
+
+  function renderHosts() {
+    const h = CONFIG.about.hosts; if (!h) return;
+    render('[data-render="hosts"]', html`
+      <div class="mt-16 border-t hairline pt-14">
+        <p class="eyebrow reveal">${h.eyebrow}</p>
+        <h3 class="h2 mt-3 max-w-3xl reveal" style="--i:1; font-size: clamp(1.6rem, 3vw, 2.4rem)">${h.heading}</h3>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          ${h.cards.map((c, i) => html`
+          <article class="glass flex flex-col p-6 sm:p-8 reveal" style="--i:${i + 2}" aria-labelledby="host-${c.id}">
+            ${c.showLogo ? html`<span class="logo-plate mb-6" style="height:4.5rem"><img src="${CONFIG.site.logo.srcLight}" data-theme-logo alt="${CONFIG.site.logo.alt}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="wordmark" hidden>${CONFIG.site.logo.fallbackText}</span></span>` : ''}
+            <p class="eyebrow">${c.eyebrow}</p>
+            <h4 id="host-${c.id}" class="h3 mt-2 text-xl md:text-2xl">${c.title}</h4>
+            <div class="prose-muted mt-4 grid gap-4 text-sm md:text-base">${c.paragraphs.map(t => html`<p>${md(t)}</p>`)}</div>
+            <ul class="mt-6 flex flex-wrap gap-2" aria-label="Key facts">${c.facts.map(f => html`<li class="chip chip-solid chip-wrap">${f}</li>`)}</ul>
+            ${c.link ? html`<p class="mt-auto pt-6"><a class="link inline-flex items-center gap-1.5 text-sm font-medium" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ${icon('external', 'h-4 w-4')}<span class="sr-only"> (opens in new tab)</span></a></p>` : ''}
+          </article>`)}
         </div>
       </div>`);
   }
@@ -1248,29 +1271,6 @@
     renderHead('why');
     render('[data-render="why"]', html`<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">${CONFIG.why.map((w, i) => html`
       <li class="glass p-6 reveal" style="--i:${i}"><span class="icon-tile">${icon(w.icon)}</span><h3 class="h3 mt-5 text-lg">${w.title}</h3><p class="prose-muted mt-2 text-sm">${w.text}</p></li>`)}</ul>`);
-  }
-
-  const TIER_GRID = { lg: 'grid-cols-1 sm:max-w-sm', md: 'grid-cols-1 sm:grid-cols-3', sm: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' };
-  function renderSponsors() {
-    renderHead('sponsors');
-    const sp = CONFIG.sponsors, mail = `mailto:${sp.cta.email}?subject=${encodeURIComponent('Sponsorship enquiry – HIMOVATION 2026')}`;
-    render('[data-render="sponsors"]', html`
-      <div class="grid gap-10">
-        ${sp.tiers.map((t, ti) => html`<div class="reveal" style="--i:${ti}">
-          <div class="flex items-baseline gap-3"><h3 class="h3 text-base">${t.label}</h3><span class="text-xs text-muted">${t.slots} ${t.slots === 1 ? 'slot' : 'slots'}</span></div>
-          <ul class="mt-4 grid gap-3 ${TIER_GRID[t.size] || TIER_GRID.sm}">
-            ${Array.from({ length: t.slots }, (_, i) => { const s = t.sponsors[i]; return s
-              ? html`<li class="slot">${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener" class="flex h-full w-full items-center justify-center">${s.logo ? html`<img src="${s.logo}" alt="${s.name}" loading="lazy">` : s.name}</a>` : (s.logo ? html`<img src="${s.logo}" alt="${s.name}" loading="lazy">` : s.name)}</li>`
-              : html`<li class="slot" aria-hidden="true">Your logo here</li>`; })}
-          </ul></div>`)}
-        <div class="glass flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-center md:justify-between reveal">
-          <div class="max-w-2xl"><p class="eyebrow">Partner with us</p><p class="prose-muted mt-3 text-sm md:text-base">${sp.pitch}</p></div>
-          <div class="flex flex-col gap-3 sm:flex-row md:flex-col lg:flex-row">
-            <a class="btn btn-primary" href="${mail}" data-magnetic><span class="btn-inner">${sp.cta.label} ${icon('mail')}</span></a>
-            ${sp.cta.brochure ? html`<a class="btn btn-ghost" href="${sp.cta.brochure}" target="_blank" rel="noopener"><span class="btn-inner">Sponsor deck ${icon('external')}</span></a>` : ''}
-          </div>
-        </div>
-      </div>`);
   }
 
   function renderFAQ() {
@@ -1732,7 +1732,7 @@
   /* ============================ INIT ====================================== */
   function init() {
     renderNav(); renderHero(); renderAbout(); renderStats(); renderEvents(); renderPrizes(); renderSchedule();
-    renderWhy(); renderSponsors(); renderFAQ(); renderRegisterBand(); renderContact(); renderFooter();
+    renderWhy(); renderFAQ(); renderRegisterBand(); renderContact(); renderFooter();
     initTheme(); initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initModal(); initTabs();
     initAccordion(); initMagnetic(); initForm(); initCanvas();
     if (CONFIG.debug || location.hash === '#debug') validateConfig();

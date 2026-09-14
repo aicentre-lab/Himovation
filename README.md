@@ -21,7 +21,7 @@ Open `index.html` and find the block between `CONFIG-START` and `CONFIG-END` nea
 | Event formats, fees, team sizes, prizes, rules, evaluation criteria | `events[]` (modal text comes from `sections[]`) |
 | Two-day schedule and parallel tracks | `schedule.days[].rows[]` (`tracks` uses keys from `tracks`) |
 | FAQ, Why participate, About copy | `faq[]`, `why[]`, `about` |
-| Sponsor tiers and logos | `sponsors.tiers[].sponsors[]` → `{ name, logo: "assets/sponsors/x.png", url }` |
+| About SRHU and SST cards | `about.hosts.cards[]` (verify years and programme wording with the university) |
 | Coordinators, email, phone, form topics | `contact` |
 | Social links, footer lines | `social[]`, `footer` |
 
