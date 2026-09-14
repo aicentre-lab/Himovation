@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#070B14">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F7FB">
+  <script>(function(){try{var t=localStorage.getItem("himovation-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
   <title>HIMOVATION 2026 · SRHU Dehradun</title>
   <meta name="description" content="HIMOVATION 2026, the national technical festival of the Department of CSE, School of Science & Technology, Swami Rama Himalayan University, Dehradun. 27–28 November 2026. National Hackathon on AI for SDGs, Robo-War, E-Sports and a School Project Exhibition. ₹1,95,000+ in prizes.">
   <link rel="canonical" href="https://aicentre-lab.github.io/Himovation/">
@@ -31,7 +32,7 @@
       theme: {
         extend: {
           colors: {
-            base:    'rgb(var(--c-base) / <alpha-value>)',
+            ground:  'rgb(var(--c-base) / <alpha-value>)',   // named 'ground', not 'base', so Tailwind's text-base stays a font size
             surface: 'rgb(var(--c-surface) / <alpha-value>)',
             raised:  'rgb(var(--c-raised) / <alpha-value>)',
             brand:   'rgb(var(--c-brand) / <alpha-value>)',
@@ -40,6 +41,9 @@
             line:    'rgb(var(--c-line) / <alpha-value>)',
             accent:  'rgb(var(--c-accent) / <alpha-value>)',
             ember:   'rgb(var(--c-ember) / <alpha-value>)',
+            emberink:'rgb(var(--c-ember-ink) / <alpha-value>)',
+            ok:      'rgb(var(--c-ok) / <alpha-value>)',
+            err:     'rgb(var(--c-err) / <alpha-value>)',
           },
           fontFamily: {
             display: ['Sora', 'system-ui', 'sans-serif'],
@@ -55,23 +59,58 @@
   </script>
 
   <style>
-    /* ---------- Design tokens (single, deliberate dark theme) ---------- */
+    /* ---------- Design tokens: light theme is the default ---------- */
     :root {
-      --c-base: 7 11 20;        /* #070B14 midnight */
-      --c-surface: 11 21 38;    /* #0B1526 Prussian-tinted band */
-      --c-raised: 18 33 66;     /* #122142 chips, inputs */
+      --c-base: 245 247 251;    /* #F5F7FB cool off-white page */
+      --c-surface: 255 255 255; /* white bands and cards */
+      --c-raised: 232 237 245;  /* #E8EDF5 chips, tabs, inputs */
       --c-brand: 13 54 104;     /* #0D3668 SRHU Prussian Blue */
+      --c-ink: 15 26 46;        /* #0F1A2E text */
+      --c-muted: 75 90 115;     /* #4B5A73 secondary text (7:1 on white) */
+      --c-line: 15 23 42;       /* hairlines at low alpha */
+      --c-accent: 3 105 161;    /* #0369A1 deep sky, links and eyebrows */
+      --c-ember: 245 165 36;    /* #F5A524 warm CTA fill */
+      --c-ember-ink: 180 83 9;  /* #B45309 warm text on light */
+      --c-ok: 4 120 87;         /* #047857 */
+      --c-err: 185 28 28;       /* #B91C1C */
+      --card-bg: #FFFFFF;
+      --card-border: rgb(15 23 42 / .08);
+      --card-shadow: 0 1px 2px rgb(15 23 42 / .04), 0 10px 28px -14px rgb(15 23 42 / .14);
+      --input-bg: #FFFFFF;
+      --backdrop: rgb(15 23 42 / .45);
+      --shadow-strong: rgb(15 23 42 / .16);
+      --hero-tint: rgb(13 54 104 / .10);
+      --hero-grad: linear-gradient(100deg, #0D3668 0%, #0369A1 50%, #D97706 100%);
+      --header-h: 4.25rem;
+      color-scheme: light;
+    }
+    /* Dark theme: toggled from the navbar, and used permanently on .theme-dark sections (footer, registration band) */
+    :root[data-theme="dark"], .theme-dark {
+      --c-base: 7 11 20;        /* #070B14 midnight */
+      --c-surface: 11 21 38;    /* #0B1526 */
+      --c-raised: 18 33 66;     /* #122142 */
       --c-ink: 230 237 247;     /* #E6EDF7 */
       --c-muted: 154 169 191;   /* #9AA9BF */
-      --c-line: 255 255 255;    /* hairlines at low alpha */
+      --c-line: 255 255 255;
       --c-accent: 56 189 248;   /* #38BDF8 glacier cyan */
-      --c-ember: 245 165 36;    /* #F5A524 warm CTA */
-      --header-h: 4.25rem;
+      --c-ember-ink: 245 165 36;
+      --c-ok: 110 231 183;
+      --c-err: 252 165 165;
+      --card-bg: rgb(255 255 255 / .035);
+      --card-border: rgb(255 255 255 / .08);
+      --card-shadow: none;
+      --input-bg: rgb(18 33 66 / .55);
+      --backdrop: rgb(7 11 20 / .72);
+      --shadow-strong: rgb(0 0 0 / .8);
+      --hero-tint: rgb(13 54 104 / .35);
+      --hero-grad: linear-gradient(100deg, #38BDF8 0%, #7dd3fc 45%, #F5A524 100%);
       color-scheme: dark;
     }
+    .theme-dark { color: rgb(var(--c-ink)); }
     html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1rem); -webkit-text-size-adjust: 100%; }
     body {
-      background: #070B14; color: #E6EDF7;
+      background: #F5F7FB; color: #0F1A2E;
+      background: rgb(var(--c-base)); color: rgb(var(--c-ink));
       font-family: Inter, system-ui, sans-serif; font-size: 1rem; line-height: 1.5;
       margin: 0; min-height: 100vh; overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -126,22 +165,25 @@
       border: 1px solid rgb(var(--c-line) / .1); background: rgb(var(--c-line) / .04); white-space: nowrap;
     }
     .chip svg { width: .95rem; height: .95rem; flex: none; color: rgb(var(--c-accent)); }
-    .chip-ember { color: #ffd28a; border-color: rgb(var(--c-ember) / .35); background: rgb(var(--c-ember) / .1); }
+    .chip-ember { color: rgb(var(--c-ember-ink)); border-color: rgb(var(--c-ember) / .45); background: rgb(var(--c-ember) / .12); }
     .chip-ember svg { color: rgb(var(--c-ember)); }
     .chip-solid { background: rgb(var(--c-raised) / .8); border-color: rgb(var(--c-line) / .08); color: rgb(var(--c-ink)); }
 
-    .glass { background: rgb(var(--c-line) / .035); border: 1px solid rgb(var(--c-line) / .08); border-radius: 1.25rem; }
+    .glass { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.25rem; box-shadow: var(--card-shadow); }
     .glass-blur { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
     .hairline { border-color: rgb(var(--c-line) / .08); }
     .dot { display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; background: var(--track, rgb(var(--c-accent))); box-shadow: 0 0 0 3px color-mix(in srgb, var(--track, #38BDF8) 22%, transparent); flex: none; }
 
+    .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: .75rem; border: 1px solid var(--card-border); background: var(--card-bg); color: rgb(var(--c-ink)); transition: border-color .2s, background-color .2s; }
+    .icon-btn:hover { border-color: rgb(var(--c-accent) / .6); }
+    .icon-btn svg { width: 1.2rem; height: 1.2rem; }
     .icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: .9rem; background: rgb(var(--c-accent) / .1); color: rgb(var(--c-accent)); border: 1px solid rgb(var(--c-accent) / .18); }
     .icon-tile svg { width: 1.35rem; height: 1.35rem; }
 
     /* ---------- Header / nav ---------- */
     #progress { position: fixed; top: 0; left: 0; z-index: 60; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, rgb(var(--c-accent)), rgb(var(--c-ember))); pointer-events: none; }
     #site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--header-h); transition: background-color .35s, border-color .35s, box-shadow .35s; border-bottom: 1px solid transparent; }
-    #site-header.is-scrolled { background: rgb(var(--c-base) / .78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: rgb(var(--c-line) / .07); box-shadow: 0 10px 40px -20px rgba(0,0,0,.8); }
+    #site-header.is-scrolled { background: rgb(var(--c-base) / .78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: rgb(var(--c-line) / .07); box-shadow: 0 10px 40px -20px var(--shadow-strong); }
     .nav-link { position: relative; padding: .5rem .15rem; font-size: .9rem; font-weight: 500; color: rgb(var(--c-muted)); text-decoration: none; transition: color .2s; }
     .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .1rem; height: 2px; border-radius: 2px; background: rgb(var(--c-accent)); transform: scaleX(0); transform-origin: 0 50%; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
     .nav-link:hover { color: rgb(var(--c-ink)); }
@@ -168,14 +210,14 @@
     #hero { min-height: 100vh; min-height: 100svh; }
     #ridge-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .hero-vignette { position: absolute; inset: 0; background:
-      radial-gradient(70% 55% at 50% 40%, rgb(var(--c-brand) / .35), transparent 70%),
+      radial-gradient(70% 55% at 50% 40%, var(--hero-tint), transparent 70%),
       radial-gradient(60% 40% at 50% 100%, rgb(var(--c-base) / .95), transparent 70%),
       linear-gradient(to bottom, rgb(var(--c-base) / .55), rgb(var(--c-base) / .1) 30%, rgb(var(--c-base) / .85)); }
     .hero-grid { position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(rgb(var(--c-line) / .05) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-line) / .05) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(70% 60% at 50% 50%, #000 30%, transparent 100%); -webkit-mask-image: radial-gradient(70% 60% at 50% 50%, #000 30%, transparent 100%); }
     .hero-title { font-family: Sora, system-ui, sans-serif; font-weight: 800; font-size: clamp(2.9rem, 10.5vw, 8rem); line-height: .92; letter-spacing: -.035em; }
-    .hero-year { background: linear-gradient(100deg, rgb(var(--c-accent)) 0%, #7dd3fc 45%, rgb(var(--c-ember)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-year { background: var(--hero-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
-    .cd-tile { text-align: center; padding: .7rem .25rem .6rem; border-radius: .9rem; background: rgb(var(--c-line) / .04); border: 1px solid rgb(var(--c-line) / .08); }
+    .cd-tile { text-align: center; padding: .7rem .25rem .6rem; border-radius: .9rem; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); }
     .cd-num { display: block; font-family: Sora, system-ui, sans-serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
     .cd-label { display: block; margin-top: .35rem; font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--c-muted)); }
     .live-dot { width: .6rem; height: .6rem; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 0 rgba(52,211,153,.6); animation: livepulse 1.8s ease-out infinite; }
@@ -210,8 +252,8 @@
     .bento-card {
       position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column;
       padding: 1.5rem; border-radius: 1.25rem; cursor: pointer;
-      background: linear-gradient(160deg, rgb(var(--c-line) / .05), rgb(var(--c-line) / .02));
-      border: 1px solid rgb(var(--c-line) / .08);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border); box-shadow: var(--card-shadow);
       transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;
     }
     .bento-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--track), transparent 70%); opacity: .7; }
@@ -240,10 +282,10 @@
     .tl-row { position: relative; padding-left: 2.6rem; transition: opacity .25s; }
     .tl-row.is-dim { opacity: .28; }
     .tl-node { position: absolute; left: calc(.9rem - 5px); top: 1.15rem; width: 12px; height: 12px; border-radius: 50%; background: var(--track); box-shadow: 0 0 0 4px rgb(var(--c-base)), 0 0 0 6px color-mix(in srgb, var(--track) 30%, transparent); }
-    .tl-card { position: relative; padding: .9rem 1.1rem; border-radius: 1rem; background: rgb(var(--c-line) / .035); border: 1px solid rgb(var(--c-line) / .08); border-left: 2px solid var(--track); }
+    .tl-card { position: relative; padding: .9rem 1.1rem; border-radius: 1rem; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); border-left: 2px solid var(--track); }
     .tl-row.is-milestone .tl-card { background: rgb(var(--c-ember) / .07); border-color: rgb(var(--c-ember) / .25); border-left-color: rgb(var(--c-ember)); }
     .tl-time { font-family: Sora, system-ui, sans-serif; font-variant-numeric: tabular-nums; font-size: .75rem; font-weight: 600; letter-spacing: .04em; color: rgb(var(--c-accent)); }
-    .tl-row.is-milestone .tl-time { color: rgb(var(--c-ember)); }
+    .tl-row.is-milestone .tl-time { color: rgb(var(--c-ember-ink)); }
     .badge { display: inline-flex; align-items: center; gap: .35rem; font-size: .7rem; font-weight: 500; color: rgb(var(--c-muted)); }
     .badge i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--track); display: inline-block; }
     @media (min-width: 768px) {
@@ -255,7 +297,7 @@
       .tl-row + .tl-row.is-left { margin-top: .9rem; }
       .tl-row.is-left .tl-node { left: auto; right: -6px; }
       .tl-row.is-right .tl-node { left: -6px; }
-      .tl-row.is-left .tl-card { border-left: 1px solid rgb(var(--c-line) / .08); border-right: 2px solid var(--track); }
+      .tl-row.is-left .tl-card { border-left: 1px solid var(--card-border); border-right: 2px solid var(--track); }
       .tl-row.is-milestone.is-left .tl-card { border-left-color: rgb(var(--c-ember) / .25); border-right-color: rgb(var(--c-ember)); }
     }
 
@@ -270,19 +312,19 @@
     /* ---------- Contact form ---------- */
     .field { display: flex; flex-direction: column; gap: .4rem; }
     .field label { font-size: .85rem; font-weight: 500; color: rgb(var(--c-ink)); }
-    .input { width: 100%; min-height: 2.9rem; padding: .7rem .9rem; border-radius: .75rem; background: rgb(var(--c-raised) / .55); border: 1px solid rgb(var(--c-line) / .1); color: rgb(var(--c-ink)); font: inherit; transition: border-color .2s, box-shadow .2s; }
+    .input { width: 100%; min-height: 2.9rem; padding: .7rem .9rem; border-radius: .75rem; background: var(--input-bg); border: 1px solid rgb(var(--c-line) / .14); color: rgb(var(--c-ink)); font: inherit; transition: border-color .2s, box-shadow .2s; }
     .input::placeholder { color: rgb(var(--c-muted) / .7); }
     .input:focus { outline: none; border-color: rgb(var(--c-accent) / .7); box-shadow: 0 0 0 3px rgb(var(--c-accent) / .18); }
-    .input[aria-invalid="true"] { border-color: #f87171; }
-    .field-error { font-size: .8rem; color: #fca5a5; }
+    .input[aria-invalid="true"] { border-color: rgb(var(--c-err)); }
+    .field-error { font-size: .8rem; color: rgb(var(--c-err)); }
     select.input { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239AA9BF' stroke-width='2' viewBox='0 0 24 24'><path d='m6 9 6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right .8rem center; padding-right: 2.4rem; }
-    select.input option { background: #0B1526; color: #E6EDF7; }
+    select.input option { background: rgb(var(--c-surface)); color: rgb(var(--c-ink)); }
 
     /* ---------- Modal ---------- */
     dialog#event-modal { position: fixed; inset: 0; width: 100%; height: 100%; max-width: 100vw; max-height: 100vh; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; display: none; }
     dialog#event-modal[open] { display: flex; align-items: flex-end; justify-content: center; }
-    dialog#event-modal::backdrop { background: rgb(7 11 20 / .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .modal-panel { width: 100%; max-height: 92vh; max-height: 92svh; display: flex; flex-direction: column; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-line) / .1); border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -20px 80px -20px rgba(0,0,0,.8); transform: translateY(28px); opacity: 0; transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .25s; }
+    dialog#event-modal::backdrop { background: var(--backdrop); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .modal-panel { width: 100%; max-height: 92vh; max-height: 92svh; display: flex; flex-direction: column; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-line) / .1); border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -20px 80px -20px var(--shadow-strong); transform: translateY(28px); opacity: 0; transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .25s; }
     dialog.is-open .modal-panel { transform: none; opacity: 1; }
     @media (min-width: 640px) {
       dialog#event-modal[open] { align-items: center; padding: 1.5rem; }
@@ -296,7 +338,7 @@
 
     /* ---------- Sponsors ---------- */
     .slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; border-radius: 1rem; border: 1px dashed rgb(var(--c-line) / .14); background: rgb(var(--c-line) / .02); color: rgb(var(--c-muted) / .7); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: .5rem; }
-    .slot img { max-height: 70%; width: auto; filter: grayscale(1) brightness(1.2); transition: filter .3s; }
+    .slot img { max-height: 70%; width: auto; filter: grayscale(1); transition: filter .3s; }
     .slot:hover img { filter: none; }
 
     /* ---------- Misc ---------- */
@@ -317,7 +359,7 @@
     }
   </style>
 </head>
-<body class="bg-base text-ink font-sans antialiased">
+<body class="bg-ground text-ink font-sans antialiased">
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- SVG sprite: Himalayan ridge divider + contour pattern -->
@@ -344,7 +386,7 @@
     <nav class="mx-auto flex h-full max-w-wrap items-center justify-between gap-4 px-5 sm:px-8" aria-label="Primary">
       <a href="#hero" class="flex items-center gap-3 rounded-lg" aria-label="HIMOVATION 2026 home">
         <span class="logo-plate">
-          <img src="assets/srhu-logo-dark.png" alt="Swami Rama Himalayan University, NAAC A+ accredited" width="352" height="333" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <img src="assets/srhu-logo-light.png" data-theme-logo alt="Swami Rama Himalayan University, NAAC A+ accredited" width="352" height="333" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
           <span class="wordmark" hidden>SRHU</span>
         </span>
         <span class="hidden flex-col leading-tight md:flex">
@@ -355,6 +397,7 @@
       <ul class="hidden items-center gap-6 lg:flex" data-render="nav"></ul>
       <div class="flex items-center gap-2">
         <a class="btn btn-primary btn-sm hidden sm:inline-flex" data-register data-magnetic><span class="btn-inner">Register</span></a>
+        <button id="theme-btn" class="icon-btn" type="button" aria-label="Switch to dark theme" aria-pressed="false"></button>
         <button id="menu-btn" class="hamburger lg:hidden" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -375,7 +418,7 @@
     <main id="main" tabindex="-1">
 
       <!-- HERO -->
-      <section id="hero" class="relative flex items-center overflow-hidden bg-base" aria-label="HIMOVATION 2026">
+      <section id="hero" class="relative flex items-center overflow-hidden bg-ground" aria-label="HIMOVATION 2026">
         <canvas id="ridge-canvas" aria-hidden="true"></canvas>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-vignette" aria-hidden="true"></div>
@@ -386,7 +429,7 @@
       </section>
 
       <!-- ABOUT -->
-      <section id="about" class="relative bg-base py-20 md:py-28" aria-labelledby="about-title">
+      <section id="about" class="relative bg-ground py-20 md:py-28" aria-labelledby="about-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
             <div>
@@ -406,7 +449,7 @@
       </section>
 
       <!-- EVENTS -->
-      <section id="events" class="relative bg-base py-20 md:py-28" aria-labelledby="events-title">
+      <section id="events" class="relative bg-ground py-20 md:py-28" aria-labelledby="events-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="events" class="max-w-2xl"></div>
           <div data-render="events" class="mt-12"></div>
@@ -417,7 +460,7 @@
       <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
 
       <!-- PRIZES -->
-      <section id="prizes" class="relative bg-base py-20 md:py-28" aria-labelledby="prizes-title">
+      <section id="prizes" class="relative bg-ground py-20 md:py-28" aria-labelledby="prizes-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div data-head="prizes" class="max-w-2xl"></div>
@@ -438,7 +481,7 @@
       <svg class="divider flip" aria-hidden="true"><use href="#ridge"/></svg>
 
       <!-- WHY PARTICIPATE -->
-      <section id="why" class="relative bg-base py-20 md:py-28" aria-labelledby="why-title">
+      <section id="why" class="relative bg-ground py-20 md:py-28" aria-labelledby="why-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="why" class="max-w-2xl"></div>
           <div data-render="why" class="mt-12"></div>
@@ -454,7 +497,7 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="relative bg-base py-20 md:py-28" aria-labelledby="faq-title">
+      <section id="faq" class="relative bg-ground py-20 md:py-28" aria-labelledby="faq-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
             <div data-head="faq"></div>
@@ -464,14 +507,14 @@
       </section>
 
       <!-- REGISTER CTA BAND -->
-      <section id="register" class="relative overflow-hidden border-y hairline bg-surface py-20 md:py-28" aria-labelledby="register-title">
+      <section id="register" class="theme-dark relative overflow-hidden border-y hairline bg-surface py-20 md:py-28" aria-labelledby="register-title">
         <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
         <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 80% at 50% 50%, rgb(var(--c-brand) / .45), transparent 70%)" aria-hidden="true"></div>
         <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8" data-render="register"></div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="relative bg-base py-20 md:py-28" aria-labelledby="contact-title">
+      <section id="contact" class="relative bg-ground py-20 md:py-28" aria-labelledby="contact-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="contact" class="max-w-2xl"></div>
           <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
@@ -536,7 +579,7 @@
       </section>
     </main>
 
-    <footer class="relative border-t hairline bg-surface" aria-labelledby="footer-title">
+    <footer class="theme-dark relative border-t hairline bg-surface" aria-labelledby="footer-title">
       <h2 id="footer-title" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-wrap px-5 py-14 sm:px-8" data-render="footer"></div>
     </footer>
@@ -661,11 +704,11 @@
     ],
 
     tracks: {
-      hackathon:  { label: "Hackathon",  color: "#38BDF8" },
-      robowar:    { label: "Robo-War",   color: "#F5A524" },
-      esports:    { label: "E-Sports",   color: "#A78BFA" },
-      exhibition: { label: "Exhibition", color: "#34D399" },
-      common:     { label: "All events", color: "#9AA9BF" },
+      hackathon:  { label: "Hackathon",  color: "#0EA5E9" },   // mid-tone colours that read on both light and dark
+      robowar:    { label: "Robo-War",   color: "#F59E0B" },
+      esports:    { label: "E-Sports",   color: "#8B5CF6" },
+      exhibition: { label: "Exhibition", color: "#10B981" },
+      common:     { label: "All events", color: "#64748B" },
     },
 
     events: [
@@ -968,6 +1011,8 @@
     ticket: '<path d="M2 9a3 3 0 0 1 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 1 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 17v2M13 11v2"/>',
     info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
     sparkle: '<path d="m12 3 1.9 5.6 5.6 1.9-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
   };
   const icon = (name, cls = '') => raw(`<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[name] || ICONS.sparkle}</svg>`);
 
@@ -1082,7 +1127,7 @@
           <span class="badge"><i></i>${t.label}</span>
         </div>
         <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${ev.name}</h3>
-        <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-emerald-400/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-emerald-300">Free</span>` : ''}</p>
+        <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</p>
         <p class="prose-muted mt-4 text-sm ${featured ? 'md:text-base max-w-xl' : ''}">${ev.blurb}</p>
         ${featured ? html`<ul class="mt-5 flex flex-wrap gap-2" aria-label="Themes">${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}</ul>
         <div class="mt-7 grid gap-3 sm:grid-cols-[1.2fr_1fr]">
@@ -1090,7 +1135,7 @@
             <li class="step"><i>1</i><span class="text-sm"><span class="font-semibold">Round 1, online.</span> <span class="text-muted">Register and submit a problem statement in the HIMOVATION template. Panel shortlists teams.</span></span></li>
             <li class="step"><i>2</i><span class="text-sm"><span class="font-semibold">Round 2, on campus.</span> <span class="text-muted">24 hours of building with two progress checks, mentor visits and a live demo.</span></span></li>
           </ol>
-          <div class="grid grid-cols-3 gap-2 self-start">${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-base/60 px-2 py-2.5 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-sm font-bold ${pi === 0 ? 'text-ember' : ''}">${fmtINR(p.amount)}</p></div>`)}</div>
+          <div class="grid grid-cols-3 gap-2 self-start">${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-ground/60 px-2 py-2.5 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-sm font-bold ${pi === 0 ? 'text-emberink' : ''}">${fmtINR(p.amount)}</p></div>`)}</div>
         </div>` : ''}
         <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5 ${featured ? 'mt-8' : 'mt-6'}">
           ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
@@ -1132,7 +1177,7 @@
       <div class="mt-8 rounded-2xl border hairline bg-raised/40 p-5" style="--track:${t.color}">
         <div class="flex items-center justify-between gap-3"><p class="eyebrow">Prizes</p><p class="num text-sm text-muted">Pool <span class="text-ink font-semibold">${fmtINR(ev.prizePool)}</span></p></div>
         <div class="mt-4 grid grid-cols-3 gap-3">
-          ${ev.prizes.map((p, i) => html`<div class="rounded-xl border hairline bg-base/60 p-3 text-center"><p class="text-[11px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-1 text-base font-bold sm:text-xl ${i === 0 ? 'text-ember' : 'text-ink'}">${fmtINR(p.amount)}</p></div>`)}
+          ${ev.prizes.map((p, i) => html`<div class="rounded-xl border hairline bg-ground/60 p-3 text-center"><p class="text-[11px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-1 text-base font-bold sm:text-xl ${i === 0 ? 'text-emberink' : 'text-ink'}">${fmtINR(p.amount)}</p></div>`)}
         </div>
         ${ev.specialAwards.length ? html`<ul class="mt-4 flex flex-wrap gap-2">${ev.specialAwards.map(a => html`<li class="chip chip-ember">${icon('award')}${a}</li>`)}</ul>` : ''}
         <p class="mt-4 text-xs text-muted">Certificates of Achievement accompany every cash prize. Prize distribution at the valedictory ceremony, Day 2.</p>
@@ -1150,8 +1195,8 @@
     const specials = CONFIG.events.flatMap(e => e.specialAwards);
     render('[data-render="prize-total"]', html`
       <div class="glass flex items-center gap-5 px-6 py-5 reveal" style="--i:2">
-        <span class="icon-tile" style="color: rgb(var(--c-ember)); background: rgb(var(--c-ember) / .12); border-color: rgb(var(--c-ember) / .25)">${icon('trophy')}</span>
-        <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${fmtINR(total)}<span class="text-ember">+</span></p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
+        <span class="icon-tile" style="color: rgb(var(--c-ember-ink)); background: rgb(var(--c-ember) / .14); border-color: rgb(var(--c-ember) / .3)">${icon('trophy')}</span>
+        <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${fmtINR(total)}<span class="text-emberink">+</span></p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
       </div>`);
     render('[data-render="prizes"]', html`<div class="grid gap-5 md:grid-cols-2">${CONFIG.events.map((ev, i) => {
       const t = trackOf(ev.track), [p1, p2, p3] = ev.prizes;
@@ -1162,7 +1207,7 @@
           <div><span class="badge"><i></i>${t.label}</span><h3 id="pz-${ev.id}" class="h3 mt-2">${ev.name}</h3></div>
           <p class="num whitespace-nowrap text-right text-sm text-muted">Pool<br><span class="text-lg font-bold text-ink">${fmtINR(ev.prizePool)}</span></p>
         </div>
-        <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink')}${bar(p1, '7.5rem', 'text-ember')}${bar(p3, '4.25rem', 'text-ink')}</div>
+        <div class="podium mt-7">${bar(p2, '5.25rem', 'text-ink')}${bar(p1, '7.5rem', 'text-emberink')}${bar(p3, '4.25rem', 'text-ink')}</div>
         <div class="mt-4 flex flex-wrap items-center gap-2 border-t hairline pt-4 text-xs text-muted">
           <span>Certificates of Achievement for all winners</span>
           ${ev.specialAwards.map(a => html`<span class="chip chip-ember">${icon('award')}${a}</span>`)}
@@ -1175,7 +1220,7 @@
     const days = CONFIG.schedule.days;
     render('[data-render="schedule"]', html`
       <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between reveal">
-        <div class="inline-flex gap-1 rounded-2xl border hairline bg-base/60 p-1" role="tablist" aria-label="Festival days">
+        <div class="inline-flex gap-1 rounded-2xl border hairline bg-ground/60 p-1" role="tablist" aria-label="Festival days">
           ${days.map((d, i) => html`<button class="tab" role="tab" type="button" id="tab-${d.id}" aria-controls="panel-${d.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${d.label}<small>${d.date}</small></button>`)}
         </div>
         <div class="flex flex-wrap items-center gap-2" role="group" aria-label="${CONFIG.schedule.legendNote}">
@@ -1574,8 +1619,8 @@
       const mail = `mailto:${CONFIG.contact.email}?subject=${encodeURIComponent('[HIMOVATION 2026] ' + data.subject + ' – ' + data.name)}&body=${encodeURIComponent(body)}`;
       form.hidden = true;
       success.innerHTML = String(html`
-        <div class="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 p-5">
-          <div class="flex items-center gap-3"><span class="icon-tile" style="color:#34d399;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.3)">${icon('check')}</span><h4 class="h3 text-base">Thanks, ${data.name.split(' ')[0]}. Your message is ready.</h4></div>
+        <div class="rounded-2xl border border-ok/25 bg-ok/10 p-5">
+          <div class="flex items-center gap-3"><span class="icon-tile" style="color:rgb(var(--c-ok));background:rgb(var(--c-ok) / .12);border-color:rgb(var(--c-ok) / .3)">${icon('check')}</span><h4 class="h3 text-base">Thanks, ${data.name.split(' ')[0]}. Your message is ready.</h4></div>
           <p class="prose-muted mt-3 text-sm">This site has no mail server yet, so the message opens in your mail app addressed to <strong>${CONFIG.contact.email}</strong>. Send it from there and we will reply to <strong>${data.email}</strong> within two working days.</p>
           <div class="mt-4 flex flex-col gap-2 sm:flex-row"><a class="btn btn-primary btn-sm" href="${mail}"><span class="btn-inner">Open in mail app ${icon('mail')}</span></a><button class="btn btn-ghost btn-sm" type="button" data-form-reset><span class="btn-inner">Write another</span></button></div>
         </div>`);
@@ -1590,7 +1635,9 @@
     if (!canvas || !hero || !canvas.getContext) return;
     const ctx = canvas.getContext('2d'); if (!ctx) return;
     const reduced = prefersReducedMotion();
-    const accent = (getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '56 189 248').split(/\s+/).join(',');
+    const readAccent = () => (getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '3 105 161').split(/\s+/).join(',');
+    let accent = readAccent();
+    document.addEventListener('themechange', () => { accent = readAccent(); draw(reduced ? 0 : performance.now()); });
     let w = 0, h = 0, lines = [], raf = 0, last = 0, visible = true, running = false;
     const build = () => {
       const L = w < 640 ? 6 : 9;
@@ -1664,11 +1711,29 @@
     return warn;
   }
 
+  function initTheme() {
+    const btn = $('#theme-btn'); if (!btn) return;
+    const meta = $('meta[name="theme-color"]'), root = document.documentElement;
+    const apply = (t, persist) => {
+      const dark = t === 'dark';
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+      btn.innerHTML = String(icon(dark ? 'sun' : 'moon'));
+      $$('[data-theme-logo]').forEach(img => { img.src = dark ? CONFIG.site.logo.src : CONFIG.site.logo.srcLight; });
+      if (meta) meta.setAttribute('content', dark ? '#070B14' : '#F5F7FB');
+      if (persist) { try { localStorage.setItem('himovation-theme', t); } catch (_) {} }
+      document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: t } }));
+    };
+    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light', false);
+    btn.addEventListener('click', () => apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true));
+  }
+
   /* ============================ INIT ====================================== */
   function init() {
     renderNav(); renderHero(); renderAbout(); renderStats(); renderEvents(); renderPrizes(); renderSchedule();
     renderWhy(); renderSponsors(); renderFAQ(); renderRegisterBand(); renderContact(); renderFooter();
-    initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initModal(); initTabs();
+    initTheme(); initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initModal(); initTabs();
     initAccordion(); initMagnetic(); initForm(); initCanvas();
     if (CONFIG.debug || location.hash === '#debug') validateConfig();
     window.HIMOVATION = { CONFIG, validateConfig };

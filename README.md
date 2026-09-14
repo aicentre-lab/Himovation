@@ -29,6 +29,10 @@ Text supports `**bold**` and `[link text](https://…)`. Raw HTML is escaped on 
 
 The `<title>`, meta description and Open Graph tags in `<head>` are static (link previews do not run JavaScript), so update those by hand when dates or copy change.
 
+## Theme
+
+The site is light by default. The sun/moon button in the navbar switches to the dark palette and remembers the choice in the browser. Both palettes are CSS custom properties at the top of the `<style>` block (`:root` for light, `:root[data-theme="dark"]` for dark). The registration band and the footer always use the dark palette (`class="theme-dark"`); remove that class to make them light too.
+
 ## Check your edits
 
 Open the page with `#debug` in the URL (for example `index.html#debug`) and look at the browser console. `validateConfig()` warns about placeholder links, prize totals that don't add up, unknown track keys, invalid dates and a FAQ outside 8–10 items.
@@ -36,8 +40,8 @@ Open the page with `#debug` in the URL (for example `index.html#debug`) and look
 ## Assets
 
 - `assets/SRHU LOGO WITH NAAC A+.png` — the official logo file supplied by the department (blue mark, transparent background).
-- `assets/srhu-logo-dark.png` — reverse version for **dark backgrounds**: blue swapped to white, white fills made transparent. Used in the navbar and footer.
-- `assets/srhu-logo-light.png` — trimmed original for **light backgrounds** (print, light-theme pages, favicon source).
+- `assets/srhu-logo-dark.png` — reverse version for **dark backgrounds**: blue swapped to white, white fills made transparent. Used in the footer, and in the navbar when the dark theme is on.
+- `assets/srhu-logo-light.png` — trimmed original for **light backgrounds**. Used in the navbar (light theme), the favicon and the share image.
 - `assets/og-cover.png` — 1200×630 share image for link previews.
 - `assets/favicon-96.png`
 
