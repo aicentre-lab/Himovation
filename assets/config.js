@@ -71,7 +71,7 @@ const CONFIG = {
 
   sections: {
     about:    { eyebrow: "About the festival", heading: "Built in the Himalayan foothills. Aimed at the country.", intro: "" },
-    events:   { eyebrow: "Four flagship events", heading: "Pick your arena.", intro: "Two days, four parallel tracks. Each event is built for a different kind of builder, from 24-hour AI sprints to combat robots, LAN tournaments and school science stalls. Open an event for its full rules, timeline, prizes, downloads and coordinators." },
+    events:   { eyebrow: "Four flagship events", heading: "Pick your arena.", intro: "Two days, four parallel tracks. Each event is built for a different kind of builder, from 24-hour AI sprints to combat robots, LAN tournaments and school science stalls. Open an event for its full rules, prizes, downloads and coordinators." },
     prizes:   { eyebrow: "Prize pool", heading: "₹1,95,000 on the line.", intro: "Cash prizes and Certificates of Achievement in every event, presented at the valedictory ceremony on 28 November." },
     schedule: { eyebrow: "Schedule", heading: "Two days, running in parallel.", intro: "The hackathon runs continuously from Day 1 morning to Day 2 noon. Robo-War, E-Sports and the Exhibition run alongside it. Filter by track to see your day." },
     why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
@@ -168,9 +168,9 @@ const CONFIG = {
           "Submit your problem statement in the prescribed HIMOVATION 2026 template, **including a short video description**, before the deadline.",
           "The evaluation panel reviews submissions against the announced criteria and shortlists teams for the offline stage.",
           "**Only shortlisted teams pay the ₹800 fee**, within the due date communicated by the committee. A seat is confirmed only after payment and verification; teams that miss the due date are not considered further.",
-          "**Day 1 at SRHU.** Orientation at 10:00 AM, problem statement release, and the continuous coding phase from 11:00 AM.",
-          "Progress Check Round I at 6:00 PM, overnight coding with mentor visits and technical support, and Progress Check Round II at 8:00 AM on Day 2.",
-          "Final submission in the prescribed format and presentations by 10:30 AM, final evaluation and live demonstration until 1:00 PM. Winners are announced at the valedictory.",
+          "**On campus at SRHU.** Orientation and problem statement release, followed by the continuous 24-hour coding phase.",
+          "Two progress check rounds during the build, with overnight coding, mentor visits and technical support.",
+          "Final submission in the prescribed format, presentations, and final evaluation with a live demonstration. Winners are announced at the valedictory ceremony.",
         ] },
         { heading: "The PPT template, slide by slide", type: "steps", items: [
           "**Title slide.** Problem statement title, theme, team name exactly as on the registration form, and every member's name with affiliation.",
@@ -292,9 +292,9 @@ const CONFIG = {
           "Registration is confirmed only after verification by the committee and fee payment; fees are generally non-refundable.",
         ] },
         { heading: "Tournament format", type: "steps", items: [
-          "Squad check-in on Day 1 morning, followed by Group Stage Round 1 before lunch.",
-          "Group Stage Round 2 and Knockout Round 1 in the afternoon.",
-          "Grand Finale on Day 2 morning on the main screen, with prize distribution at the valedictory. The final match schedule and game-specific rules are announced before the event.",
+          "Squad check-in and verification, followed by the group stage.",
+          "Knockout rounds for the squads that qualify.",
+          "Grand Finale on the main screen, with prize distribution at the valedictory. The match schedule and game-specific rules are announced before the event.",
         ] },
         { heading: "Participant responsibilities", type: "list", items: [
           "Report before the scheduled match time.",
@@ -395,6 +395,14 @@ const CONFIG = {
   ],
 
   schedule: {
+    // SCHEDULE ON HOLD (15.09.2026): timings are still under discussion with the committee.
+    // published: false hides the timeline everywhere and shows a "coming soon" card instead.
+    // The rows below are kept as they are; set published: true once the schedule is final.
+    published: false,
+    comingSoon: {
+      heading: "The detailed schedule is being finalised.",
+      text: "Session timings for all four events are still being confirmed by the Organising Committee. The full two-day timeline will be published here and shared with registered teams.",
+    },
     legendNote: "Show",
     days: [
       { id: "day1", label: "Day 1", date: "Friday, 27 November", rows: [
@@ -459,7 +467,7 @@ const CONFIG = {
     { q: "What does a school need to arrange for the Exhibition?",
       a: "Participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
     { q: "Will I receive a certificate?",
-      a: "Yes. Winners receive cash prizes with Certificates of Achievement, and every participant who completes the required participation process receives a participation certificate. Prizes are distributed at the valedictory ceremony on 28 November at 3:30 PM." },
+      a: "Yes. Winners receive cash prizes with Certificates of Achievement, and every participant who completes the required participation process receives a participation certificate. Prizes are distributed at the valedictory ceremony on 28 November." },
     { q: "How do I reach SRHU, Jolly Grant?",
       a: "The campus is about 6 km from Jolly Grant Airport, 18 km from Dehradun Railway Station and 25 km from ISBT Dehradun, and is well connected by road. Report at the venue by the time communicated by the Organising Committee; a volunteer is assigned to every team on arrival." },
   ],

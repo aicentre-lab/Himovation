@@ -34,6 +34,7 @@ Open `assets/config.js`. Every editable value is there:
 | Event page extras: dates line, downloads, coordinators | `events[].page` |
 | Event page file name | `events[].href` (rename the HTML file to match) |
 | Two-day schedule and parallel tracks | `schedule.days[].rows[]` (`tracks` uses keys from `tracks`) |
+| Show or hide the schedule | `schedule.published`: `false` (current) shows a "Schedule coming soon" card on the home and event pages; set `true` once timings are final. The rows stay in `schedule.days` |
 | FAQ, Why participate, About copy | `faq[]`, `why[]`, `about` |
 | About SRHU and SST cards | `about.hosts.cards[]` (verify years and programme wording with the university) |
 | Coordinators, email, phone, form topics | `contact` |

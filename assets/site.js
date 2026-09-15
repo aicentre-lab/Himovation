@@ -149,7 +149,7 @@ function renderHero() {
         ${d.tentative ? html`<li class="chip">${icon('info')}Dates tentative</li>` : ''}
       </ul>
       <div class="mt-9 reveal" style="--i:4">
-        <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
+        <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Festival begins in</p>
         ${countdownMarkup(false)}
       </div>
       <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
@@ -281,7 +281,30 @@ function renderPrizes() {
     </article>`; })}</div>`);
 }
 
+// Shown while CONFIG.schedule.published === false (timings under discussion).
+function scheduleComingSoonCard(text, links) {
+  const cs = CONFIG.schedule.comingSoon || {};
+  return html`
+    <div class="glass mx-auto flex max-w-3xl flex-col items-center gap-4 p-8 text-center sm:p-10 reveal" style="--i:2">
+      <span class="icon-tile">${icon('calendar')}</span>
+      <span class="chip chip-ember">${icon('clock')}Coming soon</span>
+      <h3 class="h3 text-xl md:text-2xl">${cs.heading || 'The schedule is being finalised.'}</h3>
+      <p class="prose-muted max-w-xl">${md(text || cs.text || '')}</p>
+      <ul class="flex flex-wrap justify-center gap-2" aria-label="Festival days">
+        ${CONFIG.schedule.days.map(d => html`<li class="chip">${icon('calendar')}${d.label} · ${d.date}</li>`)}
+        <li class="chip">${icon('pin')}${CONFIG.venue.short}</li>
+      </ul>
+      ${links ? html`<div class="mt-2 flex flex-col gap-3 sm:flex-row">${links}</div>` : ''}
+    </div>`;
+}
+
 function renderSchedule() {
+  if (CONFIG.schedule.published === false) {
+    const s = CONFIG.sections.schedule;
+    render('[data-head="schedule"]', html`<p class="eyebrow reveal">${s.eyebrow}</p><h2 id="schedule-title" class="h2 mt-3 reveal" style="--i:1">Two days at SRHU.</h2>`);
+    render('[data-render="schedule"]', scheduleComingSoonCard('', html`<a class="btn btn-ghost" href="#events"><span class="btn-inner">Explore events ${icon('arrow')}</span></a><a class="btn btn-ghost" href="#contact"><span class="btn-inner">Ask a question ${icon('chevron')}</span></a>`));
+    return;
+  }
   renderHead('schedule');
   const days = CONFIG.schedule.days;
   render('[data-render="schedule"]', html`
@@ -333,7 +356,7 @@ function renderRegisterBand() {
     <h2 id="register-title" class="h2 mx-auto mt-3 max-w-3xl reveal" style="--i:1">${s.heading}</h2>
     <p class="prose-muted mx-auto mt-5 max-w-2xl reveal" style="--i:2">${md(s.intro)}</p>
     <div class="mt-9 reveal" style="--i:3">
-      <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Inauguration begins in</p>
+      <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Festival begins in</p>
       ${countdownMarkup(true)}
     </div>
     ${deadline && !isNaN(deadline) ? html`<p class="mt-5 reveal" style="--i:4"><span class="chip chip-ember">${icon('clock')}Registration closes ${deadline.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span></p>` : ''}
@@ -398,6 +421,7 @@ function renderEventPage() {
   const t = trackOf(ev.track), pg = ev.page || {}, v = CONFIG.venue, reg = eventRegLink(ev), ext = isUrl(reg);
   const regBtn = (label, extra = '') => reg ? html`<a class="btn btn-primary btn-wrap ${extra}" href="${reg}" ${ext ? raw('target="_blank" rel="noopener"') : ''} data-magnetic><span class="btn-inner">${label} ${icon('arrow')}</span>${ext ? html`<span class="sr-only"> (opens in new tab)</span>` : ''}</a>` : html`<span class="btn btn-ghost btn-wrap ${extra}" aria-disabled="true"><span class="btn-inner">${icon('clock')} Registration opens soon</span></span>`;
   document.title = `${ev.name} · HIMOVATION 2026`;
+  const scheduleOn = CONFIG.schedule.published !== false;
   const days = CONFIG.schedule.days.map(d => ({ ...d, rows: d.rows.filter(r => r.tracks.includes(ev.track) || r.tracks.includes('common')) }));
   const others = CONFIG.events.filter(e => e.id !== ev.id);
   const coords = (pg.coordinators && pg.coordinators.length) ? pg.coordinators : CONFIG.contact.coordinators.filter(c => c.name && c.phone);
@@ -432,7 +456,7 @@ function renderEventPage() {
               <div class="fact"><dt>Team size</dt><dd>${teamSizeText(ev.teamSize)}</dd></div>
               <div class="fact"><dt>Entry fee</dt><dd>${feeText(ev.fee)}${ev.fee.note ? html`<span class="mt-1 block font-sans text-xs font-normal text-muted">${ev.fee.note}</span>` : ''}</dd></div>
               <div class="fact col-span-2"><dt>Expected participation</dt><dd>${ev.capacity}</dd></div>
-              ${pg.when ? html`<div class="fact col-span-2"><dt>When</dt><dd class="font-sans text-sm font-normal text-muted">${pg.when}</dd></div>` : ''}
+              ${scheduleOn && pg.when ? html`<div class="fact col-span-2"><dt>When</dt><dd class="font-sans text-sm font-normal text-muted">${pg.when}</dd></div>` : ''}
             </dl>
           </div>
         </div>
@@ -474,6 +498,7 @@ function renderEventPage() {
       </div>
     </section>
 
+    ${scheduleOn ? html`
     <section class="bg-surface/60 py-16 md:py-24" aria-labelledby="track-schedule-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <p class="eyebrow reveal">Schedule</p>
@@ -484,7 +509,14 @@ function renderEventPage() {
             <ol class="tl tl-compact mt-5">${d.rows.map(r => { const own = r.tracks.includes(ev.track); return html`<li class="tl-row ${r.milestone ? 'is-milestone' : ''} ${own ? '' : 'is-dim'}" style="--track:${own ? t.color : trackOf('common').color}"><span class="tl-node" aria-hidden="true"></span><div class="tl-card"><span class="tl-time">${r.time}</span><h4 class="mt-1 font-sans text-[.95rem] font-semibold leading-snug">${r.title}</h4>${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}</div></li>`; })}</ol></div>`)}
         </div>
       </div>
-    </section>
+    </section>` : html`
+    <section class="bg-surface/60 py-16 md:py-24" aria-labelledby="track-schedule-title">
+      <div class="mx-auto max-w-wrap px-5 sm:px-8">
+        <p class="eyebrow reveal">Schedule</p>
+        <h2 id="track-schedule-title" class="h2 mt-3 reveal" style="--i:1">Your two days at SRHU.</h2>
+        <div class="mt-10">${scheduleComingSoonCard(`${t.label} session timings are still being confirmed by the Organising Committee. The full schedule will be published on this page and shared with registered teams.`, html`<a class="btn btn-ghost" href="index.html#contact"><span class="btn-inner">Ask a question ${icon('chevron')}</span></a>`)}</div>
+      </div>
+    </section>`}
 
     <section class="bg-ground py-16 md:py-24" aria-labelledby="other-events-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
@@ -658,7 +690,7 @@ function initCountdown() {
         $('[data-cd="d"]', root).textContent = pad(d); $('[data-cd="h"]', root).textContent = pad(h);
         $('[data-cd="m"]', root).textContent = pad(m); $('[data-cd="s"]', root).textContent = pad(s);
         tiles.hidden = false; state.hidden = true; if (caption) caption.hidden = false;
-        const label = `Inauguration in ${d} days, ${h} hours and ${m} minutes`;
+        const label = `HIMOVATION 2026 begins in ${d} days, ${h} hours and ${m} minutes`;
         if (label !== lastLabel) { root.setAttribute('aria-label', label); lastLabel = label; }
       } else if (!isNaN(end) && now < end) {
         tiles.hidden = true; state.hidden = false; if (caption) caption.hidden = true;
