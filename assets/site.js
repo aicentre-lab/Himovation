@@ -135,15 +135,17 @@ function renderHero() {
   render('[data-render="hero"]', html`
     <div class="text-center mb-6 reveal">
       <div class="flex items-center justify-center gap-4">
-        <span class="block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
+        <span class="hidden sm:block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
         <p class="eyebrow text-base">${o.school}</p>
-        <span class="block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
+        
+        <span class="hidden sm:block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
       </div>
+      <p class="mt-2 text-sm text-muted">${o.university}, Dehradun</p>
       <p class="text-sm text-muted mt-2">Presents</p>
       <p class="font-display text-2xl font-bold tracking-wide mt-2 sm:text-3xl">Annual Tech Fest</p>
       <div class="mt-3 flex justify-center">
         <span class="chip" style="gap:0;padding:.5rem 1rem .5rem .9rem;font-size:.85rem">
-          Presented by
+          Powered by
           <img src="assets/ing.png" alt="Unstop" height="36" style="flex:none;height:36px;width:auto;margin-left:.25rem" loading="lazy" decoding="async">
         </span>
       </div>
@@ -152,7 +154,7 @@ function renderHero() {
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
         <span class="eyebrow">${s.eyebrow}</span>
         <span aria-hidden="true" class="hidden sm:inline">·</span>
-        <span>${o.school} · ${o.university}, Dehradun</span>
+        <span></span>
       </div>
       <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
       <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
@@ -246,18 +248,35 @@ function renderEvents() {
       <h3 id="ev-${ev.id}-title" class="h3 mt-5 ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}">${ev.name}</h3>
       <p class="mt-1 text-sm text-muted">${ev.subtitle}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</p>
       <p class="prose-muted mt-4 text-sm ${featured ? 'md:text-base max-w-xl' : ''}">${ev.blurb}</p>
-      ${featured ? html`<ul class="mt-5 flex flex-wrap gap-2" aria-label="Themes">${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}</ul>
-      <div class="mt-7 grid gap-3 sm:grid-cols-[1.2fr_1fr]">
-        <ol class="grid gap-2" aria-label="Rounds">
-          <li class="step"><i>1</i><span class="text-sm"><span class="font-semibold">Round 1, online.</span> <span class="text-muted">Register and submit a problem statement in the HIMOVATION template. Panel shortlists teams.</span></span></li>
-          <li class="step"><i>2</i><span class="text-sm"><span class="font-semibold">Round 2, on campus.</span> <span class="text-muted">24 hours of building with two progress checks, mentor visits and a live demo.</span></span></li>
-        </ol>
-        <div class="grid grid-cols-3 gap-2 self-start">${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-ground/60 px-2 py-2.5 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-sm font-bold ${pi === 0 ? 'text-emberink' : ''}">${fmtINR(p.amount)}</p></div>`)}</div>
-      </div>` : ''}
-      <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5 ${featured ? 'mt-8' : 'mt-6'}">
+      ${featured ? html`
+      <dl class="grid grid-cols-3 gap-3 border-t hairline pt-4 mt-5">
         ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
       </dl>
-      <div class="mt-5"><span class="btn btn-primary btn-sm" data-magnetic><span class="btn-inner">Open event page ${icon('arrow')}</span></span></div>
+      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Themes">
+        ${ev.highlights.slice(0, 4).map(h => html`<li class="chip chip-solid">${h}</li>`)}
+        <li class="chip chip-solid text-muted" aria-label="4 more themes">+${ev.highlights.length - 4} more</li>
+      </ul>
+      <ol class="step-timeline mt-5 grid gap-3.5" aria-label="Rounds">
+        <li class="step">
+          <i>1</i>
+          <div class="min-w-0 flex-1 text-sm">
+            <p><span class="font-semibold">Round 1, online.</span> <span class="text-muted">Register and submit a problem statement in the HIMOVATION template. Panel shortlists teams.</span></p>
+            <div class="mt-2.5 grid grid-cols-3 gap-2">
+              ${ev.prizes.map((p, pi) => html`<div class="rounded-xl border hairline bg-ground/60 px-2 py-2 text-center"><p class="text-[10px] uppercase tracking-wider text-muted">${p.place}</p><p class="num mt-0.5 text-xs font-bold sm:text-sm ${pi === 0 ? 'text-emberink' : ''}">${fmtINR(p.amount)}</p></div>`)}
+            </div>
+          </div>
+        </li>
+        <li class="step">
+          <i>2</i>
+          <div class="min-w-0 flex-1 text-sm">
+            <p><span class="font-semibold">Round 2, on campus.</span> <span class="text-muted">24 hours of building with two progress checks, mentor visits and a live demo.</span></p>
+          </div>
+        </li>
+      </ol>` : html`
+      <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5">
+        ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
+      </dl>`}
+      <div class="${featured ? 'mt-auto pt-5' : 'mt-5'}"><span class="btn btn-primary btn-sm" data-magnetic><span class="btn-inner">Open event page ${icon('arrow')}</span></span></div>
     </a>`; })}</div>`);
   render('[data-render="general-rules"]', html`
     <div class="glass p-6 sm:p-8 reveal">
@@ -540,7 +559,7 @@ function renderEventPage() {
           <li><a class="bento-card h-full reveal" href="${o.href}" style="--track:${ot.color}; --i:${i + 2}">
             <div class="flex items-center justify-between gap-3"><span class="icon-tile bento-icon" style="color:var(--track); background: color-mix(in srgb, var(--track) 12%, transparent); border-color: color-mix(in srgb, var(--track) 25%, transparent)">${icon(o.icon)}</span><span class="badge"><i></i>${ot.label}</span></div>
             <h3 class="h3 mt-5 text-lg">${o.name}</h3><p class="prose-muted mt-2 text-sm">${o.blurb}</p>
-            <p class="mt-5 text-sm font-semibold text-accent">Open event page →</p>
+            <p class="mt-auto pt-5 text-sm font-semibold text-accent">Open event page →</p>
           </a></li>`; })}</ul>
       </div>
     </section>
