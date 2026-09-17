@@ -131,7 +131,7 @@ p { margin: 0; }
 .nav-link:hover { color: rgb(var(--c-ink)); }
 .nav-link[aria-current="true"] { color: rgb(var(--c-ink)); }
 .nav-link[aria-current="true"]::after { transform: scaleX(1); }
-.logo-plate { display: inline-flex; align-items: center; height: 3.25rem; }
+.logo-plate { display: inline-flex; align-items: center; height: 3.75rem; }
 .logo-plate img { height: 100%; width: auto; display: block; }
 .wordmark { font-family: Sora, system-ui, sans-serif; font-weight: 800; letter-spacing: .12em; font-size: 1.25rem; }
 

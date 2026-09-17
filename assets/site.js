@@ -86,7 +86,6 @@ function renderHeader() {
         </span>
         <span class="hidden flex-col leading-tight md:flex">
           <span class="font-display text-sm font-bold tracking-wide">${site.name}</span>
-          <span class="text-[11px] text-muted">${o.school} · SRHU, Dehradun</span>
         </span>
       </a>
       <ul class="hidden items-center gap-6 lg:flex">${CONFIG.nav.map(n => html`<li><a class="nav-link" href="${homeHref(n.id)}" data-nav="${n.id}">${n.label}</a></li>`)}</ul>
@@ -134,6 +133,21 @@ function ctaMarkup(c, extra = '') {
 function renderHero() {
   const s = CONFIG.site, o = s.organizer, d = CONFIG.dates, total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
   render('[data-render="hero"]', html`
+    <div class="text-center mb-6 reveal">
+      <div class="flex items-center justify-center gap-4">
+        <span class="block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
+        <p class="eyebrow text-base">${o.school}</p>
+        <span class="block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
+      </div>
+      <p class="text-sm text-muted mt-2">Presents</p>
+      <p class="font-display text-2xl font-bold tracking-wide mt-2 sm:text-3xl">Annual Tech Fest</p>
+      <div class="mt-3 flex justify-center">
+        <span class="chip" style="gap:0;padding:.5rem 1rem .5rem .9rem;font-size:.85rem">
+          Presented by
+          <img src="assets/ing.png" alt="Unstop" height="36" style="flex:none;height:36px;width:auto;margin-left:.25rem" loading="lazy" decoding="async">
+        </span>
+      </div>
+    </div>
     <div class="max-w-4xl">
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
         <span class="eyebrow">${s.eyebrow}</span>
@@ -243,7 +257,7 @@ function renderEvents() {
       <dl class="mt-auto grid grid-cols-3 gap-3 border-t hairline pt-5 ${featured ? 'mt-8' : 'mt-6'}">
         ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
       </dl>
-      <div class="mt-5"><span class="btn btn-ghost btn-sm"><span class="btn-inner">Open event page ${icon('arrow')}</span></span></div>
+      <div class="mt-5"><span class="btn btn-primary btn-sm" data-magnetic><span class="btn-inner">Open event page ${icon('arrow')}</span></span></div>
     </a>`; })}</div>`);
   render('[data-render="general-rules"]', html`
     <div class="glass p-6 sm:p-8 reveal">
