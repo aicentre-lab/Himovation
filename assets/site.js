@@ -146,15 +146,12 @@ function renderHero() {
       <div class="mt-3 flex justify-center">
         <span class="chip" style="gap:0;padding:.5rem 1rem .5rem .9rem;font-size:.85rem">
           Powered by
-          <img src="assets/ing.png" alt="Unstop" height="36" style="flex:none;height:36px;width:auto;margin-left:.25rem" loading="lazy" decoding="async">
+          <img src="assets/ing.png" alt="Unstop" height="36" style="flex:none;height:36px;width:auto;margin-left:.25rem" decoding="async">
         </span>
       </div>
     </div>
     <div class="max-w-4xl">
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
-        <span class="eyebrow">${s.eyebrow}</span>
-      </div>
-      <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
+      <h1 class="hero-title mt-4 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
       <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
       <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
         <li class="chip">${icon('calendar')}${d.display}</li>
