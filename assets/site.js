@@ -153,8 +153,6 @@ function renderHero() {
     <div class="max-w-4xl">
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal">
         <span class="eyebrow">${s.eyebrow}</span>
-        <span aria-hidden="true" class="hidden sm:inline">·</span>
-        <span></span>
       </div>
       <h1 class="hero-title mt-6 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
       <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
@@ -181,7 +179,7 @@ function renderHero() {
 function renderAbout() {
   renderHead('about');
   renderHosts();
-  render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted text-base md:text-lg ${i ? 'mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
+  render('[data-render="about"]', CONFIG.about.paragraphs.map((p, i) => html`<p class="prose-muted prose-justify text-base md:text-lg ${i ? 'mt-5' : ''} reveal" style="--i:${i + 2}">${md(p)}</p>`));
   const o = CONFIG.site.organizer;
   render('[data-render="glance"]', html`
     <div class="glass p-6 sm:p-8 reveal lg:mt-2" style="--i:2">
@@ -253,8 +251,7 @@ function renderEvents() {
         ${ev.cardFacts.map(k => html`<div class="fact"><dt>${facts[k][0]}</dt><dd>${facts[k][1]}</dd></div>`)}
       </dl>
       <ul class="mt-4 flex flex-wrap gap-2" aria-label="Themes">
-        ${ev.highlights.slice(0, 4).map(h => html`<li class="chip chip-solid">${h}</li>`)}
-        <li class="chip chip-solid text-muted" aria-label="4 more themes">+${ev.highlights.length - 4} more</li>
+        ${ev.highlights.map(h => html`<li class="chip chip-solid">${h}</li>`)}
       </ul>
       <ol class="step-timeline mt-5 grid gap-3.5" aria-label="Rounds">
         <li class="step">
@@ -410,10 +407,16 @@ function renderContact() {
   renderHead('contact');
   const c = CONFIG.contact, v = CONFIG.venue;
   render('[data-render="contact-info"]', html`
-    <div class="grid gap-4 sm:grid-cols-2 reveal">
-      ${c.coordinators.map(k => html`<div class="glass p-5"><p class="text-xs uppercase tracking-[.14em] text-muted">${k.role}</p><p class="mt-2 font-display font-semibold">${k.name}</p>
-        ${k.phone ? html`<a class="link mt-1 block text-sm" href="tel:${k.phone.replace(/\s/g, '')}">${k.phone}</a>` : ''}
-        ${k.email ? html`<a class="link mt-1 block text-sm" href="mailto:${k.email}">${k.email}</a>` : ''}</div>`)}
+    <div class="glass p-5 sm:p-6 reveal">
+      <p class="eyebrow">${new Set(c.coordinators.map(k => k.role)).size === 1 && c.coordinators[0].role ? c.coordinators[0].role + 's' : 'Coordinators'}</p>
+      <ul class="mt-4 grid gap-3" aria-label="Coordinators">
+        ${c.coordinators.map((k, i) => html`<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 ${i ? 'border-t hairline pt-3' : ''}">
+          <p class="font-display font-semibold">${k.name}</p>
+          <p class="flex flex-wrap gap-x-3 text-sm">
+            ${k.phone ? html`<a class="link" href="tel:${k.phone.replace(/\s/g, '')}">${k.phone}</a>` : ''}
+            ${k.email ? html`<a class="link" href="mailto:${k.email}">${k.email}</a>` : ''}
+          </p></li>`)}
+      </ul>
     </div>
     <ul class="mt-5 grid gap-3 text-sm reveal" style="--i:1">
       <li class="flex items-center gap-3"><span class="icon-tile">${icon('mail')}</span><div><p class="text-xs text-muted">Email</p><a class="link" href="mailto:${c.email}">${c.email}</a></div></li>
@@ -459,7 +462,7 @@ function renderEventPage() {
   const others = CONFIG.events.filter(e => e.id !== ev.id);
   const coords = (pg.coordinators && pg.coordinators.length) ? pg.coordinators : CONFIG.contact.coordinators.filter(c => c.name && c.phone);
   render('[data-render="event-page"]', html`
-    <section class="relative overflow-hidden bg-ground pb-14 pt-28 md:pb-20 md:pt-36" aria-labelledby="event-title">
+    <section class="relative overflow-hidden bg-ground pb-12 pt-28 md:pb-16 md:pt-32" aria-labelledby="event-title">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 50% at 20% 20%, color-mix(in srgb, ${t.color} 14%, transparent), transparent 70%)" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-wrap px-5 sm:px-8">
@@ -489,7 +492,7 @@ function renderEventPage() {
               <div class="fact"><dt>Team size</dt><dd>${teamSizeText(ev.teamSize)}</dd></div>
               <div class="fact"><dt>Entry fee</dt><dd>${feeText(ev.fee)}${ev.fee.note ? html`<span class="mt-1 block font-sans text-xs font-normal text-muted">${ev.fee.note}</span>` : ''}</dd></div>
               <div class="fact col-span-2"><dt>Expected participation</dt><dd>${ev.capacity}</dd></div>
-              ${scheduleOn && pg.when ? html`<div class="fact col-span-2"><dt>When</dt><dd class="font-sans text-sm font-normal text-muted">${pg.when}</dd></div>` : ''}
+              ${scheduleOn && pg.when ? html`<div class="fact col-span-2"><dt>When</dt><dd class="fact-text text-sm">${pg.when}</dd></div>` : ''}
             </dl>
           </div>
         </div>
@@ -497,15 +500,15 @@ function renderEventPage() {
     </section>
     <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
 
-    <section class="bg-ground py-16 md:py-24" aria-labelledby="details-title">
+    <section class="bg-ground py-14 md:py-20" aria-labelledby="details-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-16">
           <div class="min-w-0">
             <p class="eyebrow reveal">Details</p>
             <h2 id="details-title" class="h2 mt-3 reveal" style="--i:1">Everything you need to know.</h2>
             <dl class="mt-8 grid gap-6 reveal" style="--i:2">
-              <div class="fact"><dt>Format</dt><dd class="prose-muted font-sans text-sm font-normal md:text-base">${ev.format}</dd></div>
-              <div class="fact"><dt>Eligibility</dt><dd class="prose-muted font-sans text-sm font-normal md:text-base">${ev.eligibility}</dd></div>
+              <div class="fact"><dt>Format</dt><dd class="fact-text">${ev.format}</dd></div>
+              <div class="fact"><dt>Eligibility</dt><dd class="fact-text">${ev.eligibility}</dd></div>
             </dl>
             ${ev.sections.map((sec, i) => html`<section class="mt-12 reveal" aria-labelledby="sec-${i}"><h3 id="sec-${i}" class="h3 text-lg md:text-xl">${sec.heading}</h3><div class="mt-5">${eventSectionMarkup(ev, sec)}</div></section>`)}
           </div>
@@ -532,7 +535,7 @@ function renderEventPage() {
     </section>
 
     ${scheduleOn ? html`
-    <section class="bg-surface/60 py-16 md:py-24" aria-labelledby="track-schedule-title">
+    <section class="bg-surface/60 py-14 md:py-20" aria-labelledby="track-schedule-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <p class="eyebrow reveal">Schedule</p>
         <h2 id="track-schedule-title" class="h2 mt-3 reveal" style="--i:1">Your two days at SRHU.</h2>
@@ -543,7 +546,7 @@ function renderEventPage() {
         </div>
       </div>
     </section>` : html`
-    <section class="bg-surface/60 py-16 md:py-24" aria-labelledby="track-schedule-title">
+    <section class="bg-surface/60 py-14 md:py-20" aria-labelledby="track-schedule-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <p class="eyebrow reveal">Schedule</p>
         <h2 id="track-schedule-title" class="h2 mt-3 reveal" style="--i:1">Your two days at SRHU.</h2>
@@ -551,7 +554,7 @@ function renderEventPage() {
       </div>
     </section>`}
 
-    <section class="bg-ground py-16 md:py-24" aria-labelledby="other-events-title">
+    <section class="bg-ground py-14 md:py-20" aria-labelledby="other-events-title">
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <p class="eyebrow reveal">More arenas</p>
         <h2 id="other-events-title" class="h2 mt-3 reveal" style="--i:1">The other three events.</h2>
@@ -564,7 +567,7 @@ function renderEventPage() {
       </div>
     </section>
 
-    <section class="theme-dark relative overflow-hidden border-y hairline bg-surface py-16 md:py-24" aria-labelledby="event-register-title">
+    <section class="theme-dark relative overflow-hidden border-y hairline bg-surface py-14 md:py-20" aria-labelledby="event-register-title">
       <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
       <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8">
         <p class="eyebrow reveal">Registrations open</p>

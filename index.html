@@ -53,9 +53,9 @@
       </section>
 
       <!-- ABOUT -->
-      <section id="about" class="relative bg-ground py-20 md:py-28" aria-labelledby="about-title">
+      <section id="about" class="relative bg-ground py-14 md:py-20" aria-labelledby="about-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
-          <div class="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+          <div class="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-16">
             <div>
               <div data-head="about"></div>
               <div data-render="about" class="mt-8"></div>
@@ -74,7 +74,7 @@
       </section>
 
       <!-- EVENTS -->
-      <section id="events" class="relative bg-ground py-20 md:py-28" aria-labelledby="events-title">
+      <section id="events" class="relative bg-ground py-14 md:py-20" aria-labelledby="events-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="events" class="max-w-2xl"></div>
           <div data-render="events" class="mt-12"></div>
@@ -85,7 +85,7 @@
       <svg class="divider" aria-hidden="true"><use href="#ridge"/></svg>
 
       <!-- PRIZES -->
-      <section id="prizes" class="relative bg-ground py-20 md:py-28" aria-labelledby="prizes-title">
+      <section id="prizes" class="relative bg-ground py-14 md:py-20" aria-labelledby="prizes-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div data-head="prizes" class="max-w-2xl"></div>
@@ -96,7 +96,7 @@
       </section>
 
       <!-- SCHEDULE -->
-      <section id="schedule" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="schedule-title">
+      <section id="schedule" class="relative bg-surface/60 py-14 md:py-20" aria-labelledby="schedule-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="schedule" class="max-w-2xl"></div>
           <div data-render="schedule" class="mt-12"></div>
@@ -106,7 +106,7 @@
       <svg class="divider flip" aria-hidden="true"><use href="#ridge"/></svg>
 
       <!-- WHY PARTICIPATE -->
-      <section id="why" class="relative bg-ground py-20 md:py-28" aria-labelledby="why-title">
+      <section id="why" class="relative bg-ground py-14 md:py-20" aria-labelledby="why-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="why" class="max-w-2xl"></div>
           <div data-render="why" class="mt-12"></div>
@@ -114,7 +114,7 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="relative bg-surface/60 py-20 md:py-28" aria-labelledby="faq-title">
+      <section id="faq" class="relative bg-surface/60 py-14 md:py-20" aria-labelledby="faq-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div class="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
             <div data-head="faq"></div>
@@ -124,33 +124,23 @@
       </section>
 
       <!-- REGISTER CTA BAND -->
-      <section id="register" class="theme-dark relative overflow-hidden border-y hairline bg-surface py-20 md:py-28" aria-labelledby="register-title">
+      <section id="register" class="theme-dark relative overflow-hidden border-y hairline bg-surface py-14 md:py-20" aria-labelledby="register-title">
         <svg class="contour-bg text-accent/10" aria-hidden="true" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
         <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 80% at 50% 50%, rgb(var(--c-brand) / .45), transparent 70%)" aria-hidden="true"></div>
         <div class="relative mx-auto max-w-wrap px-5 text-center sm:px-8" data-render="register"></div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" class="relative bg-ground py-20 md:py-28" aria-labelledby="contact-title">
+      <section id="contact" class="relative bg-ground py-14 md:py-20" aria-labelledby="contact-title">
         <div class="mx-auto max-w-wrap px-5 sm:px-8">
           <div data-head="contact" class="max-w-2xl"></div>
           <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-14">
-            <div class="flex flex-col gap-8">
-              <div data-render="contact-info"></div>
-              <div class="map-wrap">
-                <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center text-sm text-muted" aria-hidden="true">
-                  <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
-                  <span>Map of SRHU, Jolly Grant, Dehradun</span>
-                </div>
-                <iframe data-map title="Map: Swami Rama Himalayan University, Jolly Grant, Dehradun" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-              </div>
-              <p class="-mt-4 text-sm text-muted"><a class="link" data-map-link target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in new tab)</span></a></p>
-            </div>
+            <div data-render="contact-info"></div>
 
-            <div class="glass p-6 sm:p-8">
+            <div class="glass flex flex-col p-6 sm:p-8">
               <h3 class="h3">Send us a message</h3>
               <p class="mt-2 text-sm text-muted">Registration queries, event rules, school participation or anything else. We reply within two working days.</p>
-              <form id="contact-form" class="mt-6 flex flex-col gap-5" novalidate>
+              <form id="contact-form" class="mt-6 flex flex-1 flex-col gap-5" novalidate>
                 <div class="grid gap-5 sm:grid-cols-2">
                   <div class="field">
                     <label for="cf-name">Full name</label>
@@ -175,9 +165,9 @@
                     <p class="field-error" id="err-subject" hidden></p>
                   </div>
                 </div>
-                <div class="field">
+                <div class="field flex-1">
                   <label for="cf-message">Message</label>
-                  <textarea class="input" id="cf-message" name="message" rows="5" placeholder="Tell us which event you are interested in and how we can help." aria-describedby="err-message" required></textarea>
+                  <textarea class="input flex-1" id="cf-message" name="message" rows="5" placeholder="Tell us which event you are interested in and how we can help." aria-describedby="err-message" required></textarea>
                   <p class="field-error" id="err-message" hidden></p>
                 </div>
                 <div class="sr-only" aria-hidden="true">
@@ -191,6 +181,17 @@
               </form>
               <div id="contact-success" class="mt-6" role="status" aria-live="polite" hidden></div>
             </div>
+          </div>
+
+          <div class="mt-10 reveal">
+            <div class="map-wrap">
+              <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center text-sm text-muted" aria-hidden="true">
+                <span class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span>Map of SRHU, Jolly Grant, Dehradun</span>
+              </div>
+              <iframe data-map title="Map: Swami Rama Himalayan University, Jolly Grant, Dehradun" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+            <p class="mt-3 text-sm text-muted"><a class="link" data-map-link target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in new tab)</span></a></p>
           </div>
         </div>
       </section>

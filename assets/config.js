@@ -164,7 +164,7 @@ const CONFIG = {
       sections: [
         { heading: "Themes", type: "chips", items: ["AI for Healthcare", "AI for Education", "AI for Climate Action", "AI for Agriculture", "AI for Smart Cities", "AI for Governance", "AI for Clean Water", "Open Theme"] },
         { heading: "How the two rounds work", type: "steps", items: [
-          "**Round 1, online.** Complete registration and verification by the Organising Committee.",
+          "**Round 1, online.** Complete registration with the names and institutional details of every team member, then verification by the Organising Committee.",
           "Submit your problem statement in the prescribed HIMOVATION 2026 template, **including a short video description**, before the deadline.",
           "The evaluation panel reviews submissions against the announced criteria and shortlists teams for the offline stage.",
           "**Only shortlisted teams pay the ₹800 fee**, within the due date communicated by the committee. A seat is confirmed only after payment and verification; teams that miss the due date are not considered further.",
@@ -206,8 +206,8 @@ const CONFIG = {
       registrationLink: "https://forms.gle/j5pqgJmcQaCrdhr26",   // empty = "Registration opens soon"
       name: "Robo-War",
       subtitle: "Combat Robotics",
-      blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds in a upto 10 kg weight category.",
-      format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Robots weigh upto 10 kg only (indicative, to be confirmed in the final rulebook).",
+      blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds in the up-to-10 kg weight category.",
+      format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Robots weigh up to 10 kg (indicative, to be confirmed in the final rulebook).",
       teamSize: { min: 2, max: 3, unit: "members" },
       fee: { amount: 500, per: "team", note: "" },
       capacity: "20–25 teams",
@@ -216,15 +216,15 @@ const CONFIG = {
       specialAwards: [],
       prizePool: 37000,
       cardFacts: ["teamSize", "fee", "prizePool"],
-      highlights: ["upto 10 kg"],
+      highlights: ["Up to 10 kg"],
       page: {
-        dates: "27–28 November 2026",
-        when: "Qualifiers, quarterfinals and semifinals on Day 1; Grand Finale on Day 2 morning.",
+        dates: "27 November 2026",   // guidelines 16.09.2026: Robo-War is a one-day event
+        when: "Check-in and safety inspection in the morning, then qualifiers, quarterfinals, semifinals and the Grand Finale during the day.",
         downloads: [],
         coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
-        { heading: "Weight category", type: "chips", items: ["upto 10 kg", "Class indicative, final specs to be announced"] },
+        { heading: "Weight category", type: "chips", items: ["Up to 10 kg", "Class indicative, final specs to be announced"] },
         { heading: "Eligibility and team", type: "list", items: [
           "Teams of 2 to 3 members. Each team nominates a Team Leader.",
           "Only registered team members may represent the team during the competition.",
@@ -263,10 +263,10 @@ const CONFIG = {
       registrationLink: "https://forms.gle/861ZLStTc7Esg2i87",
       name: "E-Sports",
       subtitle: "Competitive Gaming · LAN",
-      blurb: "Squad-based tournament on a campus LAN across one or two titles, with group stages, knockouts and a grand finale on the big screen.",
-      format: "Squad-based tournament with group stage and/or knockout rounds across one or two finalised titles, played on LAN or approved on-campus setups. The tournament will be played on Free Fire.",
+      blurb: "Squad-based Free Fire tournament on a campus LAN, with group stages, knockouts and a grand finale on the big screen.",
+      format: "Squad-based Free Fire tournament with group stage and/or knockout rounds, played on LAN or approved on-campus setups. The match schedule and game-specific rules are shared with shortlisted squads before the event.",
       teamSize: { min: 4, max: 5, unit: "players" },
-      fee: { amount: 500, per: "squad", note: "" },
+      fee: { amount: 500, per: "squad", note: "Payable only by squads shortlisted after verification" },
       capacity: "20–30 squads",
       eligibility: "Students and participants as specified by the organising committee. Players must meet the age and eligibility requirements of the selected title.",
       prizes: [ { place: "1st", amount: 21000 }, { place: "2nd", amount: 11000 }, { place: "3rd", amount: 5000 } ],
@@ -275,8 +275,8 @@ const CONFIG = {
       cardFacts: ["teamSize", "fee", "prizePool"],
       highlights: ["Free Fire"],
       page: {
-        dates: "27–28 November 2026",
-        when: "Group stages and Knockout Round 1 on Day 1; Grand Finale on Day 2 morning.",
+        dates: "27 November 2026",   // guidelines 16.09.2026: E-Sports is a one-day event
+        when: "Group stage, knockouts and the Grand Finale during the day; the match schedule is shared with shortlisted squads.",
         downloads: [],
         coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
@@ -284,17 +284,19 @@ const CONFIG = {
         { heading: "Game title", type: "chips", items: ["Free Fire"] },
         { heading: "Eligibility and squads", type: "list", items: [
           "Squads of 4 to 5 players depending on the selected game format. Each squad nominates a Squad Leader or Captain.",
-          "Only registered players take part in official matches. Provide correct player details at registration.",
+          "Only registered and verified players take part in official matches. Provide correct and complete player details at registration; changes to the squad after shortlisting need the committee's prior approval.",
           "Players must meet the age and eligibility requirements of the selected title.",
         ] },
-        { heading: "Registration", type: "list", items: [
-          "Registration fee ₹500 per squad, before the announced deadline. Seats are allotted first come, first served.",
-          "Registration is confirmed only after verification by the committee and fee payment; fees are generally non-refundable.",
+        { heading: "Registration and shortlisting", type: "steps", items: [
+          "Register your squad with the prescribed form before the announced deadline. Submitting the form does not by itself confirm a place in the tournament.",
+          "The Organising Committee verifies the details and eligibility of every registered player and shortlists squads against its criteria. Shortlisted squads are informed through the contact details given on the form.",
+          "**Only shortlisted squads pay the ₹500 fee**, within the deadline communicated by the committee. Missing it may cancel the squad's participation, and the place may be offered to another eligible squad.",
+          "The committee may shortlist, reject or disqualify any squad on eligibility, verification, technical requirements or compliance with the guidelines. Fees, once paid, are generally non-refundable.",
         ] },
         { heading: "Tournament format", type: "steps", items: [
           "Squad check-in and verification, followed by the group stage.",
           "Knockout rounds for the squads that qualify.",
-          "Grand Finale on the main screen, with prize distribution at the valedictory. The match schedule and game-specific rules are announced before the event.",
+          "Grand Finale on the main screen, with prize distribution at the valedictory. The match schedule, tournament structure and game-specific rules are communicated to shortlisted squads before the event.",
         ] },
         { heading: "Participant responsibilities", type: "list", items: [
           "Report before the scheduled match time.",
@@ -306,20 +308,23 @@ const CONFIG = {
           "No cheating, hacking, unauthorised software or modifications, or exploitation of prohibited bugs and glitches.",
           "No account sharing, impersonation or unauthorised players.",
           "No abusive, discriminatory or threatening communication, and no deliberate disruption of the network or gaming equipment.",
-          "Any violation may result in immediate disqualification.",
+          "Any other activity that gives an unfair competitive advantage.",
+          "Any violation may result in immediate disqualification of the player or squad.",
         ] },
         { heading: "Technical guidelines", type: "list", items: [
           "Participants may be required to use the gaming systems or network arrangements provided by the organisers.",
           "Where permitted, approved Bring Your Own Device (BYOD) arrangements may be used; your device must meet the announced technical requirements.",
           "Follow the official instructions on gaming accounts and login procedures.",
-          "The committee's decision on technical issues, connectivity or match restarts is final.",
+          "Do not make unauthorised changes to the systems, network, game settings or equipment provided for the tournament.",
+          "The committee's decision on technical issues, connectivity, match interruptions or restarts is final.",
         ] },
         { heading: "Sportsmanship", type: "list", items: [
           "Acknowledge opponents respectfully before and after matches, and accept results respectfully.",
           "Protests are submitted through the Team Captain to the event coordinator.",
           "Spectators and team members must not interfere with an ongoing match.",
+          "Misconduct or a breach of these guidelines may lead to disciplinary action, including disqualification.",
         ] },
-        { heading: "Food and refreshments", type: "list", items: [
+        { heading: "Food and refreshments", type: "list", items: [   // NOTE: dropped from the E-Sports section of the 16.09.2026 guidelines; confirm with the committee
           "Running tea and snacks during the day are provided. Additional meals are the participants' own arrangement; food stalls at the venue sell extra food.",
         ] },
       ],
@@ -330,7 +335,7 @@ const CONFIG = {
       name: "School Level Project Exhibition",
       subtitle: "Classes 8–12 · Free entry",
       blurb: "A stall-based exhibition for school students to present science, technology and innovation projects to SRHU faculty judges and the public.",
-      format: "Stall-based project display with faculty and expert judging across two rounds, plus public viewing. Each team is allotted display space with a table and power point.",
+      format: "Stall-based project display with faculty and expert judging, plus public viewing. Each team is allotted display space with a table and power point.",
       teamSize: { min: 1, max: 3, unit: "students" },
       fee: { amount: 0, per: "team", note: "One accompanying teacher per school" },
       capacity: "20–25 schools from Dehradun and nearby districts",
@@ -358,7 +363,7 @@ const CONFIG = {
         ] },
         { heading: "Exhibition format", type: "list", items: [
           "Stall-based project display; each team is allotted display space as arranged by the organisers.",
-          "Projects are evaluated by a faculty and expert judging panel across two rounds, with public viewing.",
+          "Projects are evaluated by a faculty and expert judging panel, with public viewing.",
         ] },
         { heading: "Presentation guidelines", type: "list", items: [
           "Clearly explain the problem addressed, the objective and the innovation behind the project.",
@@ -398,6 +403,8 @@ const CONFIG = {
     // SCHEDULE ON HOLD (15.09.2026): timings are still under discussion with the committee.
     // published: false hides the timeline everywhere and shows a "coming soon" card instead.
     // The rows below are kept as they are; set published: true once the schedule is final.
+    // NOTE (guidelines 16.09.2026): Robo-War and E-Sports are dated 27 Nov only, and the Exhibition is a single day;
+    // the Day 2 rows for those tracks below come from the 26.08 proposal and must be reconciled before publishing.
     published: false,
     comingSoon: {
       heading: "The detailed schedule is being finalised.",
@@ -461,9 +468,10 @@ const CONFIG = {
       a: ["Accommodation arrangements are **to be announced**. Hackathon participants get separate rest areas for male and female participants on campus, with running tea and snacks during the day and dinner provided. Robo-War, E-Sports and Exhibition participants get running tea and snacks.",
           "Food stalls are available at the venue on a paid basis for additional meals."] },
     { q: "Which games will E-Sports feature, and can I bring my own device?",
-      a: "The E-Sports tournament will be played on Free Fire. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. Game-specific rules and the match schedule are published before the event." },
+      a: ["The E-Sports tournament is played on Free Fire. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. The match schedule and game-specific rules are shared with shortlisted squads before the event.",
+          "Squads register first and are verified and shortlisted by the Organising Committee. **Only shortlisted squads pay the ₹500 fee.**"] },
     { q: "What are the Robo-War safety rules?",
-      a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Robots weighing upto 10 kg only; this is indicative and the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
+      a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Robots may weigh up to 10 kg; this is indicative, and the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
     { q: "What does a school need to arrange for the Exhibition?",
       a: "Participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
     { q: "Will I receive a certificate?",
