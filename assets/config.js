@@ -16,7 +16,7 @@ const CONFIG = {
   site: {
     name: "HIMOVATION 2026",
     edition: "2026",
-    eyebrow: "National Technical Festival",
+    eyebrow: "Annual Tech Fest",
     tagline: "Where Code Meets Combat, Play Meets Purpose",
     url: "https://aicentre-lab.github.io/Himovation/",   // update when the site moves to a university domain
     logo: { src: "assets/srhu-logo-dark.png", srcLight: "assets/srhu-logo-light.png", alt: "Swami Rama Himalayan University, NAAC A+ accredited", fallbackText: "SRHU" },  // dark = white mark for dark backgrounds, light = blue mark for light backgrounds
@@ -464,9 +464,6 @@ const CONFIG = {
     { q: "What should we bring?",
       a: ["Everyone: a valid institutional ID card. Hackathon teams: laptops, chargers, any hardware your prototype needs, and your Round 1 problem statement. Robo-War teams: the robot, controllers, batteries, chargers, spares and tools; you are responsible for your own equipment.",
           "E-Sports squads: your own devices and peripherals where BYOD is permitted, meeting the announced specs, with accounts ready. Schools: the project, display material, extension cords and anything the stall needs."] },
-    { q: "Is accommodation or food provided?",
-      a: ["Accommodation arrangements are **to be announced**. Hackathon participants get separate rest areas for male and female participants on campus, with running tea and snacks during the day and dinner provided. Robo-War, E-Sports and Exhibition participants get running tea and snacks.",
-          "Food stalls are available at the venue on a paid basis for additional meals."] },
     { q: "Which games will E-Sports feature, and can I bring my own device?",
       a: ["The E-Sports tournament is played on Free Fire. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. The match schedule and game-specific rules are shared with shortlisted squads before the event.",
           "Squads register first and are verified and shortlisted by the Organising Committee. **Only shortlisted squads pay the ₹500 fee.**"] },
