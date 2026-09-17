@@ -16,7 +16,7 @@ const CONFIG = {
   site: {
     name: "HIMOVATION 2026",
     edition: "2026",
-    eyebrow: "Annual Tech Fest",
+    eyebrow: "Annual National Technical Festival",
     tagline: "Where Code Meets Combat, Play Meets Purpose",
     url: "https://aicentre-lab.github.io/Himovation/",   // update when the site moves to a university domain
     logo: { src: "assets/srhu-logo-dark.png", srcLight: "assets/srhu-logo-light.png", alt: "Swami Rama Himalayan University, NAAC A+ accredited", fallbackText: "SRHU" },  // dark = white mark for dark backgrounds, light = blue mark for light backgrounds

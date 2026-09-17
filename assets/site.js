@@ -142,7 +142,7 @@ function renderHero() {
       </div>
       <p class="mt-2 text-sm text-muted">${o.university}, Dehradun</p>
       <p class="text-sm text-muted mt-2">Presents</p>
-      <p class="font-display text-2xl font-bold tracking-wide mt-2 sm:text-3xl">Annual Tech Fest</p>
+      <p class="font-display text-2xl font-bold tracking-wide mt-2 sm:text-3xl">Annual National Technical Festival</p>
       <div class="mt-3 flex justify-center">
         <span class="chip" style="gap:0;padding:.5rem 1rem .5rem .9rem;font-size:.85rem">
           Powered by
