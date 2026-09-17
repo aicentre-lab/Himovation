@@ -157,7 +157,7 @@ const CONFIG = {
         dates: "27–28 November 2026",
         when: "Coding starts Day 1 at 11:00 AM and runs continuously until final submission on Day 2 at 10:30 AM.",
         downloads: [
-          { label: "Solve-a-Thon PPT template", cta: "Download PPT template", href: "assets/downloads/HIMOVATION-2026-Solve-a-Thon-Template.pptx", note: "The official five-slide deck for your Round 1 problem statement. Fill it in, export as PDF or PPT, and upload it with your short video description.", size: "217 KB" },
+          { label: "Solve-a-Thon PPT template", cta: "Download PPT template", href: "assets/downloads/𝓗𝓘𝓜𝓞𝓥𝓐𝓣𝓘𝓞𝓝 2026 Solve A Thon Template.pptx", note: "The official five-slide deck for your Round 1 problem statement. Fill it in, export as PDF or PPT, and upload it with your short video description.", size: "226 KB" },
         ],
         coordinators: [],   // empty = the festival coordinators from contact.coordinators (same for every event)
       },

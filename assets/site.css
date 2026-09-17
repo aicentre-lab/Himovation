@@ -73,7 +73,8 @@ p { margin: 0; }
 .h3 { font-family: Sora, system-ui, sans-serif; font-weight: 600; font-size: 1.25rem; line-height: 1.25; letter-spacing: -.01em; }
 .num { font-family: Sora, system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
 .prose-muted { color: rgb(var(--c-muted)); line-height: 1.7; }
-@media (min-width: 1024px) { .prose-justify { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; } }
+@media (min-width: 768px) { .prose-justify { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; } }
+@media (min-width: 1024px) { .prose-justify-lg { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; } }
 .prose-muted a, .link { color: rgb(var(--c-accent)); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgb(var(--c-accent) / .4); }
 .prose-muted a:hover, .link:hover { text-decoration-color: rgb(var(--c-accent)); }
 .prose-muted strong { color: rgb(var(--c-ink)); font-weight: 600; }

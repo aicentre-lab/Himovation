@@ -72,7 +72,7 @@ function renderHead(id) {
   render(`[data-head="${id}"]`, html`
     <p class="eyebrow reveal">${s.eyebrow}</p>
     <h2 id="${id}-title" class="h2 mt-3 reveal" style="--i:1">${s.heading}</h2>
-    ${s.intro ? html`<p class="prose-muted mt-5 text-base md:text-lg reveal" style="--i:2">${md(s.intro)}</p>` : ''}`);
+    ${s.intro ? html`<p class="prose-muted ${id === 'faq' ? '' : 'prose-justify'} mt-5 text-base md:text-lg reveal" style="--i:2">${md(s.intro)}</p>` : ''}`);
 }
 
 function renderHeader() {
@@ -207,7 +207,7 @@ function renderHosts() {
           ${c.showLogo ? html`<span class="logo-plate mb-6" style="height:4.5rem"><img src="${CONFIG.site.logo.srcLight}" data-theme-logo alt="${CONFIG.site.logo.alt}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="wordmark" hidden>${CONFIG.site.logo.fallbackText}</span></span>` : ''}
           <p class="eyebrow">${c.eyebrow}</p>
           <h4 id="host-${c.id}" class="h3 mt-2 text-xl md:text-2xl">${c.title}</h4>
-          <div class="prose-muted mt-4 grid gap-4 text-sm md:text-base">${c.paragraphs.map(t => html`<p>${md(t)}</p>`)}</div>
+          <div class="prose-muted prose-justify-lg mt-4 grid gap-4 text-sm md:text-base">${c.paragraphs.map(t => html`<p>${md(t)}</p>`)}</div>
           <ul class="mt-6 flex flex-wrap gap-2" aria-label="Key facts">${c.facts.map(f => html`<li class="chip chip-solid chip-wrap">${f}</li>`)}</ul>
           ${c.link ? html`<p class="mt-auto pt-6"><a class="link inline-flex items-center gap-1.5 text-sm font-medium" href="${c.link.href}" target="_blank" rel="noopener">${c.link.label} ${icon('external', 'h-4 w-4')}<span class="sr-only"> (opens in new tab)</span></a></p>` : ''}
         </article>`)}
@@ -278,7 +278,7 @@ function renderEvents() {
   render('[data-render="general-rules"]', html`
     <div class="glass p-6 sm:p-8 reveal">
       <div class="flex items-center gap-3"><span class="icon-tile">${icon('shield')}</span><h3 class="h3">For every participant</h3></div>
-      <ul class="check prose-muted mt-6 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+      <ul class="check prose-muted prose-justify-lg mt-6 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
         ${CONFIG.generalRules.map(r => html`<li>${icon('check')}<span>${r}</span></li>`)}
       </ul>
       <p class="mt-6 text-xs text-muted">The Organising Committee may revise rules, schedules, formats, game titles and weight categories before the event. Final rulebooks are issued through the official registration channels.</p>
@@ -374,7 +374,7 @@ function renderFAQ() {
   render('[data-render="faq"]', html`<div class="divide-y hairline border-y">${CONFIG.faq.map((f, i) => html`
     <div class="reveal" style="--i:${Math.min(i, 5)}">
       <h3><button class="faq-btn" type="button" id="faq-q-${i}" aria-expanded="false" aria-controls="faq-a-${i}"><span>${f.q}</span>${icon('chevron')}</button></h3>
-      <div class="faq-panel" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}" inert><div><div class="prose-muted grid gap-3 pb-5 text-sm md:text-[.95rem]">${(Array.isArray(f.a) ? f.a : [f.a]).map(p => html`<p>${md(p)}</p>`)}</div></div></div>
+      <div class="faq-panel" id="faq-a-${i}" role="region" aria-labelledby="faq-q-${i}" inert><div><div class="prose-muted prose-justify grid gap-3 pb-5 text-sm md:text-[.95rem]">${(Array.isArray(f.a) ? f.a : [f.a]).map(p => html`<p>${md(p)}</p>`)}</div></div></div>
     </div>`)}</div>`);
 }
 
@@ -437,9 +437,9 @@ function renderContact() {
 
 function eventSectionMarkup(ev, s) {
   if (s.type === 'chips') return html`<ul class="flex flex-wrap gap-2">${s.items.map(i => html`<li class="chip chip-solid chip-wrap">${i}</li>`)}</ul>`;
-  if (s.type === 'steps') return html`<ol class="grid gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ol>`;
+  if (s.type === 'steps') return html`<ol class="grid gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted prose-justify text-sm md:text-base">${md(it)}</span></li>`)}</ol>`;
   if (s.type === 'downloads') return downloadsMarkup(ev);
-  return html`<ul class="check grid gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted text-sm md:text-base">${md(it)}</span></li>`)}</ul>`;
+  return html`<ul class="check grid gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted prose-justify text-sm md:text-base">${md(it)}</span></li>`)}</ul>`;
 }
 function downloadsMarkup(ev) {
   const d = (ev.page && ev.page.downloads) || [];
@@ -472,7 +472,7 @@ function renderEventPage() {
             <span class="badge reveal" style="--track:${t.color}; --i:1"><i></i>${t.label}${ev.fee.amount === 0 ? html` <span class="ml-2 inline-flex rounded-full bg-ok/15 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ok">Free</span>` : ''}</span>
             <h1 id="event-title" class="hero-title mt-4 reveal" style="--i:1; font-size: clamp(2.3rem, 6.5vw, 4.75rem)">${ev.name}</h1>
             <p class="mt-4 font-display text-lg font-medium text-ink/90 md:text-2xl reveal" style="--i:2">${ev.subtitle}</p>
-            <p class="prose-muted mt-5 max-w-2xl text-base md:text-lg reveal" style="--i:3">${ev.blurb}</p>
+            <p class="prose-muted prose-justify mt-5 max-w-2xl text-base md:text-lg reveal" style="--i:3">${ev.blurb}</p>
             <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:4" aria-label="Key details">
               <li class="chip">${icon('calendar')}${pg.dates || CONFIG.dates.display}</li>
               <li class="chip">${icon('users')}${teamSizeText(ev.teamSize)}</li>
@@ -507,8 +507,8 @@ function renderEventPage() {
             <p class="eyebrow reveal">Details</p>
             <h2 id="details-title" class="h2 mt-3 reveal" style="--i:1">Everything you need to know.</h2>
             <dl class="mt-8 grid gap-6 reveal" style="--i:2">
-              <div class="fact"><dt>Format</dt><dd class="fact-text">${ev.format}</dd></div>
-              <div class="fact"><dt>Eligibility</dt><dd class="fact-text">${ev.eligibility}</dd></div>
+              <div class="fact"><dt>Format</dt><dd class="fact-text prose-justify">${ev.format}</dd></div>
+              <div class="fact"><dt>Eligibility</dt><dd class="fact-text prose-justify">${ev.eligibility}</dd></div>
             </dl>
             ${ev.sections.map((sec, i) => html`<section class="mt-12 reveal" aria-labelledby="sec-${i}"><h3 id="sec-${i}" class="h3 text-lg md:text-xl">${sec.heading}</h3><div class="mt-5">${eventSectionMarkup(ev, sec)}</div></section>`)}
           </div>
@@ -539,7 +539,7 @@ function renderEventPage() {
       <div class="mx-auto max-w-wrap px-5 sm:px-8">
         <p class="eyebrow reveal">Schedule</p>
         <h2 id="track-schedule-title" class="h2 mt-3 reveal" style="--i:1">Your two days at SRHU.</h2>
-        <p class="prose-muted mt-4 max-w-2xl reveal" style="--i:2">${t.label} sessions with the common festival moments. The <a class="link" href="index.html#schedule">full timeline</a> shows all four tracks side by side.</p>
+        <p class="prose-muted prose-justify mt-4 max-w-2xl reveal" style="--i:2">${t.label} sessions with the common festival moments. The <a class="link" href="index.html#schedule">full timeline</a> shows all four tracks side by side.</p>
         <div class="mt-10 grid gap-8 md:grid-cols-2">
           ${days.map((d, di) => html`<div class="reveal" style="--i:${di + 2}"><h3 class="h3 text-lg">${d.label} <span class="font-sans text-sm font-normal text-muted">· ${d.date}</span></h3>
             <ol class="tl tl-compact mt-5">${d.rows.map(r => { const own = r.tracks.includes(ev.track); return html`<li class="tl-row ${r.milestone ? 'is-milestone' : ''} ${own ? '' : 'is-dim'}" style="--track:${own ? t.color : trackOf('common').color}"><span class="tl-node" aria-hidden="true"></span><div class="tl-card"><span class="tl-time">${r.time}</span><h4 class="mt-1 font-sans text-[.95rem] font-semibold leading-snug">${r.title}</h4>${r.note ? html`<p class="mt-1 text-xs text-muted">${r.note}</p>` : ''}</div></li>`; })}</ol></div>`)}
