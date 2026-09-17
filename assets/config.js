@@ -206,8 +206,8 @@ const CONFIG = {
       registrationLink: "https://forms.gle/j5pqgJmcQaCrdhr26",   // empty = "Registration opens soon"
       name: "Robo-War",
       subtitle: "Combat Robotics",
-      blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds across two weight classes.",
-      format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Weight classes of up to 8 kg and up to 15 kg (indicative, to be confirmed in the final rulebook).",
+      blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds in a upto 10 kg weight category.",
+      format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Robots weigh upto 10 kg only (indicative, to be confirmed in the final rulebook).",
       teamSize: { min: 2, max: 3, unit: "members" },
       fee: { amount: 500, per: "team", note: "" },
       capacity: "20–25 teams",
@@ -216,7 +216,7 @@ const CONFIG = {
       specialAwards: [],
       prizePool: 37000,
       cardFacts: ["teamSize", "fee", "prizePool"],
-      highlights: ["Up to 8 kg", "Up to 15 kg"],
+      highlights: ["upto 10 kg"],
       page: {
         dates: "27–28 November 2026",
         when: "Qualifiers, quarterfinals and semifinals on Day 1; Grand Finale on Day 2 morning.",
@@ -224,7 +224,7 @@ const CONFIG = {
         coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
-        { heading: "Weight classes", type: "chips", items: ["Up to 8 kg", "Up to 15 kg", "Classes indicative, final specs to be announced"] },
+        { heading: "Weight category", type: "chips", items: ["upto 10 kg", "Class indicative, final specs to be announced"] },
         { heading: "Eligibility and team", type: "list", items: [
           "Teams of 2 to 3 members. Each team nominates a Team Leader.",
           "Only registered team members may represent the team during the competition.",
@@ -264,7 +264,7 @@ const CONFIG = {
       name: "E-Sports",
       subtitle: "Competitive Gaming · LAN",
       blurb: "Squad-based tournament on a campus LAN across one or two titles, with group stages, knockouts and a grand finale on the big screen.",
-      format: "Squad-based tournament with group stage and/or knockout rounds across one or two finalised titles, played on LAN or approved on-campus setups. Proposed titles are BGMI, Valorant and FIFA; final titles depend on participant interest and platform availability.",
+      format: "Squad-based tournament with group stage and/or knockout rounds across one or two finalised titles, played on LAN or approved on-campus setups. The tournament will be played on Free Fire.",
       teamSize: { min: 4, max: 5, unit: "players" },
       fee: { amount: 500, per: "squad", note: "" },
       capacity: "20–30 squads",
@@ -273,7 +273,7 @@ const CONFIG = {
       specialAwards: [],
       prizePool: 37000,
       cardFacts: ["teamSize", "fee", "prizePool"],
-      highlights: ["BGMI", "Valorant", "FIFA"],
+      highlights: ["Free Fire"],
       page: {
         dates: "27–28 November 2026",
         when: "Group stages and Knockout Round 1 on Day 1; Grand Finale on Day 2 morning.",
@@ -281,7 +281,7 @@ const CONFIG = {
         coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
       sections: [
-        { heading: "Proposed titles", type: "chips", items: ["BGMI", "Valorant", "FIFA", "Final titles to be announced"] },
+        { heading: "Game title", type: "chips", items: ["Free Fire"] },
         { heading: "Eligibility and squads", type: "list", items: [
           "Squads of 4 to 5 players depending on the selected game format. Each squad nominates a Squad Leader or Captain.",
           "Only registered players take part in official matches. Provide correct player details at registration.",
@@ -461,9 +461,9 @@ const CONFIG = {
       a: ["Accommodation arrangements are **to be announced**. Hackathon participants get separate rest areas for male and female participants on campus, with running tea and snacks during the day and dinner provided. Robo-War, E-Sports and Exhibition participants get running tea and snacks.",
           "Food stalls are available at the venue on a paid basis for additional meals."] },
     { q: "Which games will E-Sports feature, and can I bring my own device?",
-      a: "Proposed titles are BGMI, Valorant and FIFA; the final one or two titles will be announced based on participant interest and platform availability. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. Game-specific rules and the match schedule are published before the event." },
+      a: "The E-Sports tournament will be played on Free Fire. Matches run on LAN or approved on-campus setups. Bring Your Own Device is allowed where permitted, provided the device meets the announced technical requirements. Game-specific rules and the match schedule are published before the event." },
     { q: "What are the Robo-War safety rules?",
-      a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Weight classes of up to 8 kg and up to 15 kg are indicative; the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
+      a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Robots weighing upto 10 kg only; this is indicative and the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
     { q: "What does a school need to arrange for the Exhibition?",
       a: "Participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
     { q: "Will I receive a certificate?",
