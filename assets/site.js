@@ -156,7 +156,7 @@ function renderHero() {
       <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
         <li class="chip">${icon('calendar')}${d.display}</li>
         <li class="chip">${icon('pin')}${CONFIG.venue.short}</li>
-        <li class="chip chip-ember">${icon('trophy')}${fmtINR(total)}+ prize pool</li>
+        <li class="chip chip-ember">${icon('trophy')}${s.prizeTotal ? s.prizeTotal + ' in prizes' : fmtINR(total) + '+ prize pool'}</li>
         ${d.tentative ? html`<li class="chip">${icon('info')}Dates tentative</li>` : ''}
       </ul>
       <div class="mt-9 reveal" style="--i:4">
@@ -289,7 +289,7 @@ function renderPrizes() {
   render('[data-render="prize-total"]', html`
     <div class="glass flex items-center gap-5 px-6 py-5 reveal" style="--i:2">
       <span class="icon-tile" style="color: rgb(var(--c-ember-ink)); background: rgb(var(--c-ember) / .14); border-color: rgb(var(--c-ember) / .3)">${icon('trophy')}</span>
-      <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${fmtINR(total)}<span class="text-emberink">+</span></p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
+      <div><p class="text-xs uppercase tracking-[.16em] text-muted">Combined prize pool</p><p class="num mt-1 text-3xl font-bold text-ink md:text-4xl">${CONFIG.site.prizeTotal || html`${fmtINR(total)}<span class="text-emberink">+</span>`}</p>${specials.length ? html`<p class="mt-1 text-xs text-muted">plus ${specials.join(', ')}</p>` : ''}</div>
     </div>`);
   render('[data-render="prizes"]', html`<div class="grid gap-5 md:grid-cols-2">${CONFIG.events.map((ev, i) => {
     const t = trackOf(ev.track), [p1, p2, p3] = ev.prizes;
@@ -925,7 +925,7 @@ function validateConfig() {
   if (isNaN(st) || isNaN(en)) warn.push('dates.start / dates.end are not valid ISO strings'); else if (en <= st) warn.push('dates.end is not after dates.start');
   if (!CONFIG.dates.display.includes(CONFIG.dates.start.slice(0, 4))) warn.push('dates.display year does not match dates.start');
   const total = CONFIG.events.reduce((a, e) => a + e.prizePool, 0);
-  const stat = CONFIG.stats.find(s => /L/.test(s.suffix || ''));
+  const stat = CONFIG.stats.find(s => /\bL\b|lakh/i.test(s.suffix || ''));
   if (stat && Math.abs(stat.value * 1e5 - total) > 5000) warn.push(`prize pool stat ₹${stat.value}L differs from the computed total ${fmtINR(total)}`);
   (warn.length ? console.warn : console.info)(`[HIMOVATION config] ${warn.length ? warn.length + ' warning(s)' : 'no warnings'}`, warn);
   return warn;

@@ -17,6 +17,7 @@ const CONFIG = {
     name: "HIMOVATION 2026",
     edition: "2026",
     eyebrow: "Annual National Technical Festival",
+    prizeTotal: "Up to ₹2 lakhs",   // prize-pool wording for the hero chip and the combined prize-pool card; leave empty to show the computed ₹1,95,000+
     tagline: "Where Code Meets Combat, Play Meets Purpose",
     url: "https://aicentre-lab.github.io/Himovation/",   // update when the site moves to a university domain
     logo: { src: "assets/srhu-logo-dark.png", srcLight: "assets/srhu-logo-light.png", alt: "Swami Rama Himalayan University, NAAC A+ accredited", fallbackText: "SRHU" },  // dark = white mark for dark backgrounds, light = blue mark for light backgrounds
@@ -72,7 +73,7 @@ const CONFIG = {
   sections: {
     about:    { eyebrow: "About the festival", heading: "Built in the Himalayan foothills. Aimed at the country.", intro: "" },
     events:   { eyebrow: "Four flagship events", heading: "Pick your arena.", intro: "Two days, four parallel tracks. Each event is built for a different kind of builder, from 24-hour AI sprints to combat robots, LAN tournaments and school science stalls. Open an event for its full rules, prizes, downloads and coordinators." },
-    prizes:   { eyebrow: "Prize pool", heading: "₹1,95,000 on the line.", intro: "Cash prizes and Certificates of Achievement in every event, presented at the valedictory ceremony on 28 November." },
+    prizes:   { eyebrow: "Prize pool", heading: "Up to ₹2 lakhs on the line.", intro: "Cash prizes and Certificates of Achievement in every event, presented at the valedictory ceremony on 28 November." },
     schedule: { eyebrow: "Schedule", heading: "Two days, running in parallel.", intro: "The hackathon runs continuously from Day 1 morning to Day 2 noon. Robo-War, E-Sports and the Exhibition run alongside it. Filter by track to see your day." },
     why:      { eyebrow: "Why participate", heading: "More than a weekend.", intro: "What you take home besides the prize money." },
     faq:      { eyebrow: "FAQ", heading: "Questions, answered.", intro: "Everything drawn from the official participant guidelines. Anything not confirmed yet is marked to be announced." },
@@ -123,7 +124,7 @@ const CONFIG = {
 
   stats: [
     { value: 4,    label: "Flagship events" },
-    { value: 1.95, decimals: 2, prefix: "₹", suffix: " L+", label: "Total prize pool" },
+    { value: 2, prefix: "₹", suffix: " lakhs", label: "Prize pool (up to)" },
     { value: 500,  suffix: "+", label: "Participants & visitors" },
     { value: 24,   suffix: " hrs", label: "Non-stop hacking" },
   ],
@@ -444,7 +445,7 @@ const CONFIG = {
   },
 
   why: [
-    { icon: "trophy",  title: "₹1,95,000+ in cash prizes",       text: "Three cash prizes in every event, plus two Best Innovator awards for schools, presented on stage at the valedictory." },
+    { icon: "trophy",  title: "Up to ₹2 lakhs in cash prizes",       text: "Three cash prizes in every event, plus two Best Innovator awards for schools, presented on stage at the valedictory." },
     { icon: "globe",   title: "National exposure",               text: "A national hackathon with teams from institutions across India, judged by faculty and industry evaluators, on a stage that grows every year." },
     { icon: "users",   title: "Mentors and industry judges",     text: "Overnight mentor visits during the hackathon, referees and technical panels for Robo-War and E-Sports, expert judging for school projects." },
     { icon: "award",   title: "Certificates for everyone",       text: "Certificates of Achievement for winners and participation certificates for every participant who completes the event." },
