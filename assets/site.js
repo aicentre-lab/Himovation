@@ -136,13 +136,13 @@ function renderHero() {
     <div class="text-center mb-6 reveal">
       <div class="flex items-center justify-center gap-4">
         <span class="hidden sm:block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
-        <p class="eyebrow text-base">${o.school}</p>
+        <p class="eyebrow text-base text-balance">${o.school}</p>
         
         <span class="hidden sm:block h-[2px] w-12 sm:w-16" style="background:rgb(var(--c-accent)/.45)" aria-hidden="true"></span>
       </div>
       <p class="mt-2 text-sm text-muted">${o.university}, Dehradun</p>
       <p class="text-sm text-muted mt-2">Presents</p>
-      <p class="font-display text-2xl font-bold tracking-wide mt-2 sm:text-3xl">Annual National Technical Festival</p>
+      <p class="font-display text-2xl font-bold tracking-wide mt-2 text-balance sm:text-3xl">Annual National Technical Festival</p>
       <div class="mt-3 flex justify-center">
         <span class="chip" style="gap:0;padding:.5rem 1rem .5rem .9rem;font-size:.85rem">
           Powered by
@@ -150,10 +150,10 @@ function renderHero() {
         </span>
       </div>
     </div>
-    <div class="max-w-4xl">
+    <div class="mx-auto max-w-4xl text-center">
       <h1 class="hero-title mt-4 reveal" style="--i:1">HIMOVATION <span class="hero-year">${s.edition}</span></h1>
-      <p class="mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
-      <ul class="mt-7 flex flex-wrap gap-2 reveal" style="--i:3" aria-label="Key details">
+      <p class="mx-auto mt-6 max-w-2xl font-display text-lg font-medium text-ink/90 text-balance sm:text-xl md:text-2xl reveal" style="--i:2">${s.tagline}</p>
+      <ul class="mt-7 flex flex-wrap justify-center gap-2 reveal" style="--i:3" aria-label="Key details">
         <li class="chip">${icon('calendar')}${d.display}</li>
         <li class="chip">${icon('pin')}${CONFIG.venue.short}</li>
         <li class="chip chip-ember">${icon('trophy')}${s.prizeTotal ? s.prizeTotal + ' in prizes' : fmtINR(total) + '+ prize pool'}</li>
@@ -161,16 +161,16 @@ function renderHero() {
       </ul>
       <div class="mt-9 reveal" style="--i:4">
         <p class="mb-3 text-xs uppercase tracking-[.18em] text-muted" data-cd-caption>Festival begins in</p>
-        ${countdownMarkup(false)}
+        ${countdownMarkup(true)}
       </div>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center reveal" style="--i:5">
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center reveal" style="--i:5">
         ${CONFIG.hero.ctas.map(c => ctaMarkup(c))}
       </div>
-      <ul class="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted reveal" style="--i:6" aria-label="Events">
+      <ul class="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted reveal" style="--i:6" aria-label="Events">
         ${CONFIG.events.map(e => html`<li class="badge" style="--track:${trackOf(e.track).color}"><i></i>${trackOf(e.track).label}</li>`)}
       </ul>
     </div>
-    <a href="#about" class="absolute bottom-24 right-5 hidden items-center gap-3 text-xs uppercase tracking-[.18em] text-muted md:flex" aria-label="Scroll to about section">Scroll <span class="scroll-cue" aria-hidden="true"></span></a>`);
+    <a href="#about" class="absolute bottom-24 right-5 hidden items-center gap-3 text-xs uppercase tracking-[.18em] text-muted lg:flex" aria-label="Scroll to about section">Scroll <span class="scroll-cue" aria-hidden="true"></span></a>`);
 }
 
 function renderAbout() {
