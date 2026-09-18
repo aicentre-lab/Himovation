@@ -347,8 +347,8 @@ const CONFIG = {
       cardFacts: ["teamSize", "fee", "prizePool"],
       highlights: ["Science & Technology", "AI", "Robotics", "Sustainability", "Clean Energy", "Healthcare"],
       page: {
-        dates: "27–28 November 2026",
-        when: "Stall setup and Judging Round 1 with public viewing on Day 1; Judging Round 2 (final) on Day 2 morning.",
+        dates: "28 November 2026",   // confirmed with the committee: the Exhibition runs on Day 2 only
+        when: "A single day on 28 November: stall setup in the morning, then Judging Round 1 with public viewing and Judging Round 2 (final).",
         downloads: [],
         coordinators: [],   // empty = the festival coordinators from contact.coordinators
       },
@@ -404,8 +404,9 @@ const CONFIG = {
     // SCHEDULE ON HOLD (15.09.2026): timings are still under discussion with the committee.
     // published: false hides the timeline everywhere and shows a "coming soon" card instead.
     // The rows below are kept as they are; set published: true once the schedule is final.
-    // NOTE (guidelines 16.09.2026): Robo-War and E-Sports are dated 27 Nov only, and the Exhibition is a single day;
-    // the Day 2 rows for those tracks below come from the 26.08 proposal and must be reconciled before publishing.
+    // NOTE (guidelines 16.09.2026): Robo-War and E-Sports are dated 27 Nov only, but their Day 2 Grand Finale rows
+    // below come from the 26.08 proposal and must still be reconciled before publishing.
+    // RESOLVED: the Exhibition is confirmed as a single day on 28 Nov (Day 2) and its rows are set accordingly.
     published: false,
     comingSoon: {
       heading: "The detailed schedule is being finalised.",
@@ -417,11 +418,9 @@ const CONFIG = {
         { time: "09:00 – 10:00 AM", title: "Inauguration Ceremony & Registration", tracks: ["common"], note: "All events · Auditorium", milestone: true },
         { time: "10:00 – 11:00 AM", title: "Orientation & problem statement release", tracks: ["hackathon"] },
         { time: "10:00 – 11:00 AM", title: "Team check-in, technical & safety inspection", tracks: ["robowar", "esports"] },
-        { time: "10:00 – 11:00 AM", title: "Stall setup", tracks: ["exhibition"] },
         { time: "11:00 AM onwards", title: "Coding phase begins (continuous)", tracks: ["hackathon"] },
         { time: "11:00 AM – 01:00 PM", title: "Qualifying rounds", tracks: ["robowar"] },
         { time: "11:00 AM – 01:00 PM", title: "Group Stage Round 1", tracks: ["esports"] },
-        { time: "11:00 AM – 02:00 PM", title: "Judging Round 1 & public viewing", tracks: ["exhibition"] },
         { time: "01:00 – 02:00 PM", title: "Lunch break", tracks: ["common"] },
         { time: "02:00 – 05:00 PM", title: "Quarterfinals & semifinals", tracks: ["robowar"] },
         { time: "02:00 – 05:00 PM", title: "Group Stage Round 2 & Knockout Round 1", tracks: ["esports"] },
@@ -431,12 +430,14 @@ const CONFIG = {
       ] },
       { id: "day2", label: "Day 2", date: "Saturday, 28 November", rows: [
         { time: "07:30 AM", title: "Breakfast", tracks: ["common"] },
+        { time: "08:00 – 09:00 AM", title: "Stall setup", tracks: ["exhibition"] },
         { time: "08:00 AM", title: "Progress Check Round II & submission prep", tracks: ["hackathon"] },
         { time: "09:00 – 10:30 AM", title: "Final submission & presentations", tracks: ["hackathon"] },
         { time: "09:00 – 11:00 AM", title: "Grand Finale", tracks: ["robowar"] },
         { time: "09:00 – 11:00 AM", title: "Grand Finale", tracks: ["esports"] },
-        { time: "09:00 – 11:00 AM", title: "Judging Round 2 (final)", tracks: ["exhibition"] },
+        { time: "09:00 – 11:00 AM", title: "Judging Round 1 & public viewing", tracks: ["exhibition"] },
         { time: "11:00 AM – 01:00 PM", title: "Final evaluation & live demonstration", tracks: ["hackathon"] },
+        { time: "11:00 AM – 01:00 PM", title: "Judging Round 2 (final)", tracks: ["exhibition"] },
         { time: "01:00 – 02:00 PM", title: "Lunch break", tracks: ["common"] },
         { time: "02:00 – 03:30 PM", title: "Judging consolidation, all events", tracks: ["common"] },
         { time: "03:30 – 04:30 PM", title: "Valedictory Ceremony & Prize Distribution", tracks: ["common"], note: "All events · Auditorium", milestone: true },
@@ -471,7 +472,7 @@ const CONFIG = {
     { q: "What are the Robo-War safety rules?",
       a: "Robots must be remotely controlled and pass a technical and safety inspection before competing. Only authorised team members operate the robot, from outside the safety barricade, and robots stay switched off outside matches. Robots may weigh up to 10 kg; this is indicative, and the final rulebook with specifications will be issued through the registration channels. The referee's decision during a match is final." },
     { q: "What does a school need to arrange for the Exhibition?",
-      a: "Participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
+      a: "The Exhibition runs on 28 November, the second day of the festival, and participation is free. Register the school, the project details, 1 to 3 students per project and one accompanying teacher. Each team gets a stall with a table and a power point; bring your own display material. Electrical equipment must be insulated, hazardous materials must be declared in advance, and stalls should not be left unattended. Transport for visiting schools is coordinated with the organisers." },
     { q: "Will I receive a certificate?",
       a: "Yes. Winners receive cash prizes with Certificates of Achievement, and every participant who completes the required participation process receives a participation certificate. Prizes are distributed at the valedictory ceremony on 28 November." },
     { q: "How do I reach SRHU, Jolly Grant?",

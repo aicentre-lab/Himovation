@@ -21,7 +21,7 @@
   --shadow-strong: rgb(15 23 42 / .16);
   --hero-tint: rgb(13 54 104 / .10);
   --hero-grad: linear-gradient(100deg, #0D3668 0%, #0369A1 50%, #D97706 100%);
-  --header-h: 4.25rem;
+  --header-h: 5rem;
   color-scheme: light;
 }
 /* Dark theme: toggled from the navbar, and used permanently on .theme-dark sections (footer, registration band) */
@@ -133,7 +133,7 @@ p { margin: 0; }
 .nav-link:hover { color: rgb(var(--c-ink)); }
 .nav-link[aria-current="true"] { color: rgb(var(--c-ink)); }
 .nav-link[aria-current="true"]::after { transform: scaleX(1); }
-.logo-plate { display: inline-flex; align-items: center; height: 3.75rem; }
+.logo-plate { display: inline-flex; align-items: center; height: 4.5rem; }
 .logo-plate img { height: 100%; width: auto; display: block; }
 .wordmark { font-family: Sora, system-ui, sans-serif; font-weight: 800; letter-spacing: .12em; font-size: 1.25rem; }
 
