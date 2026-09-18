@@ -60,6 +60,9 @@ const ICONS = {
   shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
   ticket: '<path d="M2 9a3 3 0 0 1 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 1 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 17v2M13 11v2"/>',
   info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+  wallet: '<path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M3 7h16a2 2 0 0 1 2 2v3h-5a2 2 0 0 0 0 4h5"/>',
   sparkle: '<path d="m12 3 1.9 5.6 5.6 1.9-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
@@ -395,9 +398,51 @@ function renderRegisterBand() {
                : html`<span class="chip flex-none" title="Registration for this event has not opened yet">${icon('clock')}Opens soon</span>`}
       </li>`; })}
     </ul>
-    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:6">
+    ${CONFIG.payment ? html`
+    <div id="pay" class="glass mx-auto mt-6 max-w-4xl p-5 text-left sm:p-7 reveal" style="--i:6">
+      <div class="mb-6 flex items-center gap-3"><span class="icon-tile flex-none">${icon('wallet')}</span><div><p class="eyebrow">Payment</p><h3 class="h3 mt-1">Pay the entry fee by UPI</h3></div></div>
+      ${paymentMarkup()}
+    </div>` : ''}
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:7">
       ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
     </div>`);
+}
+
+// UPI QR card from CONFIG.payment: every paid event's fee on the home page, or one event's fee on its own page.
+function paymentMarkup(ev) {
+  const p = CONFIG.payment; if (!p || !p.upiId) return '';
+  const paid = CONFIG.events.filter(e => e.fee.amount > 0), free = CONFIG.events.filter(e => e.fee.amount === 0);
+  const fees = ev ? html`
+    <p class="num text-3xl font-bold">${fmtINR(ev.fee.amount)}<span class="font-sans text-base font-normal text-muted"> / ${ev.fee.per}</span></p>
+    ${ev.fee.due ? html`<p class="mt-3"><span class="chip chip-ember chip-wrap">${icon('clock')}Pay ${ev.fee.due}</span></p>` : ''}` : html`
+    <ul class="grid gap-2" aria-label="Entry fees">${paid.map(e => { const t = trackOf(e.track); return html`
+      <li class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border hairline bg-raised/30 px-3.5 py-2.5" style="--track:${t.color}">
+        <span class="badge text-xs"><i></i>${t.label}</span>
+        <span class="text-sm"><span class="num font-bold text-ink">${fmtINR(e.fee.amount)}</span><span class="text-muted"> / ${e.fee.per}${e.fee.due ? ` · pay ${e.fee.due}` : ''}</span></span>
+      </li>`; })}</ul>
+    ${free.length ? html`<p class="mt-2 text-xs text-muted">${free.map(e => e.name).join(', ')}: free, nothing to pay.</p>` : ''}`;
+  return html`
+    <div class="grid gap-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center sm:gap-8">
+      <figure class="qr-tile">
+        <img src="${p.qr}" alt="UPI QR code. Pays ${p.payee}, UPI ID ${p.upiId}" width="480" height="480" loading="lazy" decoding="async">
+        <figcaption>Scan with any UPI app</figcaption>
+      </figure>
+      <div class="min-w-0">
+        ${fees}
+        <dl class="mt-5 grid gap-4 border-t hairline pt-5 sm:grid-cols-2">
+          <div class="fact"><dt>Payee</dt><dd>${p.payee}</dd></div>
+          <div class="fact"><dt>UPI ID</dt><dd class="break-words">${p.upiId}</dd></div>
+        </dl>
+        <ul class="check prose-muted mt-5 grid gap-2 text-sm">
+          ${[`Check that your UPI app shows **${p.payee}** before you confirm.`, ...(p.steps || [])].map(s => html`<li>${icon('check')}<span>${md(s)}</span></li>`)}
+        </ul>
+        <div class="mt-6 flex flex-col gap-2 sm:flex-row">
+          <button class="btn btn-ghost btn-sm" type="button" data-copy="${p.upiId}"><span class="btn-inner">${icon('copy')}<span data-copy-label aria-live="polite">Copy UPI ID</span></span></button>
+          <a class="btn btn-ghost btn-sm" href="${p.qr}" download="${p.qrDownloadName || ''}"><span class="btn-inner">${icon('download')}Save QR code</span></a>
+        </div>
+        <p class="touch-only mt-3 text-xs text-muted">Paying from this phone? Save the QR code and pick it from the gallery in your UPI app's scanner, or pay to the UPI ID.</p>
+      </div>
+    </div>`;
 }
 
 function renderContact() {
@@ -436,6 +481,7 @@ function eventSectionMarkup(ev, s) {
   if (s.type === 'chips') return html`<ul class="flex flex-wrap gap-2">${s.items.map(i => html`<li class="chip chip-solid chip-wrap">${i}</li>`)}</ul>`;
   if (s.type === 'steps') return html`<ol class="grid gap-4">${s.items.map((it, i) => html`<li class="step"><i>${i + 1}</i><span class="prose-muted prose-justify text-sm md:text-base">${md(it)}</span></li>`)}</ol>`;
   if (s.type === 'downloads') return downloadsMarkup(ev);
+  if (s.type === 'payment') return html`<div class="glass p-5 sm:p-7">${paymentMarkup(ev)}</div>`;
   return html`<ul class="check grid gap-3">${s.items.map(it => html`<li>${icon('check')}<span class="prose-muted prose-justify text-sm md:text-base">${md(it)}</span></li>`)}</ul>`;
 }
 function downloadsMarkup(ev) {
@@ -458,6 +504,7 @@ function renderEventPage() {
   const days = CONFIG.schedule.days.map(d => ({ ...d, rows: d.rows.filter(r => r.tracks.includes(ev.track) || r.tracks.includes('common')) }));
   const others = CONFIG.events.filter(e => e.id !== ev.id);
   const coords = (pg.coordinators && pg.coordinators.length) ? pg.coordinators : CONFIG.contact.coordinators.filter(c => c.name && c.phone);
+  const hasPay = !!CONFIG.payment && ev.fee.amount > 0 && ev.sections.some(s => s.type === 'payment');
   render('[data-render="event-page"]', html`
     <section class="relative overflow-hidden bg-ground pb-12 pt-28 md:pb-16 md:pt-32" aria-labelledby="event-title">
       <div class="hero-grid" aria-hidden="true"></div>
@@ -487,7 +534,7 @@ function renderEventPage() {
               <div class="fact"><dt>Dates</dt><dd>${pg.dates || CONFIG.dates.display}</dd></div>
               <div class="fact"><dt>Venue</dt><dd>${v.short}</dd></div>
               <div class="fact"><dt>Team size</dt><dd>${teamSizeText(ev.teamSize)}</dd></div>
-              <div class="fact"><dt>Entry fee</dt><dd>${feeText(ev.fee)}${ev.fee.note ? html`<span class="mt-1 block font-sans text-xs font-normal text-muted">${ev.fee.note}</span>` : ''}</dd></div>
+              <div class="fact"><dt>Entry fee</dt><dd>${feeText(ev.fee)}${ev.fee.note ? html`<span class="mt-1 block font-sans text-xs font-normal text-muted">${ev.fee.note}</span>` : ''}${hasPay ? html`<a class="link mt-1 inline-block font-sans text-xs font-medium" href="#pay">How to pay</a>` : ''}</dd></div>
               <div class="fact col-span-2"><dt>Expected participation</dt><dd>${ev.capacity}</dd></div>
               ${scheduleOn && pg.when ? html`<div class="fact col-span-2"><dt>When</dt><dd class="fact-text text-sm">${pg.when}</dd></div>` : ''}
             </dl>
@@ -507,7 +554,7 @@ function renderEventPage() {
               <div class="fact"><dt>Format</dt><dd class="fact-text prose-justify">${ev.format}</dd></div>
               <div class="fact"><dt>Eligibility</dt><dd class="fact-text prose-justify">${ev.eligibility}</dd></div>
             </dl>
-            ${ev.sections.map((sec, i) => html`<section class="mt-12 reveal" aria-labelledby="sec-${i}"><h3 id="sec-${i}" class="h3 text-lg md:text-xl">${sec.heading}</h3><div class="mt-5">${eventSectionMarkup(ev, sec)}</div></section>`)}
+            ${ev.sections.map((sec, i) => html`<section class="mt-12 reveal" ${sec.type === 'payment' ? raw('id="pay"') : ''} aria-labelledby="sec-${i}"><h3 id="sec-${i}" class="h3 text-lg md:text-xl">${sec.heading}</h3><div class="mt-5">${eventSectionMarkup(ev, sec)}</div></section>`)}
           </div>
           <aside class="grid content-start gap-5 lg:sticky lg:top-24">
             <div class="glass p-6 reveal" style="--track:${t.color}">
@@ -848,6 +895,24 @@ function initForm() {
   });
 }
 
+function initCopy() {
+  document.addEventListener('click', async e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const text = b.dataset.copy, label = $('[data-copy-label]', b);
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch (_) {
+      const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand('copy'); } catch (_) {}
+      ta.remove();
+    }
+    if (!label) return;
+    label.dataset.idle = label.dataset.idle || label.textContent;
+    label.textContent = ok ? 'Copied' : 'Copy failed, select the ID above';
+    clearTimeout(b.copyTimer); b.copyTimer = setTimeout(() => { label.textContent = label.dataset.idle; }, 2200);
+  });
+}
+
 function initCanvas() {
   const canvas = $('#ridge-canvas'), hero = $('#hero');
   if (!canvas || !hero || !canvas.getContext) return;
@@ -918,8 +983,7 @@ function validateConfig() {
   CONFIG.schedule.days.forEach(d => d.rows.forEach(r => r.tracks.forEach(t => { if (!tracks.includes(t)) warn.push(`schedule row "${r.title}": unknown track "${t}"`); })));
   if (CONFIG.faq.length < 8 || CONFIG.faq.length > 10) warn.push(`FAQ has ${CONFIG.faq.length} items (expected 8–10)`);
   if (/REPLACE/i.test(CONFIG.REGISTRATION_LINK)) warn.push('REGISTRATION_LINK still contains the placeholder');
-  CONFIG.events.forEach(e => { if (!eventRegLink(e)) warn.push(`event ${e.id} has no registrationLink yet (shows "Registration opens soon")`); });
-  CONFIG.social.forEach(s => { if (/REPLACE/i.test(s.href)) warn.push(`social link for ${s.name} still contains the placeholder`); });
+  CONFIG.events.forEach(e => { if (!eventRegLink(e)) warn.push(`event ${e.id} has no registrationLink yet (shows "Registration opens soon")`); });  CONFIG.social.forEach(s => { if (/REPLACE/i.test(s.href)) warn.push(`social link for ${s.name} still contains the placeholder`); });
   if (/XXXX/.test(CONFIG.contact.phone)) warn.push('contact.phone is still a placeholder');
   const st = Date.parse(CONFIG.dates.start), en = Date.parse(CONFIG.dates.end);
   if (isNaN(st) || isNaN(en)) warn.push('dates.start / dates.end are not valid ISO strings'); else if (en <= st) warn.push('dates.end is not after dates.start');
@@ -961,7 +1025,7 @@ function init() {
   }
   renderFooter(); applyRegisterLinks();
   initTheme(); initHeader(); initMenu(); initReveal(); initCounters(); initCountdown(); initTabs();
-  initAccordion(); initMagnetic(); initForm(); initCanvas();
+  initAccordion(); initMagnetic(); initForm(); initCopy(); initCanvas();
   if (CONFIG.debug || location.hash === '#debug') validateConfig();
   window.HIMOVATION = { CONFIG, validateConfig };
 }
