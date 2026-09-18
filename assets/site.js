@@ -61,9 +61,7 @@ const ICONS = {
   ticket: '<path d="M2 9a3 3 0 0 1 0 6v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3a3 3 0 0 1 0-6V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 17v2M13 11v2"/>',
   info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
   copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
-  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
-  wallet: '<path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M3 7h16a2 2 0 0 1 2 2v3h-5a2 2 0 0 0 0 4h5"/>',
-  sparkle: '<path d="m12 3 1.9 5.6 5.6 1.9-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',  sparkle: '<path d="m12 3 1.9 5.6 5.6 1.9-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
 };
@@ -398,29 +396,17 @@ function renderRegisterBand() {
                : html`<span class="chip flex-none" title="Registration for this event has not opened yet">${icon('clock')}Opens soon</span>`}
       </li>`; })}
     </ul>
-    ${CONFIG.payment ? html`
-    <div id="pay" class="glass mx-auto mt-6 max-w-4xl p-5 text-left sm:p-7 reveal" style="--i:6">
-      <div class="mb-6 flex items-center gap-3"><span class="icon-tile flex-none">${icon('wallet')}</span><div><p class="eyebrow">Payment</p><h3 class="h3 mt-1">Pay the entry fee by UPI</h3></div></div>
-      ${paymentMarkup()}
-    </div>` : ''}
-    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:7">
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row reveal" style="--i:6">
       ${ctaMarkup({ label: 'Ask a question', href: '#contact', style: 'ghost' })}
     </div>`);
 }
 
-// UPI QR card from CONFIG.payment: every paid event's fee on the home page, or one event's fee on its own page.
+// UPI QR card from CONFIG.payment for an event page's "payment" section (only Robo-War has one).
 function paymentMarkup(ev) {
   const p = CONFIG.payment; if (!p || !p.upiId) return '';
-  const paid = CONFIG.events.filter(e => e.fee.amount > 0), free = CONFIG.events.filter(e => e.fee.amount === 0);
-  const fees = ev ? html`
+  const fees = html`
     <p class="num text-3xl font-bold">${fmtINR(ev.fee.amount)}<span class="font-sans text-base font-normal text-muted"> / ${ev.fee.per}</span></p>
-    ${ev.fee.due ? html`<p class="mt-3"><span class="chip chip-ember chip-wrap">${icon('clock')}Pay ${ev.fee.due}</span></p>` : ''}` : html`
-    <ul class="grid gap-2" aria-label="Entry fees">${paid.map(e => { const t = trackOf(e.track); return html`
-      <li class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border hairline bg-raised/30 px-3.5 py-2.5" style="--track:${t.color}">
-        <span class="badge text-xs"><i></i>${t.label}</span>
-        <span class="text-sm"><span class="num font-bold text-ink">${fmtINR(e.fee.amount)}</span><span class="text-muted"> / ${e.fee.per}${e.fee.due ? ` · pay ${e.fee.due}` : ''}</span></span>
-      </li>`; })}</ul>
-    ${free.length ? html`<p class="mt-2 text-xs text-muted">${free.map(e => e.name).join(', ')}: free, nothing to pay.</p>` : ''}`;
+    ${ev.fee.due ? html`<p class="mt-3"><span class="chip chip-ember chip-wrap">${icon('clock')}Pay ${ev.fee.due}</span></p>` : ''}`;
   return html`
     <div class="grid gap-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center sm:gap-8">
       <figure class="qr-tile">

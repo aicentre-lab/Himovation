@@ -31,7 +31,7 @@ Open `assets/config.js`. Every editable value is there:
 | Venue, map, travel distances | `venue` |
 | Event formats, fees, team sizes, prizes | `events[]` |
 | Event page content: rules, process steps, criteria (chips / steps / list / downloads / payment) | `events[].sections[]` |
-| UPI payment: QR image, UPI ID, payee name, payment steps | `payment` (QR file `assets/upi-qr.png`); when each fee is due is `events[].fee.due` |
+| UPI payment (Robo-War page only): QR image, UPI ID, payee name, payment steps | `payment` (QR file `assets/upi-qr.png`); shown where an event has a `{ type: "payment" }` section, with `events[].fee.due` as the "Pay …" line |
 | Event page extras: dates line, downloads, coordinators | `events[].page` |
 | Event page file name | `events[].href` (rename the HTML file to match) |
 | Two-day schedule and parallel tracks | `schedule.days[].rows[]` (`tracks` uses keys from `tracks`) |

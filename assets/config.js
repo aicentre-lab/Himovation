@@ -137,9 +137,9 @@ const CONFIG = {
     common:     { label: "All events", color: "#64748B" },
   },
 
-  // UPI payment for entry fees. Shown in the home registration band and in the Robo-War page's "payment" section,
-  // and described in the FAQ. Hackathon and E-Sports pages have no QR on purpose: those teams pay only after
-  // shortlisting, when the committee tells them. If the account changes, replace the QR image and these fields together.
+  // UPI payment for entry fees. Shown only in the Robo-War page's "payment" section (Robo-War teams pay when they
+  // register) and described in the FAQ. The home page, Hackathon and E-Sports pages have no QR on purpose: those
+  // teams pay only after shortlisting, when the committee tells them. If the account changes, replace the QR image and these fields together.
   payment: {
     upiId: "gauravsharma.ps@okaxis",
     payee: "Dr. Gaurav Sharma",           // the name UPI apps show after scanning; participants are told to check it
@@ -161,7 +161,7 @@ const CONFIG = {
       blurb: "A continuous 24-hour coding sprint to build AI-powered solutions mapped to the UN Sustainable Development Goals. Online shortlisting first, then the offline finale on campus.",
       format: "Two rounds. Round 1 is online: register, then submit a problem statement in the HIMOVATION 2026 template with a short video description for panel evaluation. Shortlisted teams come to SRHU for the continuous 24-hour build with two progress reviews, mentor support, final presentations and live demos.",
       teamSize: { min: 3, max: 5, unit: "members" },
-      fee: { amount: 800, per: "team", note: "Payable only by teams shortlisted after Round 1", due: "after Round 1 shortlisting" },   // due = "Pay …" line beside the QR
+      fee: { amount: 800, per: "team", note: "Payable only by teams shortlisted after Round 1" },
       capacity: "40–50 teams",
       eligibility: "Students participating through their institutions, with an interest in programming, AI/ML, data science or software development. Multidisciplinary teams encouraged. One optional mentor per team, declared at registration.",
       prizes: [ { place: "1st", amount: 51000 }, { place: "2nd", amount: 31000 }, { place: "3rd", amount: 11000 } ],
@@ -225,7 +225,7 @@ const CONFIG = {
       blurb: "Remote-controlled combat robots in a fabricated, shielded arena. Knockout and league rounds in the up-to-10 kg weight category.",
       format: "Knockout and/or league rounds, depending on the number of teams, inside a fabricated combat arena with safety barricades and acrylic shielding. Robots weigh up to 10 kg (indicative, to be confirmed in the final rulebook).",
       teamSize: { min: 2, max: 3, unit: "members" },
-      fee: { amount: 500, per: "team", note: "", due: "when you register" },
+      fee: { amount: 500, per: "team", note: "", due: "when you register" },   // due = "Pay …" line beside the QR on the event page
       capacity: "20–25 teams",
       eligibility: "Students and eligible robotics enthusiasts as permitted by the organisers, with knowledge of or interest in robotics, electronics, mechanical systems, embedded systems or remote-control technologies.",
       prizes: [ { place: "1st", amount: 21000 }, { place: "2nd", amount: 11000 }, { place: "3rd", amount: 5000 } ],
@@ -283,7 +283,7 @@ const CONFIG = {
       blurb: "Squad-based Free Fire tournament on a campus LAN, with group stages, knockouts and a grand finale on the big screen.",
       format: "Squad-based Free Fire tournament with group stage and/or knockout rounds, played on LAN or approved on-campus setups. The match schedule and game-specific rules are shared with shortlisted squads before the event.",
       teamSize: { min: 4, max: 5, unit: "players" },
-      fee: { amount: 500, per: "squad", note: "Payable only by squads shortlisted after verification", due: "after shortlisting" },
+      fee: { amount: 500, per: "squad", note: "Payable only by squads shortlisted after verification" },
       capacity: "20–30 squads",
       eligibility: "Students and participants as specified by the organising committee. Players must meet the age and eligibility requirements of the selected title.",
       prizes: [ { place: "1st", amount: 21000 }, { place: "2nd", amount: 11000 }, { place: "3rd", amount: 5000 } ],
@@ -478,8 +478,8 @@ const CONFIG = {
       a: ["Round 1 is online: register, get verified, and submit your problem statement in the HIMOVATION 2026 five-slide template together with a short video description before the deadline. The evaluation panel then shortlists teams for the offline finale at SRHU. The template is on the [Solve-a-Thon page](https://aicentre-lab.github.io/Himovation/hackathon.html).",
           "**Only shortlisted teams pay the ₹800 per-team fee**, within the due date communicated by the Organising Committee. A seat is confirmed only after payment and verification."] },
     { q: "How do I pay the entry fee?",
-      a: ["By UPI. Scan the QR code in the Registration section of the home page (Robo-War teams also find it on the Robo-War page) with any UPI app, or pay to the UPI ID printed beside it. Check that your app shows the payee named there before you confirm.",
-          "Pay only when your fee is due: Robo-War teams pay when they register, while Hackathon teams and E-Sports squads pay only after they are shortlisted. Write your **team name and event** in the payment note, and keep the screenshot and 12‑digit UTR for verification. The School Project Exhibition is free."] },
+      a: ["Robo-War teams pay ₹500 by UPI when they register: scan the QR code on the [Robo-War page](https://aicentre-lab.github.io/Himovation/robo-war.html) with any UPI app, or pay to the UPI ID printed beside it. Write your **team name and event** in the payment note, and keep the screenshot and 12‑digit UTR for verification.",
+          "Hackathon teams and E-Sports squads pay nothing at registration. **Only shortlisted teams pay**, within the due date communicated by the Organising Committee. The School Project Exhibition is free."] },
     { q: "Can I get a refund if my team cannot attend?",
       a: "Registration fees, once paid, are generally non-refundable, unless the Organising Committee decides otherwise. Changes to team composition after registration need prior approval." },
     { q: "What should we bring?",
